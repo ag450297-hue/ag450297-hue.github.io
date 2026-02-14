@@ -1,29 +1,38 @@
 export const portfolioData = [
   {
     imgSrc: '/img/proyecto.png',
-    title: 'Proyecto en desarrollo',
+    title: 'Modelado',
     skills: ['Astro'],
-    descripcion: 'Actualmente trabajando en nuevos proyectos.',
+    descripcion: 'Actividades y ejercicios de modelado de bases de datos.',
+    demoURL: '',
+    repoURL: '',
+    anim: 'fade-up',
+  },
+  {
+    imgSrc: '/img/proyecto.png',
+    title: 'Normalización',
+    skills: ['Astro'],
+    descripcion: 'Ejercicios y avances sobre normalización.',
+    demoURL: '',
+    repoURL: '',
+    anim: 'fade-up',
+  },
+  {
+    imgSrc: '/img/proyecto.png',
+    title: 'SQL',
+    skills: ['Astro'],
+    descripcion: 'Consultas y prácticas realizadas en SQL.',
+    demoURL: '',
+    repoURL: '',
+    anim: 'fade-up',
+  },
+  {
+    imgSrc: '/img/proyecto.png',
+    title: 'Proyecto Final',
+    skills: ['Astro'],
+    descripcion: 'Desarrollo del proyecto del curso.',
     demoURL: '',
     repoURL: '',
     anim: 'fade-up',
   }
 ];
-
-const skillIcons = {
-  JavaScript: 'skill-icons:javascript',
-  React: 'skill-icons:react-dark',
-  Astro: 'skill-icons:astro',
-  CSS: 'skill-icons:css',
-  Sass: 'skill-icons:sass',
-  StyledComponents: 'skill-icons:styledcomponents',
-  Bootstrap: 'skill-icons:bootstrap',
-  Tailwind: 'skill-icons:tailwindcss-dark',
-};
-
-export const getPortafolioData = portfolioData.map((item) => {
-  return {
-    ...item,
-    skills: item.skills.map((skill) => skillIcons[skill]),
-  };
-});
