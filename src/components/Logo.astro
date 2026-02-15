@@ -4,13 +4,13 @@ const {name} = Astro.props;
 
 <a href="/" class="profile">
     <div class="img__container">
-       <img
-    class="header__img"
-    src="/img/Angelica.png"
-    alt="Angelica Gomez"
-    width="40px"
-    height="40px"
-/>
+        <img
+            class="header__img"
+            src="/img/Angelica1.png" 
+            alt="Foto de Angelica Gomez"
+            width="40px"
+            height="40px"
+        />
     </div>
     <h3 class="color__gradiente header__title">
         {name}
@@ -18,21 +18,37 @@ const {name} = Astro.props;
 </a>
 
 <style>
+    .profile {
+        display: flex;
+        align-items: center;
+        gap: 1rem; /* Espacio entre la foto y tu nombre */
+        text-decoration: none;
+    }
 
- .img__container {
-	border-radius: 50%;
-	overflow: hidden;
-	transition: 0.35s transform;
-}
+    .img__container {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%; /* Hace que el contenedor sea un círculo */
+        overflow: hidden; /* Corta la imagen para que encaje en el círculo */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.35s transform;
+        border: 2px solid var(--primary-color); /* Opcional: añade un borde sutil */
+    }
 
- .img__container:hover {
-	transform: scale(1.1);
-}
+    .header__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Evita que la foto se estire o se vea flaca */
+    }
 
- .profile {
-	display: flex;
-	border-radius: 50%;
-	align-items: center;
-	gap: 1.5rem;
-}
+    .img__container:hover {
+        transform: scale(1.1); /* Efecto de crecimiento al pasar el mouse */
+    }
+
+    .header__title {
+        font-size: 1.2rem;
+        margin: 0;
+    }
 </style>
