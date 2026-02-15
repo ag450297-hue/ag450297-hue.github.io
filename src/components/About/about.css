@@ -15,7 +15,7 @@
 }
 
 .about__img {
-	background-color: #0d0045;
+	background-color: transparent;
 	-webkit-mask-image: radial-gradient(ellipse, #000 53%, #0000 68%);
 	border-radius: 50%;
 	mask-image: radial-gradient(ellipse, #000 53%, #0000 68%);
