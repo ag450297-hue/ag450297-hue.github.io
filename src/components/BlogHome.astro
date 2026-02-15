@@ -2,59 +2,49 @@
 import Title from "../components/atoms/Title.astro";
 ---
 
-<section id="blog" class="flex flex-col items-center w-full justify-center px-4">
+<section id="blog" class="flex flex-col items-center w-full justify-center px-4 py-10">
 
   <Title contenido="Evidencias" margin="2rem"/>
 
-  <div class="grid gap-8 md:grid-cols-3 w-full max-w-6xl">
+  <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 w-full max-w-6xl">
 
-    <!-- MODELO -->
     <a href="/Evidencias/Modelo/" 
-       class="rounded-xl overflow-hidden shadow-lg border hover:scale-105 transition bg-white">
-
-      <img src="public/Modelos.jpg.jpg" 
+       class="rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:scale-105 transition bg-white/5 backdrop-blur-sm">
+      <img src="/Modelos.jpg" 
            alt="Modelo de datos"
-           class="w-full h-40 object-cover">
-
-      <div class="p-4 text-center font-semibold">
+           class="w-full h-48 object-cover">
+      <div class="p-4 text-center font-semibold text-white">
         📁 Modelo
       </div>
     </a>
 
-    <!-- NORMALIZACION -->
     <a href="/Evidencias/Normalizacion/" 
-       class="rounded-xl overflow-hidden shadow-lg border hover:scale-105 transition bg-white">
-
-      <img src="public/girl1.jpg" 
+       class="rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:scale-105 transition bg-white/5 backdrop-blur-sm">
+      <img src="/girl1.jpg" 
            alt="Normalización"
-           class="w-full h-40 object-cover">
-
-      <div class="p-4 text-center font-semibold">
+           class="w-full h-48 object-cover">
+      <div class="p-4 text-center font-semibold text-white">
         📁 Normalización
       </div>
     </a>
 
-    <!-- SQL -->
     <a href="/Evidencias/SQL/" 
-       class="rounded-xl overflow-hidden shadow-lg border hover:scale-105 transition bg-white">
-
-      <img src="public/sql.jpeg" 
+       class="rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:scale-105 transition bg-white/5 backdrop-blur-sm">
+      <img src="/sql.jpeg" 
            alt="Consultas SQL"
-           class="w-full h-40 object-cover">
-
-      <div class="p-4 text-center font-semibold">
+           class="w-full h-48 object-cover">
+      <div class="p-4 text-center font-semibold text-white">
         📁 SQL
       </div>
     </a>
+
     <a href="/Evidencias/ProyectoF/" 
-       class="rounded-xl overflow-hidden shadow-lg border hover:scale-105 transition bg-white">
-
-      <img src="public/f1.jpeg" 
-           alt="ProyectoF"
-           class="w-full h-40 object-cover">
-
-      <div class="p-4 text-center font-semibold">
-        📁 ProyectoF
+       class="rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:scale-105 transition bg-white/5 backdrop-blur-sm">
+      <img src="/f1.jpeg" 
+           alt="Proyecto Final"
+           class="w-full h-48 object-cover">
+      <div class="p-4 text-center font-semibold text-white">
+        📁 Proyecto Final
       </div>
     </a>
 
