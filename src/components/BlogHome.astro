@@ -2,30 +2,49 @@
 import Title from "../components/atoms/Title.astro";
 ---
 
-<section id="blog" class="flex flex-col items-center w-full justify-center flex-wrap px-4">
+<section id="blog" class="flex flex-col items-center w-full justify-center px-4">
 
   <Title contenido="Evidencias" margin="2rem"/>
 
-  <div class="flex self-center gap-[20px] justify-center flex-wrap flex-col md:flex-row">
+  <div class="grid gap-8 md:grid-cols-3 w-full max-w-6xl">
 
+    <!-- MODELO -->
     <a href="/Evidencias/Modelo/" 
-       class="p-6 rounded-xl shadow-lg border hover:scale-105 transition">
-       📁 Modelo
+       class="rounded-xl overflow-hidden shadow-lg border hover:scale-105 transition bg-white">
+
+      <img src="/img/modelo.jpg" 
+           alt="Modelo de datos"
+           class="w-full h-40 object-cover">
+
+      <div class="p-4 text-center font-semibold">
+        📁 Modelo
+      </div>
     </a>
 
+    <!-- NORMALIZACION -->
     <a href="/Evidencias/Normalizacion/" 
-       class="p-6 rounded-xl shadow-lg border hover:scale-105 transition">
-       📁 Normalización
+       class="rounded-xl overflow-hidden shadow-lg border hover:scale-105 transition bg-white">
+
+      <img src="/img/normalizacion.jpg" 
+           alt="Normalización"
+           class="w-full h-40 object-cover">
+
+      <div class="p-4 text-center font-semibold">
+        📁 Normalización
+      </div>
     </a>
 
-    <a href="/Evidencias/Sql/" 
-       class="p-6 rounded-xl shadow-lg border hover:scale-105 transition">
-       📁 SQL
-    </a>
+    <!-- SQL -->
+    <a href="/Evidencias/SQL/" 
+       class="rounded-xl overflow-hidden shadow-lg border hover:scale-105 transition bg-white">
 
-    <a href="/Evidencias/ProyectoF/" 
-       class="p-6 rounded-xl shadow-lg border hover:scale-105 transition">
-       📁 SQL
+      <img src="/img/sql.jpg" 
+           alt="Consultas SQL"
+           class="w-full h-40 object-cover">
+
+      <div class="p-4 text-center font-semibold">
+        📁 SQL
+      </div>
     </a>
 
   </div>
