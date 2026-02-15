@@ -7,12 +7,11 @@ img: "/img/Modelos.png"
 
 ## Evidencias
 
-Aquí agrego explicación del trabajo.
+DESCRIPCION TRABAJO 
 
 ## Imágenes
 
-![Modelo ER](/img/Modelos.png)
+![Modelo ER](/img/.png)
 
-## Conclusión
 
-Aprendí a diseñar bases de datos correctamente.
+
