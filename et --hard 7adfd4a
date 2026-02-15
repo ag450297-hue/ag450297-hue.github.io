@@ -1,0 +1,149 @@
+[33m97c41e6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m s
+[33m989016a[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m 55
+[33mde6b4cb[m G
+[33m82a7d84[m S
+[33m663d845[m Porta
+[33m7adfd4a[m Habi
+[33mead7e59[m IMG3
+[33m8970d7a[m C
+[33m2c1e93a[m S
+[33m4d28b21[m Angelica1
+[33m5012687[m Imaag
+[33m84107c2[m Final?
+[33m76cb630[m FinalP1
+[33m4311fac[m PORTFDATA
+[33mb4a6eb6[m PortfolioData
+[33mb4e5741[m PROY6
+[33mafe20ee[m PROYF5
+[33m61b78b9[m Proy4
+[33m552e353[m Proy02
+[33m218272c[m Proy
+[33mf58211c[m Imagen 4
+[33meefb9f7[m Imagen p2
+[33mcd7298e[m Foto
+[33m6dda5d3[m p3
+[33mee72d7a[m p2
+[33m278dac6[m Add deplay configuration
+[33md2805a8[m Update astro.config.mjs
+[33me250073[m Update README.md
+[33m6474c97[m Update FUNDING.yml
+[33m447a759[m Update README.md
+[33m9af9b44[m 📝  Docs: se agrega readme
+[33md0efa85[m 📝 Docs: se agrega readme
+[33m1e09a71[m Create FUNDING.yml
+[33m048ee95[m ✨  Feat:Ultimos ajustes, se subirá a los templates de Astro
+[33meaa33e7[m 💄 Feat:Ultimos ajustes, se subirá a los templates de Astro
+[33mdb246a4[m Merge pull request #29 from SofiDevO/develop
+[33m2538b98[m 🩹 Fix: Responsive
+[33mbb65350[m Merge pull request #28 from SofiDevO/develop
+[33m8782171[m ✨ Feat: Footer, icons efect on hover
+[33maa480ac[m Merge pull request #27 from SofiDevO/develop
+[33m7229082[m Merge pull request #26 from SofiDevO/fix/responsive
+[33m152c0e6[m fix: responsive
+[33m2565915[m Merge pull request #24 from SofiDevO/develop
+[33meceb2a0[m Merge pull request #23 from SofiDevO/fix/responsive
+[33mfb6ba0a[m 🩹 Fix: Se corrige responsive en página blog
+[33mcc29247[m Merge pull request #22 from SofiDevO/develop
+[33m87e63dc[m Merge pull request #21 from SofiDevO/feature/styles-article
+[33m2563b8c[m ✨ Feat: Se agregan estilos a la sección artículo
+[33mc89d0e8[m Merge pull request #19 from SofiDevO/develop
+[33m9c7c82b[m Merge pull request #20 from SofiDevO/feature/cards-blog
+[33m11d7d13[m Merge pull request #18 from SofiDevO/feature/cards-blog
+[33m4d4830c[m ✨ Feat: pagina de Blog
+[33mcbc18e0[m Merge branch 'terminal'
+[33mce9172b[m feat(index): :sparkles: Se incluye la sección de las habilidades
+[33md4473be[m feat(Skills): :sparkles: Se crea skills para mostrar las habilidades
+[33mab711ad[m feat(skills): :sparkles: Se crea skills on terminal, para pintal las habilidades sobre una terminal
+[33m1aff28c[m feat(terminal): :sparkles: Se crea componente para los iconos de la terminal
+[33m96cc3a1[m feat(assets): :zap: Se actualizan los iconos a svg y se mueven a assets
+[33m1cde38e[m Merge pull request #17 from SofiDevO/develop
+[33m4c8b140[m Merge pull request #16 from SofiDevO/terminal
+[33m12a8338[m Merge pull request #15 from SofiDevO/develop
+[33m26c3395[m Merge pull request #14 from SofiDevO/feature/cards-blog
+[33m1304903[m ✨ Feat: Se agregan cards a la página blog
+[33m73f715f[m feat(icons): :sparkles: se agregan los iconos ascii
+[33me8ad99d[m fix(terminal): :bug: Se corrige la inclusión del body
+[33mc874ad5[m feat(terminal): :sparkles: se agrega la documentación a la terminal
+[33m04cdbcf[m fix(terminal): :bug: se corrigen estilos de la terminal
+[33m9108f45[m ✨ Feat: Se agregan estilos a cards blog
+[33m663b3a4[m feat(terminal): :sparkles: se crea la terminal
+[33m40ef892[m Create LICENSE
+[33m5952091[m Merge pull request #13 from SofiDevO/develop
+[33m8a78060[m Merge pull request #12 from SofiDevO/feature/section-about
+[33m3a7d4bd[m ✨ Feat:section about
+[33m74b755d[m Merge pull request #11 from SofiDevO/comparing-canges
+[33m45569f0[m ✨ Feat:menu responsive
+[33m3b86941[m feat(component): :lipstick: El titulo ahora se alinea a la izquierda
+[33mc61b88e[m feat(component): :lipstick: Se modifican los estilos del portfolio para alinearlo con el max-width
+[33mf4caced[m feat(components) :sparkles: :lipstick: Se crea variable max-width
+[33m0ba014c[m feat(component): :lipstick: Se corrigen estilos del hero
+[33m9443984[m feat(css): :sparkles: se mejoran los estilos del boton x2
+[33m2416c02[m feat(component): :lipstick: Se corrigen los estilos del botón del header
+[33mb1d667d[m refactor(component): :recycle: se formatea el style del boton
+[33me9e8c14[m fix(layout): :lipstick: ahora main tiene siempre el 100% de ancho
+[33m9edd4a2[m feat(component) :lipstick: Se retira el max-width del main y se corrigen estilos en el hero
+[33mdfccb1a[m feat(css): :lipstick: se agrega la difuminación del background en el hero
+[33m0c7e4b5[m feat(component): :lipstick: se le agrega su background al hero
+[33m3068b7a[m :feat(css) :lipstick: se agrega variable para el fondo del sitio
+[33ma3fbaa9[m :feat(css) :lipstick: se agrega variable para el fondo del sitio
+[33mfde2551[m fix(css vars): :bug: se corrigen tamaños de los textos
+[33mfc03ea7[m :fix :bug: Se quita el background del hero
+[33m6f5aef3[m :feat(components) :sparkles: :lipstick: Se agrega una transicion al header img
+[33m1ccf3b9[m refactor: :recycle: se desanida el css para evitar confusiones en los nuevos
+[33m463be2b[m refactor(css): :recycle: se desanida el css para que sea menos confuso para los nuevos
+[33m2ca2ba1[m refactor(css): :recycle: Se desanida el css para que sea menos confuso para los nuevo
+[33mb21ab07[m :feat :truck: Se cambia a JS el average-img-color
+[33mc34af41[m feat: :fire: Se elimina el tipado de la card
+[33mf0ea112[m :feat :truck: Se cambia a JavaScript el portfolioData (Se usa JS Doc)
+[33m188eb90[m feat: :fire: Se elimina el type de portafolioData
+[33me170e4a[m feat: :truck: Se regresa al menuData a javascript
+[33m74e9b07[m Merge pull request #10 from SofiDevO/develop
+[33ma7287e2[m :boom: Feat: Integración con siteMaps, estilos responsive
+[33m187f7d3[m fix: :bug: Se aplica correctamente la transicion a la card
+[33m909c3f6[m chore(git): :wrench: Se ignoran las notas locales de jupyter
+[33m572e338[m feat: :bug: Se actualiza la ruta a una sin cors y se ajusta el brillo de la taarjeta
+[33m1eca5c4[m feat: :sparkles: Ahora las tarjetas pueden decidir la intensidad del brillo con averageBrightness
+[33mc5aa375[m feat: :sparkles: Ahora se usa el color promedio como fondo de las tarjetas
+[33m6c8f175[m feat: :sparkles: Ahora las imagenes pueden establecer el brillo de su color promedio
+[33mbd0cf6d[m fix: :bug: Se agrega bloque try catch para evitar posibles fallos cuando no se pueda cargar la imagen
+[33m5593669[m feat: :sparkles: Se usa el componente de cardPortafolio
+[33mb9c56c5[m feat: :sparkles: Se crea el componente CardPortfolio
+[33m7de0b4f[m feat: :sparkles: Se agrega imgAlt al PortafolioData
+[33m9f61324[m feat: :sparkles: se agrega gerPortafolioData para obtener los datos ya con los iconos
+[33m81ffac2[m refactor: :sparkles: portafolioData y menu data se actualizan a .ts para soportar tipos
+[33mdc7a2a3[m feat(barrell): :sparkles: Se crea un barrell para atoms
+[33m52c9e59[m Merge pull request #9 from SofiDevO/develop
+[33mcbd13ab[m Merge pull request #8 from SofiDevO/feature/cards-portfolio
+[33mf4a9473[m :sparkles: Feat: Se agrega nuevo estilo a las cards de Portafolio
+[33mb7fb352[m feat(uitls): :sparkles: Se crea getIMGAverageColor para obtener el color promedio
+[33m7e0203e[m Merge pull request #7 from SofiDevO/develop
+[33m0ca707b[m Merge pull request #6 from SofiDevO/feature/header
+[33m264dc4e[m :sparkles: Feat: Se agregan estilos a Header component
+[33m1e6d403[m Merge pull request #5 from eamarquezh/aporte-uno
+[33m2e9e0c9[m feat: Actualizar diseño de la tarjeta
+[33m721940b[m :poop: Se corrige problema de FormattedDate
+[33mb218b6f[m :egg: Cambios XD
+[33m7b5ec2a[m Merge pull request #4 from SofiDevO/Garruxx-main
+[33m4cc3a47[m Se resuelven conflictos
+[33ma5ee87b[m Merge branch 'main' of github.com:Garruxx/primer-blog into Garruxx-main
+[33m8351249[m :rocket: Cambios
+[33mfc040e6[m refactoring code
+[33m419a9da[m feat: :sparkles: Nueva estrucutura y diseño de el hero
+[33m7d53b5f[m style: :lipstick: Se quitaron los estilos de display del body
+[33med10667[m fix: :bug: Problema con tildes arreglado, se agregó el encabezado utf-8
+[33mda751c2[m style: :lipstick: Se actualizaron los valores de las variables css
+[33mf367870[m style: :lipstick: El titulo ahora tiene un grosor de 600
+[33m3330131[m refactor: :sparkles: El titulo del header ahora es una  prop
+[33mcc23103[m feat: :sparkles: header completado
+[33m4ad673d[m feat(styles): :sparkles: Se agregarón variables de css para mantenr el diseñó consistente.
+[33m96f2a17[m feat: :construction: se inicializa el componente header
+[33m6fbc7a0[m refactor: :truck: se movio hero a una carpeta hero y se agregó un hero.css
+[33m5e29922[m chore(formatter): :wrench: Se agregó prettier para que los archivos se formateen de la misma manera
+[33m04c8740[m seccion articulos en Home
+[33m51a2587[m fixing branch
+[33mbf37767[m Merge pull request #2 from SofiDevO/feature/cards-heroSection
+[33mb445058[m :sparkles: Se agrega seccion hero y cards portfolio
+[33m200aca5[m Merge pull request #1 from Garruxx/main
+[33ma50b914[m refactor: :truck: delete files
+[33m4b522ff[m fix: :bug: blog error
+[33m899129d[m first commit
