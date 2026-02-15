@@ -1,21 +1,17 @@
 ---
 import Title from '../atoms/Title.astro';
-import SkillsOnTerminal from './components/skills-on-terminal/skillsOnTerminal.astro';
 import './skills.css';
 ---
 
-<section id="skills">
-	<SkillsOnTerminal />
-	<div class="text-content">
-		<Title contenido="Habilidades" />
-		<p>
-			Escribe aquí tus habilidades, recuerda mencionar las más relevantes
-			y evitar sobrecargar las habilidades , este apartado es muy
-			importante para dar a conocer lo que sabes y es una parte importante
-			para las empresas, pero si colocas demasiado, muchas veces se
-			pensará que es exagerado, mejor coloca en lo que más te destaques y
-			a la hora de postularte puedes mencionar las otras cosas que también
-			sabes.
-		</p>
+<section id="skills" class="skills">
+	<div class="skills__container">
+		<div class="text-content">
+			<Title contenido="Habilidades" />
+			<p class="skills__description">
+				"Como estudiante de Ingeniería de Sistemas, me enfoco en construir una buena base en los fundamentos y lógica de programación. 
+				Actualmente, me dedico a la escritura de código limpio y la resolución eficiente de problemas.
+				Mi objetivo es evolucionar mediante el aprendizaje continuo, la adaptabilidad a nuevos entornos tecnológicos y el compromiso en cada proyecto que inicio."
+			</p>
+		</div>
 	</div>
 </section>

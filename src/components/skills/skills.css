@@ -1,25 +1,35 @@
 #skills {
-	display: flex;
-	max-width: calc(var(--max-width) + 2.2rem);
-	padding: 1.1rem;
-	gap: 2.2rem;
-	margin: 4rem auto;
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center;     /* Centra el contenido verticalmente */
+    max-width: var(--max-width);
+    padding: 8rem 2.2rem;    /* Más espacio arriba y abajo */
+    margin: 0 auto;
+    min-height: 40vh;        /* Le da una buena altura a la sección */
 }
 
 #skills .text-content {
-	max-width: 40%;
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	gap: 1.1rem;
+    max-width: 800px;        /* Ahora el texto puede expandirse más */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* Centra el título y el párrafo */
+    text-align: center;      /* Centra el texto */
+    gap: 2.2rem;
+}
+
+#skills .text-content p {
+    font-size: 2.2rem;       /* Tamaño de letra más legible */
+    line-height: 1.6;
+    color: #dcd8fc;          /* Color suave para el texto */
+    font-style: italic;      /* Estilo de cita/pensamiento */
 }
 
 @media screen and (max-width: 768px) {
-	#skills {
-		flex-direction: column-reverse;
-	}
-	#skills .text-content {
-		max-width: 100%;
-	}
+    #skills {
+        padding: 4rem 2.2rem;
+    }
+    #skills .text-content p {
+        font-size: 1.8rem;   /* Ajuste para celulares */
+    }
 }
