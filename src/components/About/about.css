@@ -1,55 +1,61 @@
 .about {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 1rem;
-	width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 4rem 0;
 }
 
 .about__container {
-	display: flex;
-	padding: 11rem 13.1rem;
-	/* flex-wrap: wrap; */
-	justify-content: space-around;
-	gap: 4.4rem;
+    display: flex;
+    flex-direction: row; /* Pone la imagen al lado del texto */
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .about__img {
-	background-color: transparent;
-	-webkit-mask-image: radial-gradient(ellipse, #000 53%, #0000 68%);
-	border-radius: 50%;
-	mask-image: radial-gradient(ellipse, #000 53%, #0000 68%);
-	border-radius: 50%;
-	object-fit: cover;
-	width: 39.5rem;
-	height: 48.1rem;
-	min-width: 39.5rem;
-	min-height: 48.1rem;
+    background-color: transparent;
+    object-fit: cover;
+    width: 35rem;
+    height: 35rem;
+    min-width: 35rem;
+    border-radius: 2rem; /* Bordes redondeados suaves, no un óvalo */
+    /* Se eliminó la máscara que ocultaba la imagen */
 }
 
 .about__content {
-	display: flex;
-	flex-direction: column;
-	max-width: 75rem;
-	gap: 2.1rem;
-	justify-content: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 60rem;
+    gap: 2rem;
 }
 
 .about__text {
-	font-size: 2.1rem;
-	max-width: 70.19rem;
+    font-size: 2.1rem;
+    line-height: 1.5;
+    color: #ffffff; /* Ajusta según el color de tu tema */
 }
 
+/* Ajuste para celulares */
 @media screen and (max-width: 768px) {
-	.about__container {
-		padding: 8rem 3.1rem;
-		flex-direction: column-reverse;
-		align-items: center;
-	}
-	.about__img {
-		width: 29.5rem;
-		height: 38.1rem;
-		min-width: 29.5rem;
-		min-height: 38.1rem;
-	}
+    .about__container {
+        flex-direction: column; /* En móvil se apilan uno arriba del otro */
+        padding: 2rem;
+        gap: 3rem;
+    }
+    
+    .about__img {
+        width: 25rem;
+        height: 25rem;
+        min-width: 25rem;
+    }
+
+    .about__content {
+        text-align: center;
+        align-items: center;
+    }
 }
