@@ -5,13 +5,13 @@ pubDate: 2026-02-15
 img: "/img/Modelos.png"
 ---
 
-# 📚 Ejercicios MER
+# Ejercicios MER
 
 ---
 
-## 🏥 Ejercicio 1: Hospital – Urgencias
+## Ejercicio 1: Hospital – Urgencias
 
-### 📌 Enunciado
+### Enunciado
 Crear un diseño E/R que permita gestionar los datos de un Hospital:
 
 - Los pacientes tienen:
@@ -33,15 +33,15 @@ Crear un diseño E/R que permita gestionar los datos de un Hospital:
   - la fecha de la evaluación  
   - el nivel asignado  
 
-### 🖼 Imagen
+### Imagen
 
 ![Modelo ER Hospital](/img/MER_HOSPITAL.png)
 
 ---
 
-## 📖 Ejercicio 2: Biblioteca
+## Ejercicio 2: Biblioteca
 
-### 📌 Enunciado
+###  Enunciado
 Crear un diseño E/R que permita gestionar los datos de una biblioteca de modo que:
 
 - Las personas socias disponen de:
@@ -62,6 +62,6 @@ Crear un diseño E/R que permita gestionar los datos de una biblioteca de modo q
 - Se debe indicar:
   - si un libro está dañado o no  
 
-### 🖼 Imagen
+### Imagen
 
 ![Modelo ER Biblioteca](/img/MER_BIBLIOTECA.png)
