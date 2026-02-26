@@ -5,106 +5,59 @@ pubDate: 2026-02-15
 img: "/img/Modelos.png"
 ---
 
-<style>
-  .main-container {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-    max-width: 850px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-  }
-  .exercise-card {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    margin-bottom: 30px;
-    border-top: 5px solid #3498db;
-  }
-  .streaming-card { border-top-color: #8e44ad; }
-  h2 { color: #2980b9; margin-bottom: 15px; }
-  .streaming-card h2 { color: #8e44ad; }
-  .attribute-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    list-style: none;
-    padding: 0;
-    margin: 15px 0;
-  }
-  .attribute-list li {
-    background: #f0f2f5;
-    color: #555;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.9em;
-    border: 1px solid #dcdde1;
-  }
-  .img-container { text-align: center; margin: 25px 0; }
-  .img-container img {
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  }
-  .section-title {
-    font-weight: bold;
-    color: #7f8c8d;
-    text-transform: uppercase;
-    font-size: 0.85em;
-    display: block;
-    margin-bottom: 10px;
-  }
-</style>
-
-<div class="main-container">
-
-# Ejercicios MER
+# Taller de Modelos Entidad-Relación
 
 ---
 
-<div class="exercise-card">
+## Ejercicio 1: Hospital – Urgencias
 
-##  Ejercicio 1: Hospital – Urgencias
-<span class="section-title">Atributos Clave</span>
-<ul class="attribute-list">
-  <li> Cédula</li><li> Dirección</li><li> Teléfonos</li><li> Nombre y Apellidos</li><li> Fecha Nacimiento</li><li> Edad</li>
-</ul>
+**Enunciado:** Crear un diseño E/R para gestionar un Hospital (Pacientes, Médicos y Triage).
 
-<div class="img-container">
-  <span class="section-title">Diagrama Resultante</span>
-  ![Modelo ER Hospital](/img/MER_HOSPITAL.png)
-</div>
-</div>
+* **Atributos Paciente:** Cédula, dirección, teléfonos, nombre, fecha de nacimiento y edad.
+* **Atributos Médico:** Cédula, nombre, especialidad y celular.
+* **Registro Triage:** Evaluación, fecha y nivel asignado.
 
-<div class="exercise-card">
+### Diagrama Hospital
+![Modelo ER Hospital](/img/MER_HOSPITAL.png)
 
-##  Ejercicio 2: Biblioteca
-<span class="section-title">Atributos Clave</span>
-<ul class="attribute-list">
-  <li>Código Socio</li><li>Cédula</li><li>Dirección</li><li>Teléfono</li><li>Título</li><li>ISBN</li><li>Estado</li>
-</ul>
+---
 
-<div class="img-container">
-  <span class="section-title">Diagrama Resultante</span>
-  ![Modelo ER Biblioteca](/img/MER_BIBLIOTECA.png)
-</div>
-</div>
+## Ejercicio 2: Biblioteca
 
-<div class="exercise-card streaming-card">
+**Enunciado:** Gestión de socios y libros para una biblioteca.
+
+* **Socios:** Código, cédula, dirección, teléfono y nombre.
+* **Libros:** Título, autores, años (escritura/edición), editorial e ISBN.
+* **Estado:** Indicador de si el libro está dañado.
+
+### Diagrama Biblioteca
+![Modelo ER Biblioteca](/img/MER_BIBLIOTECA.png)
+
+---
 
 ## Ejercicio 3: Streaming U. El Bosque
-<span class="section-title">Enunciado</span>
-Plataforma para estudiantes con acceso a series, películas y documentales. El sistema almacena tipos de contenido, productor, categorías, usuarios, gustos e historiales.
 
-<ul class="attribute-list">
-  <li>Tipo Contenido</li><li>Productor</li><li> Categoría</li><li>Info Usuario</li><li> Búsquedas</li><li> Vistos</li>
-</ul>
+**Enunciado:** Plataforma para estudiantes con acceso a series, películas y documentales.
 
-<div class="img-container">
-  <span class="section-title">Diagrama Resultante</span>
-  ![Modelo ER Streaming](/img/Streaming.drawio.png)
-</div>
-</div>
+* **Contenido:** Tipo, productor, año de lanzamiento y categoría.
+* **Usuario:** Info personal, gustos y categorías más vistas.
+* **Historial:** Búsquedas y videos vistos.
 
-</div>
+### Diagrama Streaming
+![Modelo ER Streaming](/img/Streaming.drawio.png)
+
+<style>
+  /* Este bloque de estilo no afecta las rutas de las imágenes */
+  body { font-family: sans-serif; line-height: 1.6; color: #333; }
+  h1 { color: #2c3e50; text-align: center; border-bottom: 2px solid #3498db; }
+  h2 { color: #2980b9; border-left: 5px solid #3498db; padding-left: 10px; margin-top: 30px; }
+  h3 { color: #7f8c8d; font-style: italic; }
+  img { 
+    display: block; 
+    margin: 20px auto; 
+    max-width: 100%; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+  }
+  hr { border: 0; height: 1px; background: #eee; margin: 40px 0; }
+</style>
