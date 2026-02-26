@@ -6,114 +6,157 @@ img: "/img/Modelos.png"
 ---
 
 <style>
-  /* Estilos para que la página se vea moderna */
-  .container-mer {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    color: #2d3436;
-    line-height: 1.6;
-    max-width: 900px;
-    margin: auto;
+  /* CONFIGURACIÓN VISUAL GENERAL */
+  .main-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
   }
+
+  /* TÍTULOS */
   h1 {
-    color: #0984e3;
+    color: #2c3e50;
     text-align: center;
-    border-bottom: 3px solid #0984e3;
-    padding-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-size: 2.5em;
+    border-bottom: 4px solid #3498db;
+    padding-bottom: 15px;
   }
+
   h2 {
-    color: #2d3436;
-    background: #f1f2f6;
-    padding: 10px 15px;
-    border-left: 5px solid #0984e3;
-    border-radius: 4px;
+    color: #2980b9;
+    background: #ebf5fb;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border-left: 6px solid #3498db;
     margin-top: 40px;
   }
-  h3 {
-    color: #636e72;
-    border-bottom: 1px solid #dfe6e9;
-  }
-  .card {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+  /* TARJETAS DE CONTENIDO */
+  .exercise-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
     margin-bottom: 30px;
-    border: 1px solid #f1f2f6;
   }
-  img {
-    display: block;
-    margin: 25px auto;
-    max-width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease;
+
+  /* ATRIBUTOS COMO ETIQUETAS */
+  .attribute-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
   }
-  img:hover {
-    transform: scale(1.01);
-  }
-  ul {
-    padding-left: 20px;
-  }
-  li {
-    margin-bottom: 8px;
-  }
-  strong {
-    color: #0984e3;
-  }
-  .badge {
-    display: inline-block;
-    background: #e1f5fe;
-    color: #01579b;
-    padding: 2px 10px;
+
+  .attribute-list li {
+    background: #f0f2f5;
+    color: #555;
+    padding: 5px 12px;
     border-radius: 20px;
-    font-size: 0.85em;
+    font-size: 0.9em;
+    border: 1px solid #dcdde1;
+  }
+
+  /* IMÁGENES */
+  .img-container {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  .img-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
+  }
+
+  .section-title {
     font-weight: bold;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    font-size: 0.85em;
     margin-bottom: 10px;
+    display: block;
   }
 </style>
 
-<div class="container-mer">
+<div class="main-container">
 
-# Ejercicios de Modelado MER
+# Ejercicios MER
 
 ---
 
-<div class="card">
+<div class="exercise-card">
 
-## Ejercicio 1: Hospital – Urgencias
+##  Ejercicio 1: Hospital – Urgencias
 
-<span class="badge">CASO CLÍNICO</span>
+<span class="section-title">Enunciado del Problema</span>
+Crear un diseño E/R para gestionar los datos de un Hospital con los siguientes requerimientos:
 
-### 📝 Enunciado
-Diseño de un modelo para la gestión de flujo de pacientes y personal médico:
+**Los Pacientes cuentan con:**
+<ul class="attribute-list">
+  <li>- Cédula</li>
+  <li>-  Dirección</li>
+  <li>- Teléfonos</li>
+  <li>- Nombre y Apellidos</li>
+  <li>- Fecha de Nacimiento</li>
+  <li>- Edad</li>
+</ul>
 
-* **Pacientes:** Cédula, dirección, teléfonos, nombre completo, fecha de nacimiento y edad.
-* **Médicos:** Cédula, nombre completo, especialidad y celular.
-* **Gestión de Triage:** Registro obligatorio de paso por Triage, fecha de evaluación y nivel asignado.
+**Los Médicos cuentan con:**
+<ul class="attribute-list">
+  <li>- Cédula</li>
+  <li>- Nombre completo</li>
+  <li>- Especialidad</li>
+  <li>- Celular</li>
+</ul>
 
-![Modelo ER Hospital](/img/MER_HOSPITAL.png)
+**Información de Triage:**
+Se debe registrar si pasó por evaluación, la fecha exacta y el nivel de prioridad asignado.
+
+<div class="img-container">
+  <span class="section-title">Diagrama Resultante</span>
+  ![Modelo ER Hospital](/img/MER_HOSPITAL.png)
+</div>
 
 </div>
 
-<div class="card">
+<div class="exercise-card">
 
-## Ejercicio 2: Biblioteca Municipal
+##  Ejercicio 2: Biblioteca
 
-<span class="badge">SISTEMA DE INVENTARIO</span>
+<span class="section-title">Enunciado del Problema</span>
+Diseño E/R para la gestión de préstamos y socios de una biblioteca.
 
-### 📝 Enunciado
-Gestión de socios y acervo bibliográfico:
+**Datos de Socios:**
+<ul class="attribute-list">
+  <li>- Código Socio</li>
+  <li>- Cédula</li>
+  <li>- Dirección</li>
+  <li>- Teléfono</li>
+  <li>- Nombre y Apellidos</li>
+</ul>
 
-* **Socios:** Código de socio, cédula, dirección, teléfono y nombre completo.
-* **Libros:** Título, año de escritura, autores, año de edición, editorial e ISBN.
-* **Estado:** Control de daños físico de cada ejemplar.
+**Datos de Libros:**
+<ul class="attribute-list">
+  <li>- Título</li>
+  <li>- Autores</li>
+  <li>- Año Escritura/Edición</li>
+  <li>- Editorial</li>
+  <li>- ISBN</li>
+  <li>-Estado (Dañado/OK)</li>
+</ul>
 
-![Modelo ER Biblioteca](/img/MER_BIBLIOTECA.png)
-
+<div class="img-container">
+  <span class="section-title">Diagrama Resultante</span>
+  ![Modelo ER Biblioteca](/img/MER_BIBLIOTECA.png)
 </div>
 
----
+</div>
 
 </div>
