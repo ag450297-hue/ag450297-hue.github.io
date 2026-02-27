@@ -65,11 +65,9 @@ img: "/img/Modelos.png"
 * **Ciudades:** Código y nombre de ciudad.
 * **Camiones:** Matrícula, modelo, tipo y potencia.
 
-**Relaciones Clave:** 1. Un conductor distribuye N paquetes. 
-2. Un paquete llega a 1 ciudad. 
-3. Conductores y Camiones (N:M) con atributo de **Fecha**.
 
-![Modelo ER Transporte](/img/Transporte.png)
+
+![Modelo ER Transporte](/img/Transporte.drawio.png)
 </div>
 
 <div class="box">
@@ -80,11 +78,9 @@ img: "/img/Modelos.png"
 * **Casas:** Precio, dirección, propietario y lista de características variables (dormitorios, baños, etc.).
 * **Clientes:** Preferencias de búsqueda y rango de precios.
 
-**Relaciones Clave:**
-1. Agente lista Casas (1:N). 
-2. Clientes expresan preferencias que coinciden con características de las casas.
 
-![Modelo ER Bienes Raíces](/img/BienesRaices.png)
+
+![Modelo ER Bienes Raíces](/img/BienesRaices.drawio.png)
 </div>
 
 ---
