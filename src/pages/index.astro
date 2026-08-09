@@ -1,20 +1,81 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+
+// Puedes dejar estas importaciones por si las necesitas después, 
+// pero las comentaremos abajo para limpiar el diseño para tu profesor.
 import CTA from '../components/home/CTA.astro';
 import CodeShowcase from '../components/home/CodeShowcase.astro';
 import Features from '../components/home/Features.astro';
-import Hero from '../components/home/Hero.astro';
 import LogoCloud from '../components/home/LogoCloud.astro';
 import Observability from '../components/home/Observability.astro';
 import Testimonials from '../components/home/Testimonials.astro';
 ---
 
-<BaseLayout title="Vega — Ship your API in minutes, not sprints">
+<BaseLayout title="E-Portafolio — Bases de Datos 1">
+  
+  <!-- Bloque de bienvenida superior de la plantilla -->
   <Hero />
+
+  <!-- SECCIÓN DE PRESENTACIÓN OBLIGATORIA (Agregada para tu tarea) -->
+  <section class="py-16 max-w-4xl mx-auto px-6 bg-slate-900/50 rounded-2xl border border-slate-800 my-12">
+    
+    <!-- Contenedor de Foto y Texto -->
+    <div class="flex flex-col md:flex-row items-center gap-8 mb-10">
+      
+      <!-- TU FOTO / AVATAR (Recuerda guardar tu foto como "mi-avatar.jpg" en la carpeta public/) -->
+      <div class="flex-shrink-0">
+        <img 
+          src="/mi-avatar.jpg" 
+          alt="Mi Foto de Presentación" 
+          class="w-36 h-36 rounded-full object-cover border-4 border-indigo-500 shadow-xl"
+        />
+      </div>
+
+      <!-- TU TEXTO DE PRESENTACIÓN (Escribe tus respuestas reales aquí) -->
+      <div class="flex-1 text-center md:text-left">
+        <h2 class="text-3xl font-bold text-white mb-4">Sección: Presentación</h2>
+        <p class="text-slate-300 text-lg leading-relaxed mb-4">
+          ¡Hola! Me gusta que me llamen <strong>[Tu Nombre/Apodo aquí]</strong>. 
+          Brevemente sobre mí, les cuento que mi principal interés o hobby es [Tu hobby, música o deporte favorito] y es algo que me representa mucho en mi día a día.
+        </p>
+        <p class="text-slate-300 text-lg leading-relaxed mb-4">
+          Considero que la asignatura de <strong>Bases de Datos 1</strong> va a ser fundamental para mi vida profesional porque [Escribe aquí tu razón concreta, por ejemplo: me permitirá estructurar la información de cualquier aplicación o sistema de forma eficiente].
+        </p>
+        <p class="text-indigo-400 text-xl font-medium italic mt-6">
+          "Este semestre quiero demostrar que..." [Completa tu frase de cierre aquí].
+        </p>
+      </div>
+
+    </div>
+
+    <!-- TU VIDEO DE PRESENTACIÓN (Embebed de YouTube) -->
+    <div class="mt-8 flex flex-col items-center">
+      <h3 class="text-xl font-semibold text-white mb-4">Video de Presentación</h3>
+      <div class="w-full max-w-2xl aspect-video rounded-xl overflow-hidden border border-slate-700 shadow-2xl">
+        <!-- REEMPLAZA EL LINK DE ABAJO POR EL TUYO DE YOUTUBE -->
+        <iframe 
+          width="100%" 
+          height="100%" 
+          src="https://youtube.com" 
+          title="Video de Presentación - Bases de Datos 1" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Ocultamos los componentes de relleno del software para que no distraigan al profesor -->
+  <!-- 
   <LogoCloud />
   <Features />
   <CodeShowcase />
   <Observability />
   <Testimonials />
-  <CTA />
+  <CTA /> 
+  -->
+
 </BaseLayout>
