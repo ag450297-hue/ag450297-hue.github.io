@@ -1,36 +1,54 @@
-name: Weekly build tripwire
+name: Deploy to GitHub Pages
 
-# Rebuilds against the LATEST releases of every dependency once a week.
-# A red run here is the early warning to ship a compatibility update
-# before users hit it.
 on:
-  schedule:
-    - cron: '17 9 * * 1'
+  push:
+    branches: [ main ] # Cambia a 'master' si tu rama principal se llama así
   workflow_dispatch:
 
-jobs:
-  build-latest-deps:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 10
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - run: pnpm update --latest
-      - run: pnpm build
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
-  build-locked-deps:
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+env:
+  ASTRO_TELEMETRY_DISABLED: 1
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps: deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - name: Checkout your repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
           version: 10
-      - uses: actions/setup-node@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm build
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build Astro
+        run: pnpm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
