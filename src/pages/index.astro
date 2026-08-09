@@ -1,12 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/home/Hero.astro';
-
-// Puedes dejar estas importaciones por si las necesitas después, 
-// pero las comentaremos abajo para limpiar el diseño para tu profesor.
 import CTA from '../components/home/CTA.astro';
 import CodeShowcase from '../components/home/CodeShowcase.astro';
 import Features from '../components/home/Features.astro';
+import Hero from '../components/home/Hero.astro';
 import LogoCloud from '../components/home/LogoCloud.astro';
 import Observability from '../components/home/Observability.astro';
 import Testimonials from '../components/home/Testimonials.astro';
@@ -14,68 +11,86 @@ import Testimonials from '../components/home/Testimonials.astro';
 
 <BaseLayout title="E-Portafolio — Bases de Datos 1">
   
-  <!-- Bloque de bienvenida superior de la plantilla -->
+  <!-- Mantiene la cabecera original e intacta para no romper los estilos -->
   <Hero />
 
-  <!-- SECCIÓN DE PRESENTACIÓN OBLIGATORIA (Agregada para tu tarea) -->
-  <section class="py-16 max-w-4xl mx-auto px-6 bg-slate-900/50 rounded-2xl border border-slate-800 my-12">
-    
-    <!-- Contenedor de Foto y Texto -->
-    <div class="flex flex-col md:flex-row items-center gap-8 mb-10">
+  <!-- NUEVO BLOQUE INTEGRADO: ESPACIO DE TU PRESENTACIÓN (Cumple con tu tarea) -->
+  <section class="relative z-10 py-16 max-w-5xl mx-auto px-6" id="presentacion-estudiante">
+    <div class="bg-neutral-900/60 backdrop-blur-md rounded-3xl border border-neutral-800 p-8 md:p-12 shadow-2xl">
       
-      <!-- TU FOTO / AVATAR (Recuerda guardar tu foto como "mi-avatar.jpg" en la carpeta public/) -->
-      <div class="flex-shrink-0">
-        <img 
-          src="/mi-avatar.jpg" 
-          alt="Mi Foto de Presentación" 
-          class="w-36 h-36 rounded-full object-cover border-4 border-indigo-500 shadow-xl"
-        />
+      <!-- Contenedor de la Foto y el Texto de manera Adaptable -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 items-start mb-12">
+        
+        <!-- TU FOTO / AVATAR (Guarda tu foto como mi-avatar.jpg en la carpeta public/) -->
+        <div class="md:col-span-1 flex justify-center">
+          <div class="w-36 h-36 rounded-full p-[2px] bg-gradient-to-tr from-violet-500 to-cyan-400 shadow-xl flex-shrink-0">
+            <img 
+              src="/mi-avatar.jpg" 
+              alt="Mi Foto de Presentación" 
+              class="w-full h-full rounded-full object-cover bg-neutral-950"
+            />
+          </div>
+        </div>
+
+        <!-- TUS RESPUESTAS ESCRITAS -->
+        <div class="md:col-span-3 text-left">
+          <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+            Sección Obligatoria: Presentación
+          </h2>
+          
+          <p class="text-neutral-300 text-lg leading-relaxed mb-4">
+            ¡Hola a todos! Bienvenidos a mi portafolio. Me gusta que me llamen 
+            <span class="text-cyan-400 font-semibold">[Escribe aquí cómo te gusta que te llamen]</span>. 
+            Les cuento un poco sobre mí: mi pasatiempo favorito e interés principal es 
+            <span class="text-neutral-200 font-medium">[Escribe tu hobby, música o deporte]</span>, 
+            una actividad que me apasiona y me define de manera muy humana y auténtica.
+          </p>
+
+          <p class="text-neutral-300 text-lg leading-relaxed mb-4">
+            Con respecto a mis metas académicas, considero firmemente que la asignatura de <strong>Bases de Datos 1</strong> 
+            va a aportar un valor enorme a mi vida profesional porque 
+            <span class="text-neutral-200 font-medium">[Explica tu razón, ej: es la base indispensable para estructurar y gestionar la información de cualquier sistema de software moderno]</span>.
+          </p>
+
+          <!-- FRASE DE CIERRE EXIGIDA POR EL PROFESOR -->
+          <div class="mt-6 border-l-4 border-violet-500 pl-4 bg-violet-950/20 py-3 rounded-r-2xl">
+            <p class="text-violet-400 text-xl font-medium italic">
+              "Este semestre quiero demostrar que..." <span class="text-white not-italic font-normal">[Completa tu frase aquí]</span>
+            </p>
+          </div>
+        </div>
+
       </div>
 
-      <!-- TU TEXTO DE PRESENTACIÓN (Escribe tus respuestas reales aquí) -->
-      <div class="flex-1 text-center md:text-left">
-        <h2 class="text-3xl font-bold text-white mb-4">Sección: Presentación</h2>
-        <p class="text-slate-300 text-lg leading-relaxed mb-4">
-          ¡Hola! Me gusta que me llamen <strong>[Tu Nombre/Apodo aquí]</strong>. 
-          Brevemente sobre mí, les cuento que mi principal interés o hobby es [Tu hobby, música o deporte favorito] y es algo que me representa mucho en mi día a día.
-        </p>
-        <p class="text-slate-300 text-lg leading-relaxed mb-4">
-          Considero que la asignatura de <strong>Bases de Datos 1</strong> va a ser fundamental para mi vida profesional porque [Escribe aquí tu razón concreta, por ejemplo: me permitirá estructurar la información de cualquier aplicación o sistema de forma eficiente].
-        </p>
-        <p class="text-indigo-400 text-xl font-medium italic mt-6">
-          "Este semestre quiero demostrar que..." [Completa tu frase de cierre aquí].
-        </p>
+      <!-- SECCIÓN DEL VIDEO EMBEBIDO -->
+      <div class="pt-8 border-t border-neutral-800/80 flex flex-col items-center">
+        <h3 class="text-xl font-bold text-white mb-6 tracking-wide">
+          Video de Presentación Profesional (90-120 segundos)
+        </h3>
+        
+        <div class="w-full max-w-2xl aspect-video rounded-2xl overflow-hidden border border-neutral-800 shadow-2xl bg-black">
+          <!-- REEMPLAZA TU_CODIGO_DE_VIDEO CON LOS CARACTERES FINALES DE TU VIDEO DE YOUTUBE -->
+          <iframe 
+            width="100%" 
+            height="100%" 
+            src="https://youtube.com" 
+            title="Video de Presentación - Bases de Datos 1" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
       </div>
 
     </div>
-
-    <!-- TU VIDEO DE PRESENTACIÓN (Embebed de YouTube) -->
-    <div class="mt-8 flex flex-col items-center">
-      <h3 class="text-xl font-semibold text-white mb-4">Video de Presentación</h3>
-      <div class="w-full max-w-2xl aspect-video rounded-xl overflow-hidden border border-slate-700 shadow-2xl">
-        <!-- REEMPLAZA EL LINK DE ABAJO POR EL TUYO DE YOUTUBE -->
-        <iframe 
-          width="100%" 
-          height="100%" 
-          src="https://youtube.com" 
-          title="Video de Presentación - Bases de Datos 1" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-
   </section>
 
-  <!-- Ocultamos los componentes de relleno del software para que no distraigan al profesor -->
-  <!-- 
+  <!-- Mantiene el resto de componentes para conservar la simetría y diseño original de Pulsar Lite -->
   <LogoCloud />
   <Features />
   <CodeShowcase />
   <Observability />
   <Testimonials />
-  <CTA /> 
-  -->
+  <CTA />
 
 </BaseLayout>
