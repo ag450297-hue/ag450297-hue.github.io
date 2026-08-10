@@ -1,0 +1,135 @@
+```astro
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../../components/Container.astro';
+---
+
+<BaseLayout
+  title="Presentación — [TU NOMBRE]"
+  description="Presentación personal de [TU NOMBRE], estudiante de Ingeniería de Sistemas."
+>
+
+  <Container class="py-16 sm:py-24">
+
+    <!-- Encabezado -->
+    <header class="mx-auto max-w-3xl text-center">
+      <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">
+        Portafolio académico
+      </p>
+
+      <h1 class="mt-3 text-4xl font-semibold tracking-tight text-fg sm:text-5xl">
+        Presentación
+      </h1>
+
+      <p class="mt-5 text-lg leading-relaxed text-fg-2">
+        Bienvenido a mi portafolio personal y académico.
+      </p>
+    </header>
+
+    <!-- Información personal -->
+    <section class="mx-auto mt-12 max-w-3xl">
+
+      <div class="text-center">
+
+        <img
+          src="/images/perfil.jpg"
+          alt="Foto de [TU NOMBRE]"
+          class="mx-auto h-40 w-40 rounded-full object-cover shadow-lg"
+        />
+
+        <h2 class="mt-6 text-2xl font-semibold text-fg">
+          [TU NOMBRE]
+        </h2>
+
+        <p class="mt-2 text-fg-2">
+          Estudiante de Ingeniería de Sistemas
+        </p>
+
+      </div>
+
+      <!-- ¿Cómo me gusta que me llamen? -->
+      <div class="mt-10 rounded-2xl border border-line bg-panel p-6">
+        <h3 class="text-lg font-semibold text-fg">
+          ¿Cómo me gusta que me llamen?
+        </h3>
+
+        <p class="mt-3 leading-relaxed text-fg-2">
+          [ESCRIBE AQUÍ CÓMO TE GUSTA QUE TE LLAMEN]
+        </p>
+      </div>
+
+      <!-- Sobre mí -->
+      <div class="mt-6 rounded-2xl border border-line bg-panel p-6">
+        <h3 class="text-lg font-semibold text-fg">
+          Sobre mí
+        </h3>
+
+        <p class="mt-3 leading-relaxed text-fg-2">
+          [ESCRIBE AQUÍ ALGO SOBRE TI: HOBBY, INTERÉS, MÚSICA, DEPORTE,
+          VIDEOJUEGOS, TECNOLOGÍA, ETC.]
+        </p>
+      </div>
+
+      <!-- Bases de Datos 1 -->
+      <div class="mt-6 rounded-2xl border border-line bg-panel p-6">
+        <h3 class="text-lg font-semibold text-fg">
+          ¿Por qué Bases de Datos 1 es importante para mi futuro profesional?
+        </h3>
+
+        <p class="mt-3 leading-relaxed text-fg-2">
+          [ESCRIBE AQUÍ POR QUÉ CREES QUE BASES DE DATOS 1 TE AYUDARÁ
+          EN TU VIDA PROFESIONAL]
+        </p>
+      </div>
+
+      <!-- Objetivo del semestre -->
+      <div class="mt-6 rounded-2xl border border-line bg-panel p-6">
+        <h3 class="text-lg font-semibold text-fg">
+          Mi objetivo este semestre
+        </h3>
+
+        <p class="mt-3 leading-relaxed text-fg-2">
+          “Este semestre quiero demostrar que [COMPLETA AQUÍ LA FRASE].”
+        </p>
+      </div>
+
+    </section>
+
+    <!-- Video -->
+    <section class="mx-auto mt-14 max-w-4xl">
+
+      <div class="mb-5 text-center">
+        <h2 class="text-2xl font-semibold text-fg">
+          Video de presentación
+        </h2>
+
+        <p class="mt-2 text-sm leading-relaxed text-fg-2">
+          En este espacio estará disponible mi video de presentación.
+        </p>
+      </div>
+
+      <!-- ESPACIO RESERVADO PARA EL VIDEO -->
+      <div
+        class="flex aspect-video items-center justify-center rounded-2xl border border-line bg-panel"
+      >
+        <div class="text-center">
+
+          <div class="text-5xl">▶</div>
+
+          <p class="mt-4 font-medium text-fg">
+            Video próximamente
+          </p>
+
+          <p class="mt-2 text-sm text-fg-3">
+            Duración requerida: 90–120 segundos
+          </p>
+
+        </div>
+      </div>
+
+    </section>
+
+  </Container>
+
+</BaseLayout>
+```
