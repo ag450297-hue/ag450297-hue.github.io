@@ -1,77 +1,41 @@
-```astro
 ---
 import Container from './Container.astro';
 ---
 
-<nav class="w-full">
+<nav class="w-full border-b border-line">
   <Container>
+
     <div class="flex items-center justify-between py-5">
 
-      <!-- Nombre -->
+      <!-- NOMBRE -->
       <a
         href="/"
         class="text-lg font-semibold tracking-tight text-fg"
       >
-        [ANGELICA GOMEZ]
+        [TU NOMBRE]
       </a>
 
-      <!-- Navegación -->
-      <div class="hidden items-center gap-7 md:flex">
+
+      <!-- MENÚ -->
+      <div class="flex items-center gap-6">
 
         <a
           href="/"
-          class="text-sm text-fg-2 transition-colors hover:text-fg"
+          class="text-sm font-medium text-fg-2 transition-colors hover:text-fg"
         >
           Inicio
         </a>
 
         <a
           href="/evidencias/"
-          class="text-sm text-fg-2 transition-colors hover:text-fg"
+          class="text-sm font-medium text-fg-2 transition-colors hover:text-fg"
         >
           Evidencias
         </a>
 
       </div>
 
-      <!-- Menú móvil -->
-      <button
-        type="button"
-        data-menu-button
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-        aria-label="Abrir menú"
-        class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-fg-2 transition-colors hover:text-fg md:hidden"
-      >
-        ☰
-      </button>
-
-    </div>
-
-    <!-- Menú móvil -->
-    <div
-      id="mobile-menu"
-      class="hidden border-t border-line py-4 md:hidden"
-    >
-      <div class="flex flex-col gap-4">
-
-        <a
-          href="/"
-          class="text-sm text-fg-2 hover:text-fg"
-        >
-          Inicio
-        </a>
-
-        <a
-          href="/evidencias/"
-          class="text-sm text-fg-2 hover:text-fg"
-        >
-          Evidencias
-        </a>
-
-      </div>
     </div>
 
   </Container>
 </nav>
-```
