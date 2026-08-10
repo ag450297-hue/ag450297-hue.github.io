@@ -10,16 +10,11 @@ interface Props {
   description?: string;
 }
 
-const {
-  title,
-  description = 'Portafolio académico de un estudiante de Ingeniería de Sistemas.',
-} = Astro.props;
+const { title, description } = Astro.props;
 ---
 
-<!doctype html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
 
     <meta
       name="viewport"
@@ -31,13 +26,18 @@ const {
       content={description}
     />
 
+    <meta
+      name="referrer"
+      content="strict-origin-when-cross-origin"
+    />
+
     <title>{title}</title>
 
     <link rel="icon" href="/favicon.svg" />
 
   </head>
 
-  <body class="min-h-screen bg-bg text-fg">
+  <body>
 
     <Nav />
 
