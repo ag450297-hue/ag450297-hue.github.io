@@ -1,158 +1,145 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
 <BaseLayout
-title="Angelica Gomez — Portafolio"
-description="Portafolio académico de Angelica Gomez, estudiante de Ingeniería de Sistemas."
-
+  title="Angelica Gomez — Portafolio"
+  description="Portafolio académico de Angelica Gomez, estudiante de Ingeniería de Sistemas."
 >
 
-<!-- PRESENTACIÓN -->
+  <!-- PRESENTACIÓN -->
+  <section class="mx-auto max-w-4xl text-center">
 
-<section class="mx-auto max-w-4xl text-center">
+    <p class="font-mono text-sm uppercase tracking-widest text-fg-3">
+      Portafolio académico
+    </p>
 
-  <p class="font-mono text-sm uppercase tracking-widest text-fg-3">
-    Portafolio académico
-  </p>
+    <h1 class="mt-4 text-4xl font-semibold tracking-tight text-fg sm:text-6xl">
+      Hola, soy
+      <span class="text-gradient">Angelica Gomez</span>
+    </h1>
 
-  <h1 class="mt-4 text-4xl font-semibold tracking-tight text-fg sm:text-6xl">
-    Hola, soy
-    <span class="text-gradient">Angelica Gomez</span>
-  </h1>
+    <p class="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-fg-2">
+      Estudiante de Ingeniería de Sistemas en la Universidad El Bosque.
+    </p>
 
-  <p class="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-fg-2">
-    Estudiante de Ingeniería de Sistemas en la Universidad El Bosque.
-  </p>
+    <!-- FOTO -->
+    <div class="mt-10 flex justify-center">
+      <img
+        src="/images/perfil.jpg"
+        alt="Foto de Angelica Gomez"
+        class="h-52 w-52 rounded-full object-cover shadow-xl"
+      />
+    </div>
 
-  <!-- FOTO -->
+    <!-- SOBRE MÍ -->
+    <div class="mx-auto mt-10 max-w-2xl">
 
-  <div class="mt-10 flex justify-center">
-    <img
-      src="/images/perfil.jpg"
-      alt="Foto de Angelica Gomez"
-      class="h-52 w-52 rounded-full object-cover shadow-xl"
-    />
-  </div>
+      <h2 class="text-2xl font-semibold text-fg">
+        Sobre mí
+      </h2>
 
-  <!-- SOBRE MÍ -->
+      <p class="mt-4 text-lg leading-relaxed text-fg-2">
+        Estudiante de Ingeniería de Sistemas, caracterizada por la responsabilidad,
+        el compromiso y la honestidad. Me adapto fácilmente al trabajo en equipo
+        y mantengo un buen nivel de eficiencia en el cumplimiento de mis funciones.
+      </p>
 
-  <div class="mx-auto mt-10 max-w-2xl">
+    </div>
 
-```
-<h2 class="text-2xl font-semibold text-fg">
-  Sobre mí
-</h2>
+  </section>
 
-<p class="mt-4 text-lg leading-relaxed text-fg-2">
-  Estudiante de Ingeniería de Sistemas, caracterizada por la responsabilidad,
-  el compromiso y la honestidad. Me adapto fácilmente al trabajo en equipo
-  y mantengo un buen nivel de eficiencia en el cumplimiento de mis funciones.
-</p>
-```
 
-  </div>
+  <!-- FORMACIÓN -->
+  <section class="mx-auto mt-16 max-w-4xl">
 
-</section>
+    <div class="rounded-2xl border border-line bg-panel p-8 text-center">
 
-<!-- FORMACIÓN -->
+      <p class="font-mono text-sm uppercase tracking-widest text-fg-3">
+        Formación académica
+      </p>
 
-<section class="mx-auto mt-16 max-w-4xl">
+      <h2 class="mt-4 text-2xl font-semibold text-fg">
+        Ingeniería de Sistemas
+      </h2>
 
-  <div class="rounded-2xl border border-line bg-panel p-8 text-center">
+      <p class="mt-2 text-fg-2">
+        Universidad El Bosque
+      </p>
 
-```
-<p class="font-mono text-sm uppercase tracking-widest text-fg-3">
-  Formación académica
-</p>
+      <p class="mt-4 text-sm text-fg-3">
+        Asignatura: Bases de Datos 1
+      </p>
 
-<h2 class="mt-4 text-2xl font-semibold text-fg">
-  Ingeniería de Sistemas
-</h2>
+    </div>
 
-<p class="mt-2 text-fg-2">
-  Universidad El Bosque
-</p>
+  </section>
 
-<p class="mt-4 text-sm text-fg-3">
-  Asignatura: Bases de Datos 1
-</p>
-```
 
-  </div>
+  <!-- HABILIDADES -->
+  <section class="mx-auto mt-16 max-w-4xl">
 
-</section>
+    <div class="rounded-2xl border border-line bg-panel p-8 text-center">
 
-<!-- HABILIDADES -->
+      <p class="font-mono text-sm uppercase tracking-widest text-fg-3">
+        Habilidades
+      </p>
 
-<section class="mx-auto mt-16 max-w-4xl">
+      <h2 class="mt-4 text-3xl font-semibold text-fg">
+        Mis habilidades
+      </h2>
 
-  <div class="rounded-2xl border border-line bg-panel p-8 text-center">
+      <p class="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-fg-2">
+        Como estudiante de Ingeniería de Sistemas, me enfoco en construir una
+        sólida base en los fundamentos y la lógica de programación. Actualmente,
+        me dedico a la escritura de código limpio y a la solución de problemas.
+        Mi objetivo es evolucionar mediante el aprendizaje continuo, la
+        adaptabilidad a nuevos entornos tecnológicos y el compromiso con cada
+        proyecto que desarrollo.
+      </p>
 
-```
-<p class="font-mono text-sm uppercase tracking-widest text-fg-3">
-  Habilidades
-</p>
+    </div>
 
-<h2 class="mt-4 text-3xl font-semibold text-fg">
-  Mis habilidades
-</h2>
+  </section>
 
-<p class="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-fg-2">
-  Como estudiante de Ingeniería de Sistemas, me enfoco en construir una
-  sólida base en los fundamentos y la lógica de programación. Actualmente,
-  me dedico a la escritura de código limpio y a la solución de problemas.
-  Mi objetivo es evolucionar mediante el aprendizaje continuo, la
-  adaptabilidad a nuevos entornos tecnológicos y el compromiso con cada
-  proyecto que desarrollo.
-</p>
-```
 
-  </div>
+  <!-- VIDEO -->
+  <section class="mx-auto mt-16 max-w-4xl">
 
-</section>
+    <div class="text-center">
 
-<!-- VIDEO -->
+      <p class="font-mono text-sm uppercase tracking-widest text-fg-3">
+        Presentación
+      </p>
 
-<section class="mx-auto mt-16 max-w-4xl">
+      <h2 class="mt-3 text-3xl font-semibold text-fg">
+        Video de presentación
+      </h2>
 
-  <div class="text-center">
+    </div>
 
-```
-<p class="font-mono text-sm uppercase tracking-widest text-fg-3">
-  Presentación
-</p>
+  </section>
 
-<h2 class="mt-3 text-3xl font-semibold text-fg">
-  Video de presentación
-</h2>
-```
 
-  </div>
+  <!-- EVIDENCIAS -->
+  <section class="mx-auto mt-16 max-w-4xl text-center">
 
-</section>
+    <h2 class="text-2xl font-semibold text-fg">
+      Evidencias académicas
+    </h2>
 
-<!-- EVIDENCIAS -->
+    <p class="mx-auto mt-3 max-w-xl text-fg-2">
+      Consulta las actividades y trabajos desarrollados
+      durante el semestre en Bases de Datos 1.
+    </p>
 
-<section class="mx-auto mt-16 max-w-4xl text-center">
+    <a
+      href="/evidencias/"
+      class="mt-6 inline-flex rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+    >
+      Ver evidencias →
+    </a>
 
-  <h2 class="text-2xl font-semibold text-fg">
-    Evidencias académicas
-  </h2>
-
-  <p class="mx-auto mt-3 max-w-xl text-fg-2">
-    Consulta las actividades y trabajos desarrollados
-    durante el semestre en Bases de Datos 1.
-  </p>
-
-<a
-href="/evidencias/"
-class="mt-6 inline-flex rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-
->
-
-```
-Ver evidencias →
-```
-
-  </a>
-
-</section>
+  </section>
 
 </BaseLayout>
