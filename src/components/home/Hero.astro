@@ -6,7 +6,7 @@ import WindowDots from '../WindowDots.astro';
 import Container from '../Container.astro';
 import Glow from '../Glow.astro';
 
-// Cambiamos el código de ejemplo por una consulta SQL real de Bases de Datos
+// Consulta SQL de ejemplo para Bases de Datos
 const heroCode = `-- Consulta de ejemplo: Listar evidencias del semestre
 SELECT 
   id_evidencia, 
@@ -24,17 +24,17 @@ ORDER BY
 <section class="relative overflow-hidden">
   <Glow class="left-1/2 top-[-180px] h-[480px] w-[820px] -translate-x-1/2" />
 
-  <!-- Faint grid backdrop -->
+  <!-- Fondo de cuadrícula tenue -->
   <div
     aria-hidden="true"
     class="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgb(255_255_255/0.025)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.025)_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]"
   >
   </div>
 
-  <Container class="relative pb-24 pt-20 sm:pt-28">
+  <Container class="relative pb-24 pt-20 sm:pt-28 flex flex-col justify-between min-h-screen">
+    <!-- Encabezado y Presentación (Parte Superior) -->
     <div class="mx-auto max-w-3xl text-center">
-      
-      <!-- Enlace superior adaptado a tu entrega -->
+      <!-- Enlace superior -->
       <a
         href="#presentacion-estudiante"
         class="glass inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[13px] text-fg-2 transition-colors hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
@@ -44,34 +44,34 @@ ORDER BY
         <span aria-hidden="true" class="text-fg-3">↓</span>
       </a>
 
-      <!-- Título Principal adaptado -->
+      <!-- Título Principal -->
       <h1 class="mt-6 text-balance text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-        Gestión de Evidencias <span class="text-gradient">Bases de Datos 1</span>
+        Evidencias <span class="text-gradient">Bases de Datos 1</span>
       </h1>
 
-      <!-- Descripción adaptada -->
+      <!-- Descripción -->
       <p class="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-fg-2">
-        Espacio digital profesional diseñado para recopilar, organizar y publicar los talleres prácticos, 
-        modelos relacionales y proyectos desarrollados durante el semestre académico.
+         Este es mi primer portafolio, donde documento y presento mis actividades 
+          y avances en los temas aprendidos en clase Bases de Datos 2026-2
       </p>
 
-      <!-- Botones de Acción apuntando al Blog de Evidencias y a tu presentación -->
+      <!-- Botones de Acción -->
       <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
-        <Button href="/blog/" size="lg">Ver Evidencias (Bonus)</Button>
-        <Button href="#presentacion-estudiante" variant="secondary" size="lg">Ir a Presentación</Button>
+        <Button href="/blog/" size="lg">Ver Evidencias</Button>
+        <Button href="#presentacion-estudiante" variant="secondary" size="lg">Presentación</Button>
       </div>
 
-      <!-- Consola de comandos simulada con SQL -->
+      <!-- Consola simulada -->
       <p class="mt-5 font-mono text-[13px] text-fg-2">
         <span class="select-none text-fg-3">$</span> psql -h localhost -U estudiante -d bases_datos_1
       </p>
     </div>
 
-    <!-- Code panel - Panel de Código simulando un entorno de Base de Datos -->
-    <div class="relative mx-auto mt-16 max-w-4xl">
+    <!-- Panel de Código y Terminal (Ubicado al final de la sección) -->
+    <div class="relative mx-auto mt-20 w-full max-w-4xl">
       <div class="glass relative grid overflow-hidden rounded-xl shadow-2xl shadow-black/50 md:grid-cols-[1.5fr_1fr]">
         
-        <!-- Editor pane (Editor SQL) -->
+        <!-- Editor pane (Lado Izquierdo: SQL) -->
         <div class="min-w-0 border-b border-line md:border-b-0 md:border-r">
           <div class="flex items-center gap-2 border-b border-line px-4 py-3">
             <WindowDots />
@@ -82,7 +82,7 @@ ORDER BY
           </div>
         </div>
 
-        <!-- Terminal pane (Terminal de Base de Datos PostgreSQL) -->
+        <!-- Terminal pane (Lado Derecho: PostgreSQL) -->
         <div class="min-w-0 bg-ink-2/60">
           <div class="flex items-center border-b border-line px-4 py-3">
             <span class="font-mono text-xs text-fg-3">postgresql-terminal</span>
@@ -102,6 +102,7 @@ ORDER BY
             </p>
           </div>
         </div>
+
       </div>
     </div>
   </Container>
