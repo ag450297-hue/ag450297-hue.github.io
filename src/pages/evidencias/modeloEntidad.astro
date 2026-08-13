@@ -7,59 +7,84 @@ import Container from '../../components/Container.astro';
 
   <Container class="py-16 sm:py-24">
 
-    <!-- Encabezado -->
-    <div class="max-w-3xl mb-12">
-      <div class="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm text-violet-300">
+    <!-- ENCABEZADO -->
+    <div class="mb-12 max-w-3xl">
+
+      <div
+        class="inline-flex items-center gap-2 rounded-full
+               border border-violet-500/30 bg-violet-500/10
+               px-4 py-2 text-sm text-violet-300"
+      >
         <span class="h-2 w-2 rounded-full bg-violet-400"></span>
         Evidencias académicas
       </div>
 
-      <h1 class="mt-6 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+      <h1
+        class="mt-6 text-4xl font-semibold tracking-tight text-white
+               sm:text-5xl"
+      >
         Modelado
       </h1>
 
       <p class="mt-4 text-lg leading-8 text-slate-400">
-        En esta sección se presentan los ejercicios realizados durante el
-        proceso de aprendizaje de modelado.
+        En esta sección se presentan los ejercicios realizados durante
+        el proceso de aprendizaje de modelado.
       </p>
+
     </div>
 
 
-    <!-- Ejercicios -->
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <!-- TARJETAS -->
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 
 
-      <!-- EJERCICIO 1 -->
+      <!-- ==================== EJERCICIO 1 ==================== -->
+
       <article
-        class="group overflow-hidden rounded-2xl border border-violet-500/20
-               bg-slate-950/80 shadow-xl shadow-violet-950/20
-               transition duration-300 hover:-translate-y-2
-               hover:border-violet-500/60 hover:shadow-2xl
+        class="group overflow-hidden rounded-2xl
+               border border-violet-500/20
+               bg-slate-950
+               shadow-xl shadow-violet-950/20
+               transition-all duration-300
+               hover:-translate-y-2
+               hover:border-violet-500/60
+               hover:shadow-2xl
                hover:shadow-violet-900/30"
       >
 
-        <!-- Imagen -->
-        <div class="relative aspect-video overflow-hidden bg-slate-900">
+        <!-- IMAGEN -->
+        <div
+          class="relative aspect-video overflow-hidden
+                 bg-gradient-to-br from-slate-900
+                 via-blue-950/40 to-violet-950/50"
+        >
 
           <img
             src="/images/modelado/ejercicio-1.jpg"
-            alt="Ejercicio de modelado 1"
-            class="h-full w-full object-cover transition duration-500
+            alt="Imagen del ejercicio de modelado 1"
+            class="h-full w-full object-cover
+                   transition duration-500
                    group-hover:scale-105"
           />
 
           <!-- Degradado -->
           <div
-            class="absolute inset-0 bg-gradient-to-t
-                   from-slate-950 via-transparent to-transparent"
+            class="absolute inset-0
+                   bg-gradient-to-t
+                   from-slate-950/80
+                   via-transparent
+                   to-transparent"
           ></div>
 
           <!-- Número -->
           <div
-            class="absolute left-4 top-4 flex h-10 w-10 items-center
-                   justify-center rounded-xl border border-violet-400/30
-                   bg-black/60 text-sm font-bold text-violet-300
-                   backdrop-blur"
+            class="absolute left-4 top-4
+                   flex h-11 w-11 items-center justify-center
+                   rounded-xl
+                   border border-violet-400/30
+                   bg-black/60
+                   text-sm font-bold text-violet-300
+                   backdrop-blur-md"
           >
             01
           </div>
@@ -67,10 +92,13 @@ import Container from '../../components/Container.astro';
         </div>
 
 
-        <!-- Contenido -->
+        <!-- CONTENIDO -->
         <div class="p-6">
 
-          <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">
+          <p
+            class="text-xs font-semibold uppercase
+                   tracking-widest text-violet-400"
+          >
             Ejercicio 01
           </p>
 
@@ -79,21 +107,29 @@ import Container from '../../components/Container.astro';
           </h2>
 
           <p class="mt-3 text-sm leading-6 text-slate-400">
-            Ejercicio enfocado en la construcción y desarrollo de un modelo
-            utilizando las herramientas de modelado.
+            Descripción del primer ejercicio de modelado.
+            Aquí puedes explicar brevemente qué realizaste.
           </p>
 
+          <!-- BOTÓN -->
           <a
-            href="https://TU-LINK-AQUI.com"
+            href="https://TU-LINK-1.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="mt-6 inline-flex items-center gap-2 rounded-xl
-                   border border-violet-500/30 bg-violet-500/10
-                   px-4 py-2.5 text-sm font-medium text-violet-300
-                   transition hover:bg-violet-500 hover:text-white"
+            class="mt-6 inline-flex items-center gap-2
+                   rounded-xl
+                   border border-violet-500/30
+                   bg-violet-500/10
+                   px-5 py-2.5
+                   text-sm font-medium text-violet-300
+                   transition-all duration-300
+                   hover:bg-violet-500
+                   hover:text-white
+                   hover:shadow-lg
+                   hover:shadow-violet-500/20"
           >
             Ver ejercicio
-            <span>→</span>
+            <span class="text-lg">→</span>
           </a>
 
         </div>
@@ -102,34 +138,53 @@ import Container from '../../components/Container.astro';
 
 
 
-      <!-- EJERCICIO 2 -->
+      <!-- ==================== EJERCICIO 2 ==================== -->
+
       <article
-        class="group overflow-hidden rounded-2xl border border-blue-500/20
-               bg-slate-950/80 shadow-xl shadow-blue-950/20
-               transition duration-300 hover:-translate-y-2
-               hover:border-blue-500/60 hover:shadow-2xl
+        class="group overflow-hidden rounded-2xl
+               border border-blue-500/20
+               bg-slate-950
+               shadow-xl shadow-blue-950/20
+               transition-all duration-300
+               hover:-translate-y-2
+               hover:border-blue-500/60
+               hover:shadow-2xl
                hover:shadow-blue-900/30"
       >
 
-        <div class="relative aspect-video overflow-hidden bg-slate-900">
+        <!-- IMAGEN -->
+        <div
+          class="relative aspect-video overflow-hidden
+                 bg-gradient-to-br from-slate-900
+                 via-blue-950/40 to-violet-950/50"
+        >
 
           <img
             src="/images/modelado/ejercicio-2.jpg"
-            alt="Ejercicio de modelado 2"
-            class="h-full w-full object-cover transition duration-500
+            alt="Imagen del ejercicio de modelado 2"
+            class="h-full w-full object-cover
+                   transition duration-500
                    group-hover:scale-105"
           />
 
+          <!-- Degradado -->
           <div
-            class="absolute inset-0 bg-gradient-to-t
-                   from-slate-950 via-transparent to-transparent"
+            class="absolute inset-0
+                   bg-gradient-to-t
+                   from-slate-950/80
+                   via-transparent
+                   to-transparent"
           ></div>
 
+          <!-- Número -->
           <div
-            class="absolute left-4 top-4 flex h-10 w-10 items-center
-                   justify-center rounded-xl border border-blue-400/30
-                   bg-black/60 text-sm font-bold text-blue-300
-                   backdrop-blur"
+            class="absolute left-4 top-4
+                   flex h-11 w-11 items-center justify-center
+                   rounded-xl
+                   border border-blue-400/30
+                   bg-black/60
+                   text-sm font-bold text-blue-300
+                   backdrop-blur-md"
           >
             02
           </div>
@@ -137,9 +192,13 @@ import Container from '../../components/Container.astro';
         </div>
 
 
+        <!-- CONTENIDO -->
         <div class="p-6">
 
-          <p class="text-xs font-semibold uppercase tracking-widest text-blue-400">
+          <p
+            class="text-xs font-semibold uppercase
+                   tracking-widest text-blue-400"
+          >
             Ejercicio 02
           </p>
 
@@ -148,21 +207,29 @@ import Container from '../../components/Container.astro';
           </h2>
 
           <p class="mt-3 text-sm leading-6 text-slate-400">
-            Desarrollo de un segundo ejercicio aplicando nuevas técnicas
-            y herramientas para mejorar el resultado del modelo.
+            Descripción del segundo ejercicio de modelado.
+            Aquí puedes explicar brevemente qué realizaste.
           </p>
 
+          <!-- BOTÓN -->
           <a
-            href="https://TU-LINK-AQUI.com"
+            href="https://TU-LINK-2.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="mt-6 inline-flex items-center gap-2 rounded-xl
-                   border border-blue-500/30 bg-blue-500/10
-                   px-4 py-2.5 text-sm font-medium text-blue-300
-                   transition hover:bg-blue-500 hover:text-white"
+            class="mt-6 inline-flex items-center gap-2
+                   rounded-xl
+                   border border-blue-500/30
+                   bg-blue-500/10
+                   px-5 py-2.5
+                   text-sm font-medium text-blue-300
+                   transition-all duration-300
+                   hover:bg-blue-500
+                   hover:text-white
+                   hover:shadow-lg
+                   hover:shadow-blue-500/20"
           >
             Ver ejercicio
-            <span>→</span>
+            <span class="text-lg">→</span>
           </a>
 
         </div>
@@ -171,34 +238,53 @@ import Container from '../../components/Container.astro';
 
 
 
-      <!-- EJERCICIO 3 -->
+      <!-- ==================== EJERCICIO 3 ==================== -->
+
       <article
-        class="group overflow-hidden rounded-2xl border border-violet-500/20
-               bg-slate-950/80 shadow-xl shadow-violet-950/20
-               transition duration-300 hover:-translate-y-2
-               hover:border-violet-500/60 hover:shadow-2xl
+        class="group overflow-hidden rounded-2xl
+               border border-violet-500/20
+               bg-slate-950
+               shadow-xl shadow-violet-950/20
+               transition-all duration-300
+               hover:-translate-y-2
+               hover:border-violet-500/60
+               hover:shadow-2xl
                hover:shadow-violet-900/30"
       >
 
-        <div class="relative aspect-video overflow-hidden bg-slate-900">
+        <!-- IMAGEN -->
+        <div
+          class="relative aspect-video overflow-hidden
+                 bg-gradient-to-br from-slate-900
+                 via-blue-950/40 to-violet-950/50"
+        >
 
           <img
             src="/images/modelado/ejercicio-3.jpg"
-            alt="Ejercicio de modelado 3"
-            class="h-full w-full object-cover transition duration-500
+            alt="Imagen del ejercicio de modelado 3"
+            class="h-full w-full object-cover
+                   transition duration-500
                    group-hover:scale-105"
           />
 
+          <!-- Degradado -->
           <div
-            class="absolute inset-0 bg-gradient-to-t
-                   from-slate-950 via-transparent to-transparent"
+            class="absolute inset-0
+                   bg-gradient-to-t
+                   from-slate-950/80
+                   via-transparent
+                   to-transparent"
           ></div>
 
+          <!-- Número -->
           <div
-            class="absolute left-4 top-4 flex h-10 w-10 items-center
-                   justify-center rounded-xl border border-violet-400/30
-                   bg-black/60 text-sm font-bold text-violet-300
-                   backdrop-blur"
+            class="absolute left-4 top-4
+                   flex h-11 w-11 items-center justify-center
+                   rounded-xl
+                   border border-violet-400/30
+                   bg-black/60
+                   text-sm font-bold text-violet-300
+                   backdrop-blur-md"
           >
             03
           </div>
@@ -206,9 +292,13 @@ import Container from '../../components/Container.astro';
         </div>
 
 
+        <!-- CONTENIDO -->
         <div class="p-6">
 
-          <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">
+          <p
+            class="text-xs font-semibold uppercase
+                   tracking-widest text-violet-400"
+          >
             Ejercicio 03
           </p>
 
@@ -217,21 +307,29 @@ import Container from '../../components/Container.astro';
           </h2>
 
           <p class="mt-3 text-sm leading-6 text-slate-400">
-            Ejercicio final donde se integran los conocimientos adquiridos
-            durante el proceso de modelado.
+            Descripción del tercer ejercicio de modelado.
+            Aquí puedes explicar brevemente qué realizaste.
           </p>
 
+          <!-- BOTÓN -->
           <a
-            href="https://TU-LINK-AQUI.com"
+            href="https://TU-LINK-3.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="mt-6 inline-flex items-center gap-2 rounded-xl
-                   border border-violet-500/30 bg-violet-500/10
-                   px-4 py-2.5 text-sm font-medium text-violet-300
-                   transition hover:bg-violet-500 hover:text-white"
+            class="mt-6 inline-flex items-center gap-2
+                   rounded-xl
+                   border border-violet-500/30
+                   bg-violet-500/10
+                   px-5 py-2.5
+                   text-sm font-medium text-violet-300
+                   transition-all duration-300
+                   hover:bg-violet-500
+                   hover:text-white
+                   hover:shadow-lg
+                   hover:shadow-violet-500/20"
           >
             Ver ejercicio
-            <span>→</span>
+            <span class="text-lg">→</span>
           </a>
 
         </div>
