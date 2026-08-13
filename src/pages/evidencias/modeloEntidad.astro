@@ -1,343 +1,585 @@
 ---
+
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../../components/Container.astro';
----
+---------------------------------------------------------
 
-<BaseLayout title="Modelado — Evidencias">
+<BaseLayout title="Modelo Entidad Relacion MER — Evidencias">
 
   <Container class="py-16 sm:py-24">
 
-    <!-- ENCABEZADO -->
-    <div class="mb-12 max-w-3xl">
+```
+<!-- ==================== ENCABEZADO ==================== -->
+
+<div class="mb-12 max-w-3xl">
+
+  <div
+    class="inline-flex items-center gap-2 rounded-full
+           border border-violet-500/30 bg-violet-500/10
+           px-4 py-2 text-sm text-violet-300"
+  >
+    <span class="h-2 w-2 rounded-full bg-violet-400"></span>
+    Evidencias académicas
+  </div>
+
+  <h1
+    class="mt-6 text-4xl font-semibold tracking-tight text-white
+           sm:text-5xl"
+  >
+    Modelado
+  </h1>
+
+  <p class="mt-4 text-lg leading-8 text-slate-400">
+    En esta sección se presentan los ejercicios realizados durante
+    el proceso de aprendizaje de modelado.
+  </p>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- ==================== EJEMPLOS ======================= -->
+<!-- ===================================================== -->
+
+<div id="ejemplos">
+
+  <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+
+    <!-- ==================== EJERCICIO 1 ==================== -->
+
+    <article
+      class="group overflow-hidden rounded-2xl
+             border border-violet-500/20
+             bg-slate-950
+             shadow-xl shadow-violet-950/20
+             transition-all duration-300
+             hover:-translate-y-2
+             hover:border-violet-500/60
+             hover:shadow-2xl
+             hover:shadow-violet-900/30"
+    >
 
       <div
-        class="inline-flex items-center gap-2 rounded-full
-               border border-violet-500/30 bg-violet-500/10
-               px-4 py-2 text-sm text-violet-300"
+        class="relative aspect-video overflow-hidden
+               bg-gradient-to-br from-slate-900
+               via-blue-950/40 to-violet-950/50"
       >
-        <span class="h-2 w-2 rounded-full bg-violet-400"></span>
-        Evidencias académicas
+
+        <img
+          src="/images/modelado/ejercicio-1.jpg"
+          alt="Imagen del ejercicio de modelado 1"
+          class="h-full w-full object-cover
+                 transition duration-500
+                 group-hover:scale-105"
+        />
+
+        <div
+          class="absolute inset-0
+                 bg-gradient-to-t
+                 from-slate-950/80
+                 via-transparent
+                 to-transparent"
+        ></div>
+
+        <div
+          class="absolute left-4 top-4
+                 flex h-11 w-11 items-center justify-center
+                 rounded-xl
+                 border border-violet-400/30
+                 bg-black/60
+                 text-sm font-bold text-violet-300
+                 backdrop-blur-md"
+        >
+          01
+        </div>
+
       </div>
 
-      <h1
-        class="mt-6 text-4xl font-semibold tracking-tight text-white
-               sm:text-5xl"
-      >
-        Modelado
-      </h1>
 
-      <p class="mt-4 text-lg leading-8 text-slate-400">
-        En esta sección se presentan los ejercicios realizados durante
-        el proceso de aprendizaje de modelado.
-      </p>
+      <div class="p-6">
 
-    </div>
-
-
-    <!-- TARJETAS -->
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-
-
-      <!-- ==================== EJERCICIO 1 ==================== -->
-
-      <article
-        class="group overflow-hidden rounded-2xl
-               border border-violet-500/20
-               bg-slate-950
-               shadow-xl shadow-violet-950/20
-               transition-all duration-300
-               hover:-translate-y-2
-               hover:border-violet-500/60
-               hover:shadow-2xl
-               hover:shadow-violet-900/30"
-      >
-
-        <!-- IMAGEN -->
-        <div
-          class="relative aspect-video overflow-hidden
-                 bg-gradient-to-br from-slate-900
-                 via-blue-950/40 to-violet-950/50"
+        <p
+          class="text-xs font-semibold uppercase
+                 tracking-widest text-violet-400"
         >
+          Ejercicio 01
+        </p>
 
-          <img
-            src="/images/modelado/ejercicio-1.jpg"
-            alt="Imagen del ejercicio de modelado 1"
-            class="h-full w-full object-cover
-                   transition duration-500
-                   group-hover:scale-105"
-          />
+        <h2 class="mt-2 text-xl font-semibold text-white">
+          Modelado básico
+        </h2>
 
-          <!-- Degradado -->
-          <div
-            class="absolute inset-0
-                   bg-gradient-to-t
-                   from-slate-950/80
-                   via-transparent
-                   to-transparent"
-          ></div>
+        <p class="mt-3 text-sm leading-6 text-slate-400">
+          Descripción del primer ejercicio de modelado.
+          Aquí puedes explicar brevemente qué realizaste.
+        </p>
 
-          <!-- Número -->
-          <div
-            class="absolute left-4 top-4
-                   flex h-11 w-11 items-center justify-center
-                   rounded-xl
-                   border border-violet-400/30
-                   bg-black/60
-                   text-sm font-bold text-violet-300
-                   backdrop-blur-md"
-          >
-            01
-          </div>
+        <button
+          type="button"
+          data-ejercicio="1"
+          class="mt-6 inline-flex items-center gap-2
+                 rounded-xl
+                 border border-violet-500/30
+                 bg-violet-500/10
+                 px-5 py-2.5
+                 text-sm font-medium text-violet-300
+                 transition-all duration-300
+                 hover:bg-violet-500
+                 hover:text-white
+                 hover:shadow-lg
+                 hover:shadow-violet-500/20"
+        >
+          Ver ejercicio
+          <span class="text-lg">→</span>
+        </button>
 
-        </div>
+      </div>
 
-
-        <!-- CONTENIDO -->
-        <div class="p-6">
-
-          <p
-            class="text-xs font-semibold uppercase
-                   tracking-widest text-violet-400"
-          >
-            Ejercicio 01
-          </p>
-
-          <h2 class="mt-2 text-xl font-semibold text-white">
-            Modelado básico
-          </h2>
-
-          <p class="mt-3 text-sm leading-6 text-slate-400">
-            Descripción del primer ejercicio de modelado.
-            Aquí puedes explicar brevemente qué realizaste.
-          </p>
-
-          <!-- BOTÓN -->
-          <a
-            href="https://TU-LINK-1.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-6 inline-flex items-center gap-2
-                   rounded-xl
-                   border border-violet-500/30
-                   bg-violet-500/10
-                   px-5 py-2.5
-                   text-sm font-medium text-violet-300
-                   transition-all duration-300
-                   hover:bg-violet-500
-                   hover:text-white
-                   hover:shadow-lg
-                   hover:shadow-violet-500/20"
-          >
-            Ver ejercicio
-            <span class="text-lg">→</span>
-          </a>
-
-        </div>
-
-      </article>
+    </article>
 
 
 
-      <!-- ==================== EJERCICIO 2 ==================== -->
+    <!-- ==================== EJERCICIO 2 ==================== -->
 
-      <article
-        class="group overflow-hidden rounded-2xl
-               border border-blue-500/20
-               bg-slate-950
-               shadow-xl shadow-blue-950/20
-               transition-all duration-300
-               hover:-translate-y-2
-               hover:border-blue-500/60
-               hover:shadow-2xl
-               hover:shadow-blue-900/30"
+    <article
+      class="group overflow-hidden rounded-2xl
+             border border-blue-500/20
+             bg-slate-950
+             shadow-xl shadow-blue-950/20
+             transition-all duration-300
+             hover:-translate-y-2
+             hover:border-blue-500/60
+             hover:shadow-2xl
+             hover:shadow-blue-900/30"
+    >
+
+      <div
+        class="relative aspect-video overflow-hidden
+               bg-gradient-to-br from-slate-900
+               via-blue-950/40 to-violet-950/50"
       >
 
-        <!-- IMAGEN -->
+        <img
+          src="/images/modelado/ejercicio-2.jpg"
+          alt="Imagen del ejercicio de modelado 2"
+          class="h-full w-full object-cover
+                 transition duration-500
+                 group-hover:scale-105"
+        />
+
         <div
-          class="relative aspect-video overflow-hidden
-                 bg-gradient-to-br from-slate-900
-                 via-blue-950/40 to-violet-950/50"
+          class="absolute inset-0
+                 bg-gradient-to-t
+                 from-slate-950/80
+                 via-transparent
+                 to-transparent"
+        ></div>
+
+        <div
+          class="absolute left-4 top-4
+                 flex h-11 w-11 items-center justify-center
+                 rounded-xl
+                 border border-blue-400/30
+                 bg-black/60
+                 text-sm font-bold text-blue-300
+                 backdrop-blur-md"
         >
-
-          <img
-            src="/images/modelado/ejercicio-2.jpg"
-            alt="Imagen del ejercicio de modelado 2"
-            class="h-full w-full object-cover
-                   transition duration-500
-                   group-hover:scale-105"
-          />
-
-          <!-- Degradado -->
-          <div
-            class="absolute inset-0
-                   bg-gradient-to-t
-                   from-slate-950/80
-                   via-transparent
-                   to-transparent"
-          ></div>
-
-          <!-- Número -->
-          <div
-            class="absolute left-4 top-4
-                   flex h-11 w-11 items-center justify-center
-                   rounded-xl
-                   border border-blue-400/30
-                   bg-black/60
-                   text-sm font-bold text-blue-300
-                   backdrop-blur-md"
-          >
-            02
-          </div>
-
+          02
         </div>
 
-
-        <!-- CONTENIDO -->
-        <div class="p-6">
-
-          <p
-            class="text-xs font-semibold uppercase
-                   tracking-widest text-blue-400"
-          >
-            Ejercicio 02
-          </p>
-
-          <h2 class="mt-2 text-xl font-semibold text-white">
-            Modelado intermedio
-          </h2>
-
-          <p class="mt-3 text-sm leading-6 text-slate-400">
-            Descripción del segundo ejercicio de modelado.
-            Aquí puedes explicar brevemente qué realizaste.
-          </p>
-
-          <!-- BOTÓN -->
-          <a
-            href="https://TU-LINK-2.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-6 inline-flex items-center gap-2
-                   rounded-xl
-                   border border-blue-500/30
-                   bg-blue-500/10
-                   px-5 py-2.5
-                   text-sm font-medium text-blue-300
-                   transition-all duration-300
-                   hover:bg-blue-500
-                   hover:text-white
-                   hover:shadow-lg
-                   hover:shadow-blue-500/20"
-          >
-            Ver ejercicio
-            <span class="text-lg">→</span>
-          </a>
-
-        </div>
-
-      </article>
+      </div>
 
 
+      <div class="p-6">
 
-      <!-- ==================== EJERCICIO 3 ==================== -->
+        <p
+          class="text-xs font-semibold uppercase
+                 tracking-widest text-blue-400"
+        >
+          Ejercicio 02
+        </p>
 
-      <article
-        class="group overflow-hidden rounded-2xl
-               border border-violet-500/20
-               bg-slate-950
-               shadow-xl shadow-violet-950/20
-               transition-all duration-300
-               hover:-translate-y-2
-               hover:border-violet-500/60
-               hover:shadow-2xl
-               hover:shadow-violet-900/30"
+        <h2 class="mt-2 text-xl font-semibold text-white">
+          Modelado intermedio
+        </h2>
+
+        <p class="mt-3 text-sm leading-6 text-slate-400">
+          Descripción del segundo ejercicio de modelado.
+          Aquí puedes explicar brevemente qué realizaste.
+        </p>
+
+        <button
+          type="button"
+          data-ejercicio="2"
+          class="mt-6 inline-flex items-center gap-2
+                 rounded-xl
+                 border border-blue-500/30
+                 bg-blue-500/10
+                 px-5 py-2.5
+                 text-sm font-medium text-blue-300
+                 transition-all duration-300
+                 hover:bg-blue-500
+                 hover:text-white
+                 hover:shadow-lg
+                 hover:shadow-blue-500/20"
+        >
+          Ver ejercicio
+          <span class="text-lg">→</span>
+        </button>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- ==================== EJERCICIO 3 ==================== -->
+
+    <article
+      class="group overflow-hidden rounded-2xl
+             border border-violet-500/20
+             bg-slate-950
+             shadow-xl shadow-violet-950/20
+             transition-all duration-300
+             hover:-translate-y-2
+             hover:border-violet-500/60
+             hover:shadow-2xl
+             hover:shadow-violet-900/30"
+    >
+
+      <div
+        class="relative aspect-video overflow-hidden
+               bg-gradient-to-br from-slate-900
+               via-blue-950/40 to-violet-950/50"
       >
 
-        <!-- IMAGEN -->
+        <img
+          src="/images/modelado/ejercicio-3.jpg"
+          alt="Imagen del ejercicio de modelado 3"
+          class="h-full w-full object-cover
+                 transition duration-500
+                 group-hover:scale-105"
+        />
+
         <div
-          class="relative aspect-video overflow-hidden
-                 bg-gradient-to-br from-slate-900
-                 via-blue-950/40 to-violet-950/50"
+          class="absolute inset-0
+                 bg-gradient-to-t
+                 from-slate-950/80
+                 via-transparent
+                 to-transparent"
+        ></div>
+
+        <div
+          class="absolute left-4 top-4
+                 flex h-11 w-11 items-center justify-center
+                 rounded-xl
+                 border border-violet-400/30
+                 bg-black/60
+                 text-sm font-bold text-violet-300
+                 backdrop-blur-md"
         >
-
-          <img
-            src="/images/modelado/ejercicio-3.jpg"
-            alt="Imagen del ejercicio de modelado 3"
-            class="h-full w-full object-cover
-                   transition duration-500
-                   group-hover:scale-105"
-          />
-
-          <!-- Degradado -->
-          <div
-            class="absolute inset-0
-                   bg-gradient-to-t
-                   from-slate-950/80
-                   via-transparent
-                   to-transparent"
-          ></div>
-
-          <!-- Número -->
-          <div
-            class="absolute left-4 top-4
-                   flex h-11 w-11 items-center justify-center
-                   rounded-xl
-                   border border-violet-400/30
-                   bg-black/60
-                   text-sm font-bold text-violet-300
-                   backdrop-blur-md"
-          >
-            03
-          </div>
-
+          03
         </div>
 
+      </div>
 
-        <!-- CONTENIDO -->
-        <div class="p-6">
 
-          <p
-            class="text-xs font-semibold uppercase
-                   tracking-widest text-violet-400"
-          >
-            Ejercicio 03
-          </p>
+      <div class="p-6">
 
-          <h2 class="mt-2 text-xl font-semibold text-white">
-            Proyecto final
-          </h2>
+        <p
+          class="text-xs font-semibold uppercase
+                 tracking-widest text-violet-400"
+        >
+          Ejercicio 03
+        </p>
 
-          <p class="mt-3 text-sm leading-6 text-slate-400">
-            Descripción del tercer ejercicio de modelado.
-            Aquí puedes explicar brevemente qué realizaste.
-          </p>
+        <h2 class="mt-2 text-xl font-semibold text-white">
+          Proyecto final
+        </h2>
 
-          <!-- BOTÓN -->
-          <a
-            href="https://TU-LINK-3.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-6 inline-flex items-center gap-2
-                   rounded-xl
-                   border border-violet-500/30
-                   bg-violet-500/10
-                   px-5 py-2.5
-                   text-sm font-medium text-violet-300
-                   transition-all duration-300
-                   hover:bg-violet-500
-                   hover:text-white
-                   hover:shadow-lg
-                   hover:shadow-violet-500/20"
-          >
-            Ver ejercicio
-            <span class="text-lg">→</span>
-          </a>
+        <p class="mt-3 text-sm leading-6 text-slate-400">
+          Descripción del tercer ejercicio de modelado.
+          Aquí puedes explicar brevemente qué realizaste.
+        </p>
 
-        </div>
+        <button
+          type="button"
+          data-ejercicio="3"
+          class="mt-6 inline-flex items-center gap-2
+                 rounded-xl
+                 border border-violet-500/30
+                 bg-violet-500/10
+                 px-5 py-2.5
+                 text-sm font-medium text-violet-300
+                 transition-all duration-300
+                 hover:bg-violet-500
+                 hover:text-white
+                 hover:shadow-lg
+                 hover:shadow-violet-500/20"
+        >
+          Ver ejercicio
+          <span class="text-lg">→</span>
+        </button>
 
-      </article>
+      </div>
 
-    </div>
+    </article>
+
+  </div>
+
+</div>
+
+
+
+<!-- ===================================================== -->
+<!-- ============== DETALLE DEL EJERCICIO ================ -->
+<!-- ===================================================== -->
+
+<section
+  id="detalle"
+  class="hidden"
+>
+
+  <!-- BOTÓN VOLVER -->
+
+  <button
+    id="volver"
+    type="button"
+    class="mb-8 inline-flex items-center gap-2
+           rounded-xl
+           border border-violet-500/30
+           bg-violet-500/10
+           px-5 py-2.5
+           text-sm font-medium text-violet-300
+           transition-all duration-300
+           hover:bg-violet-500
+           hover:text-white"
+  >
+    ← Volver a ejemplos
+  </button>
+
+
+  <!-- INFORMACIÓN DEL EJERCICIO -->
+
+  <div class="max-w-3xl">
+
+    <p
+      id="detalle-numero"
+      class="text-xs font-semibold uppercase
+             tracking-widest text-violet-400"
+    >
+      Ejercicio 01
+    </p>
+
+    <h2
+      id="detalle-titulo"
+      class="mt-3 text-4xl font-semibold
+             tracking-tight text-white sm:text-5xl"
+    >
+      Modelado básico
+    </h2>
+
+    <p
+      id="detalle-descripcion"
+      class="mt-5 text-lg leading-8 text-slate-400"
+    >
+      Descripción del ejercicio.
+    </p>
+
+  </div>
+
+
+  <!-- IMAGEN GRANDE -->
+
+  <div
+    class="mt-10 overflow-hidden rounded-2xl
+           border border-violet-500/20
+           bg-slate-950
+           shadow-2xl shadow-violet-950/20"
+  >
+
+    <img
+      id="detalle-imagen"
+      src="/images/modelado/ejercicio-1.jpg"
+      alt="Ejercicio de modelado"
+      class="w-full object-contain"
+    />
+
+  </div>
+
+
+  <!-- ENLACE -->
+
+  <div
+    class="mt-8 rounded-2xl
+           border border-violet-500/20
+           bg-slate-950
+           p-6 sm:p-8"
+  >
+
+    <h3 class="text-xl font-semibold text-white">
+      Enlace del ejercicio
+    </h3>
+
+    <p class="mt-2 text-sm leading-6 text-slate-400">
+      Puedes acceder al trabajo completo utilizando el siguiente enlace.
+    </p>
+
+    <a
+      id="detalle-link"
+      href="https://TU-LINK-1.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-6 inline-flex items-center gap-2
+             rounded-xl
+             bg-violet-500
+             px-6 py-3
+             text-sm font-semibold text-white
+             transition-all duration-300
+             hover:bg-violet-400
+             hover:shadow-lg
+             hover:shadow-violet-500/30"
+    >
+      Abrir ejercicio
+      <span class="text-lg">→</span>
+    </a>
+
+  </div>
+
+</section>
+```
 
   </Container>
+
+  <!-- ===================================================== -->
+
+  <!-- ==================== JAVASCRIPT ===================== -->
+
+  <!-- ===================================================== -->
+
+  <script>
+
+    const ejercicios = {
+
+      1: {
+        numero: 'Ejercicio 01',
+        titulo: 'Modelado básico',
+        descripcion:
+          'Aquí puedes colocar la descripción completa del primer ejercicio, explicar qué realizaste, qué herramientas utilizaste y qué aprendiste.',
+        imagen: '/images/modelado/ejercicio-1.jpg',
+        link: 'https://TU-LINK-1.com'
+      },
+
+      2: {
+        numero: 'Ejercicio 02',
+        titulo: 'Modelado intermedio',
+        descripcion:
+          'Aquí puedes colocar la descripción completa del segundo ejercicio y explicar el proceso realizado.',
+        imagen: '/images/modelado/ejercicio-2.jpg',
+        link: 'https://TU-LINK-2.com'
+      },
+
+      3: {
+        numero: 'Ejercicio 03',
+        titulo: 'Proyecto final',
+        descripcion:
+          'Aquí puedes colocar la descripción completa del proyecto final y explicar el trabajo realizado.',
+        imagen: '/images/modelado/ejercicio-3.jpg',
+        link: 'https://TU-LINK-3.com'
+      }
+
+    };
+
+
+    const ejemplos = document.querySelector('#ejemplos');
+    const detalle = document.querySelector('#detalle');
+    const volver = document.querySelector('#volver');
+
+    const detalleNumero =
+      document.querySelector('#detalle-numero');
+
+    const detalleTitulo =
+      document.querySelector('#detalle-titulo');
+
+    const detalleDescripcion =
+      document.querySelector('#detalle-descripcion');
+
+    const detalleImagen =
+      document.querySelector('#detalle-imagen');
+
+    const detalleLink =
+      document.querySelector('#detalle-link');
+
+    const botones =
+      document.querySelectorAll('[data-ejercicio]');
+
+
+    /* ============================= */
+    /* ABRIR EJERCICIO */
+    /* ============================= */
+
+    botones.forEach((boton) => {
+
+      boton.addEventListener('click', () => {
+
+        const id = boton.dataset.ejercicio;
+        const ejercicio = ejercicios[id];
+
+        if (!ejercicio) return;
+
+
+        detalleNumero.textContent =
+          ejercicio.numero;
+
+        detalleTitulo.textContent =
+          ejercicio.titulo;
+
+        detalleDescripcion.textContent =
+          ejercicio.descripcion;
+
+        detalleImagen.src =
+          ejercicio.imagen;
+
+        detalleImagen.alt =
+          ejercicio.titulo;
+
+        detalleLink.href =
+          ejercicio.link;
+
+
+        ejemplos.classList.add('hidden');
+
+        detalle.classList.remove('hidden');
+
+
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+
+      });
+
+    });
+
+
+    /* ============================= */
+    /* VOLVER A LOS EJEMPLOS */
+    /* ============================= */
+
+    volver.addEventListener('click', () => {
+
+      detalle.classList.add('hidden');
+
+      ejemplos.classList.remove('hidden');
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+
+    });
+
+  </script>
 
 </BaseLayout>
