@@ -3,12 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../../components/Container.astro';
 ---
 
-<BaseLayout title="Modelo Entidad Relación MER - Evidencias">
+<BaseLayout title="Quiz 1 - Evidencias MER">
 
   <Container class="py-16 sm:py-24">
 
     <!-- ENCABEZADO -->
-    <div class="mb-12 max-w-3xl">
+    <div class="mb-12 max-w-4xl">
 
       <div class="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm text-violet-300">
         <span class="h-2 w-2 rounded-full bg-violet-400"></span>
@@ -16,61 +16,78 @@ import Container from '../../components/Container.astro';
       </div>
 
       <h1 class="mt-6 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-        Modelado
+        Quiz 1 — Modelo Entidad-Relación
       </h1>
 
       <p class="mt-4 text-lg leading-8 text-slate-400">
-        El equipo organizador de la University Champions League de la Universidad El Bosque, requiere un sistema de información que almacene las estadísticas del torneo de fútbol que se llevará a cabo en el mes de Abril. Por consiguiente, la información que se requiere consultar está relacionada a los equipos de fútbol, los semestres, los programas académicos al que pertenece, información de cada jugador, puntos obtenidos en cada juego, tarjetas amarillas/rojas por cada jugador y las posiciones de la tabla en tiempo real..
+        Evidencias correspondientes al Quiz 1 de Modelo Entidad-Relación.
+        Se presentan los enunciados y el desarrollo de cada ejercicio.
       </p>
 
     </div>
 
 
     <!-- EJERCICIOS -->
-
     <div id="ejemplos">
 
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 
 
+        <!-- ===================================================== -->
         <!-- EJERCICIO 1 -->
+        <!-- ===================================================== -->
 
-        <article class="group overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-xl shadow-violet-950/20 transition-all duration-300 hover:-translate-y-2 hover:border-violet-500/60">
+        <article
+          class="group overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-xl shadow-violet-950/20 transition-all duration-300 hover:-translate-y-2 hover:border-violet-500/60"
+        >
 
           <div class="relative aspect-video overflow-hidden bg-slate-900">
 
             <img
-              src="/images/UEB.png"
-              alt="Ejercicio 1"
+              src="/images/quiz1/Quiz-#1-MER-EJERCICIO-1.jpg"
+              alt="Quiz 1 - Ejercicio 1"
               class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
             />
 
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
 
-            <div class="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-violet-400/30 bg-black/60 text-sm font-bold text-violet-300 backdrop-blur-md">
+            <div
+              class="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-violet-400/30 bg-black/60 text-sm font-bold text-violet-300 backdrop-blur-md"
+            >
               01
             </div>
 
           </div>
 
+
           <div class="p-6">
 
             <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">
-              Ejercicio 01
+              Quiz 1 · Ejercicio 01
             </p>
 
             <h2 class="mt-2 text-xl font-semibold text-white">
-              Modelado básico
+              Interpretación y corrección de un modelo
             </h2>
 
-            <!-- ENUNCIADO COMO IMAGEN -->
-            <div class="mt-4 overflow-hidden rounded-xl border border-violet-500/20 bg-slate-900">
-              <img
-                src="/images/ENUNCIADO-1.PNG"
-                alt="Enunciado de la Evidencia 1"
-                class="w-full object-contain"
-              />
+
+            <!-- ENUNCIADO -->
+            <div class="mt-4 overflow-hidden rounded-xl border border-violet-500/20 bg-slate-900 p-4">
+
+              <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-violet-400">
+                Enunciado
+              </p>
+
+              <p class="text-sm leading-6 text-slate-300">
+                Una clínica veterinaria contrató a un estudiante para modelar su
+                base de datos relacional. El modelo entregado contiene las entidades
+                DUEÑO, MASCOTA y VETERINARIO, junto con las relaciones TIENE y ATIENDE.
+                Se deben identificar cuatro errores del modelo teniendo en cuenta las
+                reglas del negocio, corregirlos y generar el modelo completo.
+              </p>
+
             </div>
+
 
             <button
               type="button"
@@ -86,39 +103,62 @@ import Container from '../../components/Container.astro';
         </article>
 
 
-        <!-- EJERCICIO 2 -->
 
-        <article class="group overflow-hidden rounded-2xl border border-blue-500/20 bg-slate-950 shadow-xl shadow-blue-950/20 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500/60">
+        <!-- ===================================================== -->
+        <!-- EJERCICIO 2 -->
+        <!-- ===================================================== -->
+
+        <article
+          class="group overflow-hidden rounded-2xl border border-blue-500/20 bg-slate-950 shadow-xl shadow-blue-950/20 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500/60"
+        >
 
           <div class="relative aspect-video overflow-hidden bg-slate-900">
 
             <img
-              src="/images/modelado/ejercicio-2.jpg"
-              alt="Ejercicio 2"
+              src="/images/quiz1/Quiz-#1-MER-EJERCICIO-2.jpg"
+              alt="Quiz 1 - Ejercicio 2"
               class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
             />
 
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
 
-            <div class="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-blue-400/30 bg-black/60 text-sm font-bold text-blue-300 backdrop-blur-md">
+            <div
+              class="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-blue-400/30 bg-black/60 text-sm font-bold text-blue-300 backdrop-blur-md"
+            >
               02
             </div>
 
           </div>
 
+
           <div class="p-6">
 
             <p class="text-xs font-semibold uppercase tracking-widest text-blue-400">
-              Ejercicio 02
+              Quiz 1 · Ejercicio 02
             </p>
 
             <h2 class="mt-2 text-xl font-semibold text-white">
-              Modelado intermedio
+              Diseño de un modelo entidad-relación
             </h2>
 
-            <p class="mt-3 text-sm leading-6 text-slate-400">
-              Descripción del segundo ejercicio de modelado.
-            </p>
+
+            <!-- ENUNCIADO -->
+            <div class="mt-4 overflow-hidden rounded-xl border border-blue-500/20 bg-slate-900 p-4">
+
+              <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-blue-400">
+                Enunciado
+              </p>
+
+              <p class="text-sm leading-6 text-slate-300">
+                La biblioteca de la Universidad necesita un modelo conceptual
+                que permita registrar títulos, autores, ejemplares físicos,
+                usuarios y préstamos. Se deben representar atributos clave,
+                compuestos, multivaluados y derivados, además de cardinalidades,
+                participaciones, entidad débil y relación recursiva.
+              </p>
+
+            </div>
+
 
             <button
               type="button"
@@ -134,39 +174,62 @@ import Container from '../../components/Container.astro';
         </article>
 
 
-        <!-- EJERCICIO 3 -->
 
-        <article class="group overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-xl shadow-violet-950/20 transition-all duration-300 hover:-translate-y-2 hover:border-violet-500/60">
+        <!-- ===================================================== -->
+        <!-- EJERCICIO 3 - PARTE 1 -->
+        <!-- ===================================================== -->
+
+        <article
+          class="group overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-xl shadow-violet-950/20 transition-all duration-300 hover:-translate-y-2 hover:border-violet-500/60"
+        >
 
           <div class="relative aspect-video overflow-hidden bg-slate-900">
 
             <img
-              src="/images/modelado/ejercicio-3.jpg"
-              alt="Ejercicio 3"
+              src="/images/quiz1/Quiz-#1-MER-Punto3,p1.jpg"
+              alt="Quiz 1 - Ejercicio 3 Parte 1"
               class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
             />
 
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
 
-            <div class="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-violet-400/30 bg-black/60 text-sm font-bold text-violet-300 backdrop-blur-md">
+            <div
+              class="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-violet-400/30 bg-black/60 text-sm font-bold text-violet-300 backdrop-blur-md"
+            >
               03
             </div>
 
           </div>
 
+
           <div class="p-6">
 
             <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">
-              Ejercicio 03
+              Quiz 1 · Punto 3 · Parte 1
             </p>
 
             <h2 class="mt-2 text-xl font-semibold text-white">
-              Proyecto final
+              Relación ternaria
             </h2>
 
-            <p class="mt-3 text-sm leading-6 text-slate-400">
-              Descripción del tercer ejercicio de modelado.
-            </p>
+
+            <!-- ENUNCIADO -->
+            <div class="mt-4 overflow-hidden rounded-xl border border-violet-500/20 bg-slate-900 p-4">
+
+              <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-violet-400">
+                Enunciado
+              </p>
+
+              <p class="text-sm leading-6 text-slate-300">
+                En un hospital se necesita registrar que un MÉDICO atendió a
+                un PACIENTE en un CONSULTORIO determinado, en una fecha dada.
+                Se propone resolverlo mediante tres relaciones binarias.
+                Se debe determinar si son equivalentes a una relación ternaria,
+                justificar la respuesta y representar correctamente el modelo.
+              </p>
+
+            </div>
+
 
             <button
               type="button"
@@ -181,12 +244,160 @@ import Container from '../../components/Container.astro';
 
         </article>
 
+
+
+        <!-- ===================================================== -->
+        <!-- EJERCICIO 3 - PARTE 2 -->
+        <!-- ===================================================== -->
+
+        <article
+          class="group overflow-hidden rounded-2xl border border-blue-500/20 bg-slate-950 shadow-xl shadow-blue-950/20 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500/60"
+        >
+
+          <div class="relative aspect-video overflow-hidden bg-slate-900">
+
+            <img
+              src="/images/quiz1/Quiz-#1-MER-EJERCICIO-3 (P2).jpg"
+              alt="Quiz 1 - Ejercicio 3 Parte 2"
+              class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+
+            <div
+              class="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-blue-400/30 bg-black/60 text-sm font-bold text-blue-300 backdrop-blur-md"
+            >
+              04
+            </div>
+
+          </div>
+
+
+          <div class="p-6">
+
+            <p class="text-xs font-semibold uppercase tracking-widest text-blue-400">
+              Quiz 1 · Punto 3 · Parte 2
+            </p>
+
+            <h2 class="mt-2 text-xl font-semibold text-white">
+              Especialización
+            </h2>
+
+
+            <!-- ENUNCIADO -->
+            <div class="mt-4 overflow-hidden rounded-xl border border-blue-500/20 bg-slate-900 p-4">
+
+              <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-blue-400">
+                Enunciado
+              </p>
+
+              <p class="text-sm leading-6 text-slate-300">
+                En la biblioteca, todo USUARIO es ESTUDIANTE o DOCENTE.
+                De los estudiantes se registra el semestre y de los docentes
+                la facultad. Ningún usuario puede pertenecer a ambos tipos y
+                no existen usuarios que no sean ninguno de los dos.
+                Se debe representar la jerarquía e indicar su totalidad,
+                disyunción e identificadores.
+              </p>
+
+            </div>
+
+
+            <button
+              type="button"
+              data-ejercicio="4"
+              class="mt-6 inline-flex items-center gap-2 rounded-xl border border-blue-500/30 bg-blue-500/10 px-5 py-2.5 text-sm font-medium text-blue-300 transition-all duration-300 hover:bg-blue-500 hover:text-white"
+            >
+              Ver ejercicio
+              <span class="text-lg">→</span>
+            </button>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- ===================================================== -->
+        <!-- EJERCICIO 3 - PARTE 3 -->
+        <!-- ===================================================== -->
+
+        <article
+          class="group overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-xl shadow-violet-950/20 transition-all duration-300 hover:-translate-y-2 hover:border-violet-500/60"
+        >
+
+          <div class="relative aspect-video overflow-hidden bg-slate-900">
+
+            <img
+              src="/images/quiz1/Quiz-#1-MER-EJERCICIO-3 (P3).jpg"
+              alt="Quiz 1 - Ejercicio 3 Parte 3"
+              class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+
+            <div
+              class="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-violet-400/30 bg-black/60 text-sm font-bold text-violet-300 backdrop-blur-md"
+            >
+              05
+            </div>
+
+          </div>
+
+
+          <div class="p-6">
+
+            <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">
+              Quiz 1 · Punto 3 · Parte 3
+            </p>
+
+            <h2 class="mt-2 text-xl font-semibold text-white">
+              Agregación
+            </h2>
+
+
+            <!-- ENUNCIADO -->
+            <div class="mt-4 overflow-hidden rounded-xl border border-violet-500/20 bg-slate-900 p-4">
+
+              <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-violet-400">
+                Enunciado
+              </p>
+
+              <p class="text-sm leading-6 text-slate-300">
+                En un grupo de investigación, un DOCENTE trabaja en un PROYECTO
+                mediante la relación TRABAJA_EN. Se necesita registrar qué
+                EQUIPO de laboratorio se asigna a un docente por su participación
+                en un proyecto concreto. Se debe explicar por qué no se modela
+                adecuadamente como una relación ternaria y cómo se resuelve
+                mediante agregación.
+              </p>
+
+            </div>
+
+
+            <button
+              type="button"
+              data-ejercicio="5"
+              class="mt-6 inline-flex items-center gap-2 rounded-xl border border-violet-500/30 bg-violet-500/10 px-5 py-2.5 text-sm font-medium text-violet-300 transition-all duration-300 hover:bg-violet-500 hover:text-white"
+            >
+              Ver ejercicio
+              <span class="text-lg">→</span>
+            </button>
+
+          </div>
+
+        </article>
+
+
       </div>
 
     </div>
 
 
+
+    <!-- ===================================================== -->
     <!-- DETALLE -->
+    <!-- ===================================================== -->
 
     <section id="detalle" class="hidden mt-12">
 
@@ -195,108 +406,176 @@ import Container from '../../components/Container.astro';
         type="button"
         class="mb-8 inline-flex items-center gap-2 rounded-xl border border-violet-500/30 bg-violet-500/10 px-5 py-2.5 text-sm font-medium text-violet-300 transition-all duration-300 hover:bg-violet-500 hover:text-white"
       >
-        ← Volver a ejemplos
+        ← Volver a evidencias
       </button>
 
 
-      <div class="max-w-3xl">
+      <div class="max-w-4xl">
 
         <p
           id="detalle-numero"
           class="text-xs font-semibold uppercase tracking-widest text-violet-400"
         >
-          Ejercicio 01
+          Evidencia 01
         </p>
+
 
         <h2
           id="detalle-titulo"
           class="mt-3 text-4xl font-semibold tracking-tight text-white sm:text-5xl"
         >
-          Modelado básico
+          Interpretación y corrección
         </h2>
 
-        <p
-          id="detalle-descripcion"
-          class="mt-5 text-lg leading-8 text-slate-400"
-        >
-          Descripción del ejercicio.
-        </p>
+
+        <!-- ENUNCIADO DETALLE -->
+        <div class="mt-6 rounded-2xl border border-violet-500/20 bg-slate-950 p-6">
+
+          <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">
+            Enunciado
+          </p>
+
+          <p
+            id="detalle-descripcion"
+            class="mt-4 text-lg leading-8 text-slate-400"
+          >
+            Enunciado del ejercicio.
+          </p>
+
+        </div>
 
       </div>
 
 
-      <!-- IMAGEN DEL EJERCICIO -->
 
-      <div class="mt-10 overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-2xl">
+      <!-- IMAGEN DE LA RESPUESTA -->
+      <div
+        class="mt-10 overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-2xl"
+      >
 
         <img
           id="detalle-imagen"
-          src="/images/UEB.png"
-          alt="Ejercicio de modelado"
-          class="max-h-[700px] w-full object-contain"
+          src="/images/quiz1/Quiz-#1-MER-EJERCICIO-1.jpg"
+          alt="Evidencia del quiz"
+          class="max-h-[900px] w-full object-contain"
         />
 
       </div>
 
 
-      <!-- LINK -->
-
+      <!-- INFORMACIÓN -->
       <div class="mt-8 rounded-2xl border border-violet-500/20 bg-slate-950 p-6 sm:p-8">
 
         <h3 class="text-xl font-semibold text-white">
-          Enlace del ejercicio
+          Evidencia académica
         </h3>
 
         <p class="mt-2 text-sm leading-6 text-slate-400">
-          Puedes acceder al trabajo completo utilizando el siguiente enlace.
+          Esta imagen corresponde al desarrollo realizado para este punto
+          del Quiz 1 de Modelo Entidad-Relación.
         </p>
 
-        <a
-          id="detalle-link"
-          href="https://drive.google.com/file/d/1Jq8g0YcMh3SwBMEjL5vtbea3WKlNoUPp/view?usp=sharing"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-6 inline-flex items-center gap-2 rounded-xl bg-violet-500 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-violet-400"
-        >
-          Abrir ejercicio
-          <span class="text-lg">→</span>
-        </a>
-
       </div>
+
 
     </section>
 
   </Container>
 
 
+
+  <!-- ===================================================== -->
   <!-- JAVASCRIPT -->
+  <!-- ===================================================== -->
 
   <script>
+
     const ejercicios = {
+
       1: {
-        numero: 'Ejercicio 01',
-        titulo: 'Modelado básico',
-        descripcion: 'Enunciado y desarrollo del primer ejercicio de modelado.',
-        imagen: '/images/UEB.png',
-        link: 'https://drive.google.com/file/d/1Jq8g0YcMh3SwBMEjL5vtbea3WKlNoUPp/view?usp=sharing'
+        numero: 'Quiz 1 · Ejercicio 01',
+        titulo: 'Interpretación y corrección de un modelo',
+
+        descripcion: `
+          Una clínica veterinaria contrató a un estudiante para modelar su
+          base de datos relacional. El modelo entregado contiene las entidades
+          DUEÑO, MASCOTA y VETERINARIO, junto con las relaciones TIENE y ATIENDE.
+          Se deben identificar cuatro errores del modelo teniendo en cuenta las
+          reglas del negocio, corregirlos y generar el modelo completo.
+        `,
+
+        imagen: '/images/quiz1/Quiz-#1-MER-EJERCICIO-1.jpg'
       },
+
 
       2: {
-        numero: 'Ejercicio 02',
-        titulo: 'Modelado intermedio',
-        descripcion: 'Descripción del segundo ejercicio de modelado.',
-        imagen: '/images/modelado/ejercicio-2.jpg',
-        link: 'https://TU-LINK-2.com'
+        numero: 'Quiz 1 · Ejercicio 02',
+        titulo: 'Diseño de un modelo entidad-relación',
+
+        descripcion: `
+          La biblioteca de la Universidad necesita un modelo conceptual que
+          permita registrar títulos, autores, ejemplares físicos, usuarios y
+          préstamos. Se deben representar atributos clave, compuestos,
+          multivaluados y derivados, además de cardinalidades, participaciones,
+          entidad débil y relación recursiva.
+        `,
+
+        imagen: '/images/quiz1/Quiz-#1-MER-EJERCICIO-2.jpg'
       },
 
+
       3: {
-        numero: 'Ejercicio 03',
-        titulo: 'Proyecto final',
-        descripcion: 'Descripción del tercer ejercicio de modelado.',
-        imagen: '/images/modelado/ejercicio-3.jpg',
-        link: 'https://TU-LINK-3.com'
+        numero: 'Quiz 1 · Punto 3 · Parte 1',
+        titulo: 'Relación ternaria',
+
+        descripcion: `
+          En un hospital se necesita registrar que un MÉDICO atendió a un
+          PACIENTE en un CONSULTORIO determinado, en una fecha dada.
+          Se propone resolverlo mediante tres relaciones binarias.
+          Se debe determinar si son equivalentes a una relación ternaria,
+          justificar la respuesta y representar correctamente el modelo.
+        `,
+
+        imagen: '/images/quiz1/Quiz-#1-MER-Punto3,p1.jpg'
+      },
+
+
+      4: {
+        numero: 'Quiz 1 · Punto 3 · Parte 2',
+        titulo: 'Especialización',
+
+        descripcion: `
+          En la biblioteca, todo USUARIO es ESTUDIANTE o DOCENTE.
+          De los estudiantes se registra el semestre y de los docentes
+          la facultad. Ningún usuario puede pertenecer a ambos tipos y
+          no existen usuarios que no sean ninguno de los dos.
+          Se debe representar la jerarquía e indicar su totalidad,
+          disyunción e identificadores.
+        `,
+
+        imagen: '/images/quiz1/Quiz-#1-MER-EJERCICIO-3 (P2).jpg'
+      },
+
+
+      5: {
+        numero: 'Quiz 1 · Punto 3 · Parte 3',
+        titulo: 'Agregación',
+
+        descripcion: `
+          En un grupo de investigación, un DOCENTE trabaja en un PROYECTO
+          mediante la relación TRABAJA_EN. Se necesita registrar qué EQUIPO
+          de laboratorio se asigna a un docente por su participación en un
+          proyecto concreto. Se debe explicar por qué no se modela
+          adecuadamente como una relación ternaria y cómo se resuelve
+          mediante agregación.
+        `,
+
+        imagen: '/images/quiz1/Quiz-#1-MER-EJERCICIO-3 (P3).jpg'
       }
+
     };
+
+
 
     const ejemplos = document.querySelector('#ejemplos');
     const detalle = document.querySelector('#detalle');
@@ -306,9 +585,10 @@ import Container from '../../components/Container.astro';
     const detalleTitulo = document.querySelector('#detalle-titulo');
     const detalleDescripcion = document.querySelector('#detalle-descripcion');
     const detalleImagen = document.querySelector('#detalle-imagen');
-    const detalleLink = document.querySelector('#detalle-link');
 
     const botones = document.querySelectorAll('[data-ejercicio]');
+
+
 
     botones.forEach((boton) => {
 
@@ -328,8 +608,6 @@ import Container from '../../components/Container.astro';
         detalleImagen.src = ejercicio.imagen;
         detalleImagen.alt = ejercicio.titulo;
 
-        detalleLink.href = ejercicio.link;
-
         ejemplos.classList.add('hidden');
         detalle.classList.remove('hidden');
 
@@ -342,6 +620,8 @@ import Container from '../../components/Container.astro';
 
     });
 
+
+
     volver.addEventListener('click', () => {
 
       detalle.classList.add('hidden');
@@ -353,6 +633,7 @@ import Container from '../../components/Container.astro';
       });
 
     });
+
   </script>
 
 </BaseLayout>
