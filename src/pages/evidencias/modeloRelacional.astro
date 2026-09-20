@@ -1,20 +1,432 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../../components/Container.astro';
+
+const GOOGLE_DRIVE_LINK_GENERAL = "https://drive.google.com/file/d/TU_ID_DE_DRIVE_AQUI/view?usp=sharing";
 ---
 
-<BaseLayout title="MODELO RELACIONAL — Evidencias">
-
+<BaseLayout title="Evidencias - Modelo Relacional (Reducción a Tablas)">
   <Container class="py-16 sm:py-24">
 
-    <h1 class="text-4xl font-semibold text-fg">
-      Modelo relacional
-    </h1>
+    <!-- ENCABEZADO PRINCIPAL -->
+    <div class="mb-12 max-w-4xl">
+      <div class="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm text-violet-300">
+        <span class="h-2 w-2 rounded-full bg-violet-400"></span>
+        Evidencias académicas
+      </div>
 
-    <p class="mt-4 text-fg-2">
-      Aquí se agregarán las evidencias del proyecto final.
-    </p>
+      <h1 class="mt-6 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+        Modelo Relacional
+      </h1>
+
+      <p class="mt-4 text-lg leading-8 text-slate-400">
+        Evidencias del proceso de reducción del modelo entidad-relación a tablas: mapeo de entidades, atributos y relaciones al modelo relacional.
+      </p>
+    </div>
+
+    <!-- VISTA DE GALERÍA DE EJERCICIOS -->
+    <div id="ejemplos">
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+        <!-- EVIDENCIA 1 -->
+        <article class="group flex flex-col justify-between overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-xl shadow-violet-950/20 transition-all duration-300 hover:-translate-y-2 hover:border-violet-500/60">
+          <div>
+            <div class="relative aspect-video overflow-hidden bg-slate-900">
+              <img src="/images/modeloRelacional/evidencia1.jpg" alt="Evidencia 1" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-violet-400/30 bg-black/60 text-sm font-bold text-violet-300 backdrop-blur-md">01</div>
+            </div>
+            <div class="p-6">
+              <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">Modelo Relacional · Evidencia 01</p>
+              <h2 class="mt-2 text-xl font-semibold text-white">Reducción a tablas — Ejercicio 1</h2>
+              <div class="mt-4 overflow-hidden rounded-xl border border-violet-500/20 bg-slate-900 p-4">
+                <p class="text-sm leading-6 text-slate-300">
+                  Proceso de reducción del modelo entidad-relación a tablas relacionales.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3 p-6 pt-0 sm:flex-row">
+            <button type="button" data-ejercicio="1" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-violet-500/30 bg-violet-500/10 px-4 py-2.5 text-sm font-medium text-violet-300 transition-all duration-300 hover:bg-violet-500 hover:text-white">
+              Ver detalle <span class="text-lg">→</span>
+            </button>
+            <a href={GOOGLE_DRIVE_LINK_GENERAL} target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-violet-600/80 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-violet-500">
+              Abrir Drive
+            </a>
+          </div>
+        </article>
+
+        <!-- EVIDENCIA 2 -->
+        <article class="group flex flex-col justify-between overflow-hidden rounded-2xl border border-blue-500/20 bg-slate-950 shadow-xl shadow-blue-950/20 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500/60">
+          <div>
+            <div class="relative aspect-video overflow-hidden bg-slate-900">
+              <img src="/images/modeloRelacional/evidencia2.jpg" alt="Evidencia 2" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-blue-400/30 bg-black/60 text-sm font-bold text-blue-300 backdrop-blur-md">02</div>
+            </div>
+            <div class="p-6">
+              <p class="text-xs font-semibold uppercase tracking-widest text-blue-400">Modelo Relacional · Evidencia 02</p>
+              <h2 class="mt-2 text-xl font-semibold text-white">Reducción a tablas — Ejercicio 2</h2>
+              <div class="mt-4 overflow-hidden rounded-xl border border-blue-500/20 bg-slate-900 p-4">
+                <p class="text-sm leading-6 text-slate-300">
+                  Proceso de reducción del modelo entidad-relación a tablas relacionales.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3 p-6 pt-0 sm:flex-row">
+            <button type="button" data-ejercicio="2" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-blue-500/30 bg-blue-500/10 px-4 py-2.5 text-sm font-medium text-blue-300 transition-all duration-300 hover:bg-blue-500 hover:text-white">
+              Ver detalle <span class="text-lg">→</span>
+            </button>
+            <a href={GOOGLE_DRIVE_LINK_GENERAL} target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600/80 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-blue-500">
+              Abrir Drive
+            </a>
+          </div>
+        </article>
+
+        <!-- PUNTO 2 (A) -->
+        <article class="group flex flex-col justify-between overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-xl shadow-violet-950/20 transition-all duration-300 hover:-translate-y-2 hover:border-violet-500/60">
+          <div>
+            <div class="relative aspect-video overflow-hidden bg-slate-900">
+              <img src="/images/modeloRelacional/punto2A.jpg" alt="Punto 2 (A)" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-violet-400/30 bg-black/60 text-sm font-bold text-violet-300 backdrop-blur-md">03</div>
+            </div>
+            <div class="p-6">
+              <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">Punto 2 · Parcial</p>
+              <h2 class="mt-2 text-xl font-semibold text-white">Punto 2 (A)</h2>
+              <div class="mt-4 overflow-hidden rounded-xl border border-violet-500/20 bg-slate-900 p-4">
+                <p class="text-sm leading-6 text-slate-300">
+                  Reducción a tablas correspondiente al punto 2, literal A del parcial.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3 p-6 pt-0 sm:flex-row">
+            <button type="button" data-ejercicio="3" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-violet-500/30 bg-violet-500/10 px-4 py-2.5 text-sm font-medium text-violet-300 transition-all duration-300 hover:bg-violet-500 hover:text-white">
+              Ver detalle <span class="text-lg">→</span>
+            </button>
+            <a href={GOOGLE_DRIVE_LINK_GENERAL} target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-violet-600/80 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-violet-500">
+              Abrir Drive
+            </a>
+          </div>
+        </article>
+
+        <!-- PUNTO 2 (B) -->
+        <article class="group flex flex-col justify-between overflow-hidden rounded-2xl border border-blue-500/20 bg-slate-950 shadow-xl shadow-blue-950/20 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500/60">
+          <div>
+            <div class="relative aspect-video overflow-hidden bg-slate-900">
+              <img src="/images/modeloRelacional/punto2B.jpg" alt="Punto 2 (B)" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-blue-400/30 bg-black/60 text-sm font-bold text-blue-300 backdrop-blur-md">04</div>
+            </div>
+            <div class="p-6">
+              <p class="text-xs font-semibold uppercase tracking-widest text-blue-400">Punto 2 · Parcial</p>
+              <h2 class="mt-2 text-xl font-semibold text-white">Punto 2 (B)</h2>
+              <div class="mt-4 overflow-hidden rounded-xl border border-blue-500/20 bg-slate-900 p-4">
+                <p class="text-sm leading-6 text-slate-300">
+                  Reducción a tablas correspondiente al punto 2, literal B del parcial.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3 p-6 pt-0 sm:flex-row">
+            <button type="button" data-ejercicio="4" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-blue-500/30 bg-blue-500/10 px-4 py-2.5 text-sm font-medium text-blue-300 transition-all duration-300 hover:bg-blue-500 hover:text-white">
+              Ver detalle <span class="text-lg">→</span>
+            </button>
+            <a href={GOOGLE_DRIVE_LINK_GENERAL} target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600/80 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-blue-500">
+              Abrir Drive
+            </a>
+          </div>
+        </article>
+
+        <!-- PUNTO 2 (C) -->
+        <article class="group flex flex-col justify-between overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-xl shadow-violet-950/20 transition-all duration-300 hover:-translate-y-2 hover:border-violet-500/60">
+          <div>
+            <div class="relative aspect-video overflow-hidden bg-slate-900">
+              <img src="/images/modeloRelacional/punto2C.jpg" alt="Punto 2 (C)" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-violet-400/30 bg-black/60 text-sm font-bold text-violet-300 backdrop-blur-md">05</div>
+            </div>
+            <div class="p-6">
+              <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">Punto 2 · Parcial</p>
+              <h2 class="mt-2 text-xl font-semibold text-white">Punto 2 (C)</h2>
+              <div class="mt-4 overflow-hidden rounded-xl border border-violet-500/20 bg-slate-900 p-4">
+                <p class="text-sm leading-6 text-slate-300">
+                  Reducción a tablas correspondiente al punto 2, literal C del parcial.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3 p-6 pt-0 sm:flex-row">
+            <button type="button" data-ejercicio="5" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-violet-500/30 bg-violet-500/10 px-4 py-2.5 text-sm font-medium text-violet-300 transition-all duration-300 hover:bg-violet-500 hover:text-white">
+              Ver detalle <span class="text-lg">→</span>
+            </button>
+            <a href={GOOGLE_DRIVE_LINK_GENERAL} target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-violet-600/80 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-violet-500">
+              Abrir Drive
+            </a>
+          </div>
+        </article>
+
+        <!-- PUNTO 2 (D) -->
+        <article class="group flex flex-col justify-between overflow-hidden rounded-2xl border border-blue-500/20 bg-slate-950 shadow-xl shadow-blue-950/20 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500/60">
+          <div>
+            <div class="relative aspect-video overflow-hidden bg-slate-900">
+              <img src="/images/modeloRelacional/punto2D.jpg" alt="Punto 2 (D)" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-blue-400/30 bg-black/60 text-sm font-bold text-blue-300 backdrop-blur-md">06</div>
+            </div>
+            <div class="p-6">
+              <p class="text-xs font-semibold uppercase tracking-widest text-blue-400">Punto 2 · Parcial</p>
+              <h2 class="mt-2 text-xl font-semibold text-white">Punto 2 (D)</h2>
+              <div class="mt-4 overflow-hidden rounded-xl border border-blue-500/20 bg-slate-900 p-4">
+                <p class="text-sm leading-6 text-slate-300">
+                  Reducción a tablas correspondiente al punto 2, literal D del parcial.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3 p-6 pt-0 sm:flex-row">
+            <button type="button" data-ejercicio="6" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-blue-500/30 bg-blue-500/10 px-4 py-2.5 text-sm font-medium text-blue-300 transition-all duration-300 hover:bg-blue-500 hover:text-white">
+              Ver detalle <span class="text-lg">→</span>
+            </button>
+            <a href={GOOGLE_DRIVE_LINK_GENERAL} target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600/80 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-blue-500">
+              Abrir Drive
+            </a>
+          </div>
+        </article>
+
+        <!-- PUNTO 2 (E) -->
+        <article class="group flex flex-col justify-between overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-xl shadow-violet-950/20 transition-all duration-300 hover:-translate-y-2 hover:border-violet-500/60">
+          <div>
+            <div class="relative aspect-video overflow-hidden bg-slate-900">
+              <img src="/images/modeloRelacional/punto2E.jpg" alt="Punto 2 (E)" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-violet-400/30 bg-black/60 text-sm font-bold text-violet-300 backdrop-blur-md">07</div>
+            </div>
+            <div class="p-6">
+              <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">Punto 2 · Parcial</p>
+              <h2 class="mt-2 text-xl font-semibold text-white">Punto 2 (E)</h2>
+              <div class="mt-4 overflow-hidden rounded-xl border border-violet-500/20 bg-slate-900 p-4">
+                <p class="text-sm leading-6 text-slate-300">
+                  Reducción a tablas correspondiente al punto 2, literal E del parcial.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3 p-6 pt-0 sm:flex-row">
+            <button type="button" data-ejercicio="7" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-violet-500/30 bg-violet-500/10 px-4 py-2.5 text-sm font-medium text-violet-300 transition-all duration-300 hover:bg-violet-500 hover:text-white">
+              Ver detalle <span class="text-lg">→</span>
+            </button>
+            <a href={GOOGLE_DRIVE_LINK_GENERAL} target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-violet-600/80 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-violet-500">
+              Abrir Drive
+            </a>
+          </div>
+        </article>
+
+        <!-- PUNTO 2 (F) -->
+        <article class="group flex flex-col justify-between overflow-hidden rounded-2xl border border-blue-500/20 bg-slate-950 shadow-xl shadow-blue-950/20 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500/60">
+          <div>
+            <div class="relative aspect-video overflow-hidden bg-slate-900">
+              <img src="/images/modeloRelacional/punto2F.jpg" alt="Punto 2 (F)" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border border-blue-400/30 bg-black/60 text-sm font-bold text-blue-300 backdrop-blur-md">08</div>
+            </div>
+            <div class="p-6">
+              <p class="text-xs font-semibold uppercase tracking-widest text-blue-400">Punto 2 · Parcial</p>
+              <h2 class="mt-2 text-xl font-semibold text-white">Punto 2 (F)</h2>
+              <div class="mt-4 overflow-hidden rounded-xl border border-blue-500/20 bg-slate-900 p-4">
+                <p class="text-sm leading-6 text-slate-300">
+                  Reducción a tablas correspondiente al punto 2, literal F del parcial.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3 p-6 pt-0 sm:flex-row">
+            <button type="button" data-ejercicio="8" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-blue-500/30 bg-blue-500/10 px-4 py-2.5 text-sm font-medium text-blue-300 transition-all duration-300 hover:bg-blue-500 hover:text-white">
+              Ver detalle <span class="text-lg">→</span>
+            </button>
+            <a href={GOOGLE_DRIVE_LINK_GENERAL} target="_blank" rel="noopener noreferrer" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600/80 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-blue-500">
+              Abrir Drive
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- VISTA DE DETALLE -->
+    <section id="detalle" class="mt-12 hidden">
+      <button id="volver" type="button" class="mb-8 inline-flex items-center gap-2 rounded-xl border border-violet-500/30 bg-violet-500/10 px-5 py-2.5 text-sm font-medium text-violet-300 transition-all duration-300 hover:bg-violet-500 hover:text-white">
+        ← Volver a evidencias
+      </button>
+
+      <div class="max-w-4xl">
+        <p id="detalle-numero" class="text-xs font-semibold uppercase tracking-widest text-violet-400">
+          Evidencia 01
+        </p>
+
+        <h2 id="detalle-titulo" class="mt-3 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          Título del Ejercicio
+        </h2>
+
+        <div class="mt-6 rounded-2xl border border-violet-500/20 bg-slate-950 p-6">
+          <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">Descripción</p>
+          <p id="detalle-descripcion" class="mt-4 text-lg leading-8 text-slate-400">
+            Descripción detallada...
+          </p>
+        </div>
+      </div>
+
+      <!-- ENUNCIADO (IMAGEN) - solo se muestra si el ejercicio tiene enunciado en imagen -->
+      <div id="detalle-enunciado-container" class="mt-10 hidden">
+        <p class="text-xs font-semibold uppercase tracking-widest text-violet-400 mb-3">Enunciado</p>
+        <div class="overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-2xl">
+          <img id="detalle-enunciado-imagen" src="" alt="Enunciado" class="max-h-[900px] w-full object-contain" />
+        </div>
+      </div>
+
+      <!-- DESARROLLO / SOLUCIÓN (IMAGEN PRINCIPAL) -->
+      <div class="mt-10">
+        <p class="text-xs font-semibold uppercase tracking-widest text-violet-400 mb-3">Desarrollo — Reducción a tablas</p>
+        <div class="overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-2xl">
+          <img id="detalle-imagen" src="" alt="Evidencia" class="max-h-[900px] w-full object-contain" />
+        </div>
+      </div>
+
+      <!-- SECCIÓN DE RECURSO ADICIONAL -->
+      <div id="detalle-link-container" class="mt-8 rounded-2xl border border-violet-500/20 bg-slate-950 p-6 sm:p-8">
+        <h3 class="text-xl font-semibold text-white">Enlace o soporte del ejercicio</h3>
+        <p class="mt-2 text-sm leading-6 text-slate-400">Puedes consultar el documento original en Google Drive mediante el siguiente enlace.</p>
+        <a id="detalle-link" href="#" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-2 rounded-xl bg-violet-500 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-violet-400">
+          Abrir recurso en Google Drive <span class="text-lg">→</span>
+        </a>
+      </div>
+    </section>
 
   </Container>
 
+  <!-- SCRIPT DE INTERACCIÓN Y MAPEO DE DATOS -->
+  <script>
+    const DRIVE_LINK_GENERAL = 'https://drive.google.com/file/d/TU_ID_DE_DRIVE_AQUI/view?usp=sharing';
+
+    // "enunciadoImagen" es OPCIONAL: solo agrégalo si ese ejercicio tiene el enunciado como imagen aparte.
+    const ejercicios = {
+      1: {
+        numero: 'Modelo Relacional · Evidencia 01',
+        titulo: 'Reducción a tablas — Ejercicio 1',
+        descripcion: 'Proceso completo de reducción del modelo entidad-relación a tablas relacionales, incluyendo llaves primarias y foráneas.',
+        enunciadoImagen: '/images/modeloRelacional/evidencia1-enunciado.jpg',
+        imagen: '/images/modeloRelacional/evidencia1.jpg',
+        link: DRIVE_LINK_GENERAL
+      },
+      2: {
+        numero: 'Modelo Relacional · Evidencia 02',
+        titulo: 'Reducción a tablas — Ejercicio 2',
+        descripcion: 'Proceso completo de reducción del modelo entidad-relación a tablas relacionales, incluyendo llaves primarias y foráneas.',
+        enunciadoImagen: '/images/modeloRelacional/evidencia2-enunciado.jpg',
+        imagen: '/images/modeloRelacional/evidencia2.jpg',
+        link: DRIVE_LINK_GENERAL
+      },
+      3: {
+        numero: 'Punto 2 · Parcial',
+        titulo: 'Punto 2 (A)',
+        descripcion: 'Reducción a tablas correspondiente al punto 2, literal A del parcial.',
+        imagen: '/images/modeloRelacional/punto2A.jpg',
+        link: DRIVE_LINK_GENERAL
+      },
+      4: {
+        numero: 'Punto 2 · Parcial',
+        titulo: 'Punto 2 (B)',
+        descripcion: 'Reducción a tablas correspondiente al punto 2, literal B del parcial.',
+        imagen: '/images/modeloRelacional/punto2B.jpg',
+        link: DRIVE_LINK_GENERAL
+      },
+      5: {
+        numero: 'Punto 2 · Parcial',
+        titulo: 'Punto 2 (C)',
+        descripcion: 'Reducción a tablas correspondiente al punto 2, literal C del parcial.',
+        imagen: '/images/modeloRelacional/punto2C.jpg',
+        link: DRIVE_LINK_GENERAL
+      },
+      6: {
+        numero: 'Punto 2 · Parcial',
+        titulo: 'Punto 2 (D)',
+        descripcion: 'Reducción a tablas correspondiente al punto 2, literal D del parcial.',
+        imagen: '/images/modeloRelacional/punto2D.jpg',
+        link: DRIVE_LINK_GENERAL
+      },
+      7: {
+        numero: 'Punto 2 · Parcial',
+        titulo: 'Punto 2 (E)',
+        descripcion: 'Reducción a tablas correspondiente al punto 2, literal E del parcial.',
+        imagen: '/images/modeloRelacional/punto2E.jpg',
+        link: DRIVE_LINK_GENERAL
+      },
+      8: {
+        numero: 'Punto 2 · Parcial',
+        titulo: 'Punto 2 (F)',
+        descripcion: 'Reducción a tablas correspondiente al punto 2, literal F del parcial.',
+        imagen: '/images/modeloRelacional/punto2F.jpg',
+        link: DRIVE_LINK_GENERAL
+      }
+    };
+
+    const ejemplos = document.querySelector('#ejemplos');
+    const detalle = document.querySelector('#detalle');
+    const volver = document.querySelector('#volver');
+
+    const detalleNumero = document.querySelector('#detalle-numero');
+    const detalleTitulo = document.querySelector('#detalle-titulo');
+    const detalleDescripcion = document.querySelector('#detalle-descripcion');
+    const detalleEnunciadoContainer = document.querySelector('#detalle-enunciado-container');
+    const detalleEnunciadoImagen = document.querySelector('#detalle-enunciado-imagen');
+    const detalleImagen = document.querySelector('#detalle-imagen');
+    const detalleLinkContainer = document.querySelector('#detalle-link-container');
+    const detalleLink = document.querySelector('#detalle-link');
+
+    const botones = document.querySelectorAll('[data-ejercicio]');
+
+    botones.forEach((boton) => {
+      boton.addEventListener('click', () => {
+        const id = boton.getAttribute('data-ejercicio');
+        const ejercicio = ejercicios[id];
+
+        if (!ejercicio) return;
+
+        detalleNumero.textContent = ejercicio.numero;
+        detalleTitulo.textContent = ejercicio.titulo;
+        detalleDescripcion.textContent = ejercicio.descripcion;
+
+        if (ejercicio.enunciadoImagen) {
+          detalleEnunciadoImagen.src = ejercicio.enunciadoImagen;
+          detalleEnunciadoImagen.alt = 'Enunciado - ' + ejercicio.titulo;
+          detalleEnunciadoContainer.classList.remove('hidden');
+        } else {
+          detalleEnunciadoContainer.classList.add('hidden');
+        }
+
+        detalleImagen.src = ejercicio.imagen;
+        detalleImagen.alt = ejercicio.titulo;
+
+        if (ejercicio.link) {
+          detalleLink.href = ejercicio.link;
+          detalleLinkContainer.classList.remove('hidden');
+        } else {
+          detalleLinkContainer.classList.add('hidden');
+        }
+
+        ejemplos.classList.add('hidden');
+        detalle.classList.remove('hidden');
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    volver.addEventListener('click', () => {
+      detalle.classList.add('hidden');
+      ejemplos.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </BaseLayout>
