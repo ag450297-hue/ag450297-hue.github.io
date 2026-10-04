@@ -30,8 +30,56 @@ const ejercicios = [
     imagen: img('Transformacion-SegundoModelo.drawio.png'),
     link: DRIVE_1,
   },
+  {
+    id: 3,
+    numero: 'Punto 1 · Parcial',
+    titulo: 'Punto 1',
+    resumen: 'Diseño del modelo entidad–relación extendido de la cadena de cines CineAndes (20 puntos).',
+    descripcion: `PUNTO 1: Diseño del modelo entidad–relación extendido (20 puntos)
+
+La cadena de salas de cine CineAndes necesita un modelo conceptual que cumpla las siguientes reglas de negocio.
+
+a. De cada SEDE se registra un código, un nombre, la dirección (compuesta por ciudad y calle) y uno o varios teléfonos de contacto.
+
+b. Cada sede tiene varias SALAS. Dentro de una sede las salas se numeran 1, 2, 3 y así sucesivamente, y ese número solo tiene sentido dentro de su propia sede: la sala 3 de Bogotá y la sala 3 de Medellín son salas distintas. De cada sala se registra el formato de proyección y el aforo.
+
+c. Cada sala está compuesta por SILLAS. Una silla se identifica por su fila y su número, que solo tienen sentido dentro de su sala. De cada silla se registra si está habilitada o fuera de servicio.
+
+d. De cada PELÍCULA se registra un código, el título, el año de estreno, la duración en minutos y la clasificación. Una película puede estar disponible en uno o varios idiomas. La antigüedad de la película se obtiene a partir de su año de estreno. Además, una película puede ser la secuela de otra ya registrada en el catálogo, y tiene a lo sumo una precuela.
+
+e. Una FUNCIÓN es la proyección de una película en una sala determinada, en una fecha y una hora. Dentro de una misma sala, la fecha y la hora identifican la función. De cada función se registra el precio base de la boleta. Toda función proyecta exactamente una película; una película puede no haberse programado nunca.
+
+f. De cada CLIENTE se registra el documento, el nombre completo (nombres y apellidos por separado), el correo y la fecha de nacimiento. La edad del cliente se obtiene de su fecha de nacimiento.
+
+g. Un cliente puede comprar boletas para muchas funciones y una función puede tener muchos clientes. De cada compra se registra la cantidad de boletas y el canal por el que se hizo. Un cliente puede no haber comprado nunca.
+
+h. De cada EMPLEADO se registra un identificador, el nombre y la fecha de ingreso. Todo empleado es proyeccionista, del que se registra su certificación técnica, o taquillero, del que se registra la caja asignada. Ningún empleado puede ser las dos cosas al mismo tiempo, y no existen empleados que no sean ni lo uno ni lo otro.
+
+i. Un empleado supervisa a otros empleados. Un empleado tiene a lo sumo un supervisor, y de esa supervisión se registra la fecha desde la cual se ejerce.
+
+j. Para la confitería, un PROVEEDOR entrega un PRODUCTO a una SEDE. Un mismo producto puede ser entregado por proveedores distintos a la misma sede, cada proveedor atiende muchas sedes y muchos productos, y de cada entrega se registran la cantidad y la fecha.
+
+k. Cada compra que un cliente hace para una función determinada se paga con un único MEDIO DE PAGO. Un mismo medio de pago se usa en muchas compras. El medio de pago corresponde a esa compra concreta, no al cliente ni a la función por separado.
+
+Se pide:
+
+a. Dibuje el modelo entidad–relación completo en notación de Peter Chen. (10 puntos)
+
+b. Subraye los atributos clave y marque explícitamente los atributos compuestos, multivaluados y derivados. (2 puntos)
+
+c. Indique la cardinalidad y la participación de todas las relaciones. (3 puntos)
+
+d. Identifique todas las entidades débiles del modelo, señale de qué entidad depende cada una en identificación y cuál es su clave parcial. Explique en dos líneas qué ocurre con la identificación de SILLA, cuya entidad propietaria es a su vez débil. (3 puntos)
+
+e. Indique los nombres de rol de las dos relaciones recursivas del modelo. (1 punto)
+
+f. Justifique en dos líneas por qué la regla 11 exige una agregación y no una relación ternaria entre CLIENTE, FUNCIÓN y MEDIO DE PAGO. (1 punto)`,
+    enunciado: undefined as string | undefined,
+    imagen: img('PUNTO_1_PARCIAL.png'),
+    link: DRIVE_2,
+  },
   ...['A', 'B', 'C', 'D', 'E', 'F'].map((letra, i) => ({
-    id: i + 3,
+    id: i + 4,
     numero: 'Punto 2 · Parcial',
     titulo: `Punto 2 (${letra})`,
     resumen: `Reducción a tablas correspondiente al punto 2, literal ${letra} del parcial.`,
@@ -146,7 +194,7 @@ const temas = [
 
         <div class="mt-6 rounded-2xl border border-violet-500/20 bg-slate-950 p-6">
           <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">Descripción</p>
-          <p id="detalle-descripcion" class="mt-4 text-lg leading-8 text-slate-400">Descripción detallada...</p>
+          <p id="detalle-descripcion" class="mt-4 whitespace-pre-line text-lg leading-8 text-slate-400">Descripción detallada...</p>
         </div>
       </div>
 
@@ -159,7 +207,7 @@ const temas = [
 
       <div class="mt-10">
         <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-violet-400">Desarrollo — Reducción a tablas</p>
-        <div class="overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-2xl">
+        <div id="detalle-imagen-wrap" class="overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-2xl">
           <img id="detalle-imagen" src="" alt="Evidencia" data-fallback class="max-h-[900px] w-full object-contain" />
         </div>
       </div>
@@ -185,8 +233,6 @@ const temas = [
     const detalleTitulo = $('#detalle-titulo');
     const detalleDescripcion = $('#detalle-descripcion');
     const enunciadoContainer = $('#detalle-enunciado-container');
-    const enunciadoImagen = $('#detalle-enunciado-imagen');
-    const detalleImagen = $('#detalle-imagen');
     const linkContainer = $('#detalle-link-container');
     const detalleLink = $('#detalle-link');
 
@@ -204,14 +250,13 @@ const temas = [
     }
     document.querySelectorAll('img[data-fallback]').forEach(activarFallback);
 
-    // Para reutilizar <img> en el detalle si fue reemplazada por el aviso
+    // Recrea el <img> en su contenedor si fue reemplazado por el aviso de error
     function asegurarImg(idElemento, contenedorSelector) {
       let el = document.getElementById(idElemento);
       if (!el) {
         const contenedor = document.querySelector(contenedorSelector);
         el = document.createElement('img');
         el.id = idElemento;
-        el.dataset.fallback = '';
         el.className = 'max-h-[900px] w-full object-contain';
         contenedor.innerHTML = '';
         contenedor.appendChild(el);
@@ -239,7 +284,7 @@ const temas = [
           enunciadoContainer.classList.add('hidden');
         }
 
-        const imgDet = asegurarImg('detalle-imagen', '#detalle-imagen-wrap, #detalle .mt-10:not(#detalle-enunciado-container) > div');
+        const imgDet = asegurarImg('detalle-imagen', '#detalle-imagen-wrap');
         delete imgDet.dataset.failed;
         imgDet.src = e.imagen;
         imgDet.alt = e.titulo;
