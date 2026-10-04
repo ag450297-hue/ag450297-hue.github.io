@@ -1,20 +1,536 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../../components/Container.astro';
+
+// Cada ejercicio tiene "pasos" (Ninguna FN, 1FN, 2FN, 3FN) y cada paso tiene una o varias tablas.
+const ejercicios = [
+  {
+    id: 1,
+    numero: 'Taller · Punto 1',
+    titulo: 'Punto 1 — Taller',
+    resumen: 'Normalización de la relación de pacientes, médicos y hospitalización hasta 3FN.',
+    enunciado:
+      '(ID_Paciente, Nombre_Paciente, Especialidad_Tratamiento, Cama_Asignada, Ala_Hospital, Médico_Tratante, Teléfono_Médico, Email_Médico, Fecha_Ingreso, Fecha_Alta)',
+    pasos: [
+      {
+        titulo: 'Ninguna FN',
+        tablas: [
+          {
+            columnas: ['Id_Paciente', 'Nombre_Paciente', 'Especialidad_Tratamiento', 'Cama_Asignada', 'Ala_Hospital', 'Medico_Tratante', 'Telefono_Medico', 'Email_Medico', 'Fecha_Ingreso', 'Fecha_Alta'],
+            filas: [
+              ['1010', 'Juan', 'Quimioterapia', '13', 'A', 'Sharick, Sharon', '3118978978, 3456785432', 'sha@un.com, sha@fr.com', '10/03/2026', '20/04/2026'],
+              ['1020', 'Daniel', 'Fracturas', '23', 'D', 'Sharon', '3456785432', 'sha@fr.com', '10/04/2022', '12/08/2024'],
+              ['1010', 'Juan', 'Quimioterapia', '17', 'A', 'Sharick', '3118978978', 'sha@un.com', '07/07/2026', '07/08/2026'],
+            ],
+          },
+        ],
+      },
+      {
+        titulo: '1FN',
+        tablas: [
+          {
+            columnas: ['Id_Paciente', 'Nombre_Paciente', 'Especialidad_Tratamiento', 'Cama_Asignada', 'Ala_Hospital', 'Medico_Tratante', 'Telefono_Medico', 'Email_Medico', 'Fecha_Ingreso', 'Fecha_Alta'],
+            filas: [
+              ['1010', 'Juan', 'Quimioterapia', '13', 'A', 'Sharick', '3118978978', 'sha@un.com', '10/03/2026', '20/04/2026'],
+              ['1010', 'Juan', 'Quimioterapia', '13', 'A', 'Sharon', '3456785432', 'sha@fr.com', '10/03/2026', '20/04/2026'],
+              ['1020', 'Daniel', 'Fracturas', '23', 'D', 'Sharon', '3456785432', 'sha@fr.com', '10/04/2022', '12/08/2024'],
+              ['1010', 'Juan', 'Quimioterapia', '17', 'A', 'Sharick', '3118978978', 'sha@un.com', '07/07/2026', '07/08/2026'],
+            ],
+          },
+        ],
+      },
+      {
+        titulo: '2FN',
+        tablas: [
+          {
+            nombre: 'PACIENTE',
+            columnas: ['Id_Paciente', 'Nombre_Paciente'],
+            filas: [
+              ['1010', 'Juan'],
+              ['1020', 'Daniel'],
+            ],
+          },
+          {
+            nombre: 'MEDICO',
+            columnas: ['Email_Medico', 'Medico_Tratante', 'Telefono_Medico'],
+            filas: [
+              ['sha@un.com', 'Sharick', '3118978978'],
+              ['sha@fr.com', 'Sharon', '3456785432'],
+            ],
+          },
+          {
+            nombre: 'PAC_MED',
+            columnas: ['Id_Paciente', 'Fecha_Ingreso', 'Email_Medico'],
+            filas: [
+              ['1010', '10/03/2026', 'sha@un.com'],
+              ['1010', '10/03/2026', 'sha@fr.com'],
+              ['1020', '10/04/2022', 'sha@fr.com'],
+              ['1010', '07/07/2026', 'sha@un.com'],
+            ],
+          },
+          {
+            nombre: 'HOSPITALIZACION',
+            columnas: ['Fecha_Ingreso', 'Id_Paciente', 'Fecha_Alta', 'Especialidad_Tratamiento', 'Cama_Asignada', 'Ala_Hospital'],
+            filas: [
+              ['10/03/2026', '1010', '20/04/2026', 'Quimioterapia', '13', 'A'],
+              ['10/03/2026', '1010', '20/04/2026', 'Quimioterapia', '13', 'A'],
+              ['10/04/2022', '1020', '12/08/2024', 'Fracturas', '17', 'D'],
+              ['07/07/2026', '1010', '07/08/2026', 'Quimioterapia', '23', 'A'],
+            ],
+          },
+        ],
+      },
+      {
+        titulo: '3FN',
+        tablas: [
+          {
+            nombre: 'PACIENTE',
+            columnas: ['Id_Paciente', 'Nombre_Paciente'],
+            filas: [
+              ['1010', 'Juan'],
+              ['1020', 'Daniel'],
+            ],
+          },
+          {
+            nombre: 'MEDICO',
+            columnas: ['Email_Medico', 'Medico_Tratante', 'Telefono_Medico'],
+            filas: [
+              ['sha@un.com', 'Sharick', '3118978978'],
+              ['sha@fr.com', 'Sharon', '3456785432'],
+            ],
+          },
+          {
+            nombre: 'PAC_MED',
+            columnas: ['Id_Paciente', 'Fecha_Ingreso', 'Email_Medico'],
+            filas: [
+              ['1010', '10/03/2026', 'sha@un.com'],
+              ['1010', '10/03/2026', 'sha@fr.com'],
+              ['1020', '10/04/2022', 'sha@fr.com'],
+              ['1010', '07/07/2026', 'sha@un.com'],
+            ],
+          },
+          {
+            nombre: 'ESPECIALIDAD',
+            columnas: ['Especialidad_Tratamiento', 'Ala_Hospital'],
+            filas: [
+              ['Quimioterapia', 'A'],
+              ['Fracturas', 'D'],
+            ],
+          },
+          {
+            nombre: 'HOSPITALIZACION',
+            columnas: ['Fecha_Ingreso (PK)', 'Id_Paciente', 'Fecha_Alta', 'Especialidad_Tratamiento', 'Cama_Asignada'],
+            filas: [
+              ['10/03/2026', '1010', '20/04/2026', 'Quimioterapia', '13'],
+              ['10/04/2022', '1020', '12/08/2024', 'Fracturas', '17'],
+              ['07/07/2026', '1010', '07/08/2026', 'Quimioterapia', '23'],
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    numero: 'Taller · Punto 2',
+    titulo: 'Punto 2 — Taller',
+    resumen: 'Normalización de pedidos, clientes, productos y vendedores hasta 3FN, con análisis de dependencias.',
+    enunciado:
+      '(ID_Pedido, Fecha_Pedido, ID_Cliente, Nombre_Cliente, Sector_Cliente, ID_Producto, Nombre_Producto, Precio_Producto, Cantidad_Solicitada, ID_Vendedor, Nombre_Vendedor, Comisión_Vendedor)',
+    pasos: [
+      {
+        titulo: 'Ninguna FN',
+        tablas: [
+          {
+            columnas: ['ID_Pedido', 'Fecha_Pedido', 'ID_Cliente', 'Nombre_Cliente', 'Sector_Cliente', 'ID_Producto', 'Nombre_Producto', 'Precio_Producto', 'Cantidad_Solicitada', 'ID_Vendedor', 'Nombre_Vendedor', 'Comisión_Vendedor'],
+            filas: [
+              ['2000', '02/07/2023', '1000', 'Sandra', 'Restaurantes', '3000, 3001, 3002', 'Aguacate, Tomate, Cebolla', '$5.000, $3.000, $2.500', '100, 50, 30', '4000', 'María', '5%'],
+              ['2001', '15/07/2023', '1000', 'Sandra', 'Restaurantes', '3000', 'Aguacate', '$5.000', '80', '4001', 'Carlos', '4%'],
+              ['2002', '20/07/2023', '1001', 'Jorge', 'Hotelería', '3000, 3002', 'Aguacate, Cebolla', '$5.000, $2.500', '200, 150', '4000', 'María', '5%'],
+              ['2003', '03/08/2023', '1002', 'Lucía', 'Educación', '3001, 3002', 'Tomate, Cebolla', '$3.000, $2.500', '120, 60', '4001', 'Carlos', '4%'],
+              ['2004', '10/08/2023', '1000', 'Sandra', 'Restaurantes', '3000', 'Aguacate', '$5.000', '90', '4000', 'María', '5%'],
+              ['2005', '18/08/2023', '1001', 'Jorge', 'Hotelería', '3001', 'Tomate', '$3.000', '75', '4001', 'Carlos', '4%'],
+            ],
+          },
+        ],
+      },
+      {
+        titulo: '1FN',
+        tablas: [
+          {
+            columnas: ['ID_Pedido', 'Fecha_Pedido', 'ID_Cliente', 'Nombre_Cliente', 'Sector_Cliente', 'ID_Producto', 'Nombre_Producto', 'Precio_Producto', 'Cantidad_Solicitada', 'ID_Vendedor', 'Nombre_Vendedor', 'Comisión_Vendedor'],
+            filas: [
+              ['2000', '02/07/2023', '1000', 'Sandra', 'Restaurantes', '3000', 'Aguacate', '$5.000', '100', '4000', 'María', '5%'],
+              ['2000', '02/07/2023', '1000', 'Sandra', 'Restaurantes', '3001', 'Tomate', '$3.000', '50', '4000', 'María', '5%'],
+              ['2000', '02/07/2023', '1000', 'Sandra', 'Restaurantes', '3002', 'Cebolla', '$2.500', '30', '4000', 'María', '5%'],
+              ['2001', '15/07/2023', '1000', 'Sandra', 'Restaurantes', '3000', 'Aguacate', '$5.000', '80', '4001', 'Carlos', '4%'],
+              ['2002', '20/07/2023', '1001', 'Jorge', 'Hotelería', '3000', 'Aguacate', '$5.000', '200', '4000', 'María', '5%'],
+              ['2002', '20/07/2023', '1001', 'Jorge', 'Hotelería', '3002', 'Cebolla', '$2.500', '150', '4000', 'María', '5%'],
+              ['2003', '03/08/2023', '1002', 'Lucía', 'Educación', '3001', 'Tomate', '$3.000', '120', '4001', 'Carlos', '4%'],
+              ['2003', '03/08/2023', '1002', 'Lucía', 'Educación', '3002', 'Cebolla', '$2.500', '60', '4001', 'Carlos', '4%'],
+              ['2004', '10/08/2023', '1000', 'Sandra', 'Restaurantes', '3000', 'Aguacate', '$5.000', '90', '4000', 'María', '5%'],
+              ['2005', '18/08/2023', '1001', 'Jorge', 'Hotelería', '3001', 'Tomate', '$3.000', '75', '4001', 'Carlos', '4%'],
+            ],
+          },
+          {
+            nombre: 'DEPENDENCIAS',
+            completo: true,
+            columnas: ['Dependencia funcional', 'Tipo', 'Por qué'],
+            filas: [
+              ['{ID_Pedido, ID_Producto} → Cantidad_Solicitada', 'Completa', 'La cantidad necesita el pedido y el producto'],
+              ['ID_Pedido → Fecha_Pedido, ID_Cliente, ID_Vendedor', 'Parcial', 'Depende de una parte de la clave: el pedido tiene una fecha, un cliente y un vendedor, sin importar el producto'],
+              ['ID_Producto → Nombre_Producto, Precio_Producto', 'Parcial', 'Depende de la otra parte de la clave: el nombre y el precio de catálogo son del producto, sin importar el pedido'],
+              ['ID_Cliente → Nombre_Cliente, Sector_Cliente', 'Transitiva', 'ID_Pedido → ID_Cliente → Nombre_Cliente, Sector_Cliente'],
+              ['ID_Vendedor → Nombre_Vendedor, Comisión_Vendedor', 'Transitiva', 'ID_Pedido → ID_Vendedor → Nombre_Vendedor, Comisión_Vendedor'],
+            ],
+          },
+        ],
+      },
+      {
+        titulo: '2FN',
+        tablas: [
+          {
+            nombre: 'PEDIDO',
+            columnas: ['ID_Pedido (PK)', 'Fecha_Pedido', 'ID_Cliente', 'Nombre_Cliente', 'Sector_Cliente', 'ID_Vendedor', 'Nombre_Vendedor', 'Comisión_Vendedor'],
+            filas: [
+              ['2000', '02/07/2023', '1000', 'Sandra', 'Restaurantes', '4000', 'María', '5%'],
+              ['2001', '15/07/2023', '1000', 'Sandra', 'Restaurantes', '4001', 'Carlos', '4%'],
+              ['2002', '20/07/2023', '1001', 'Jorge', 'Hotelería', '4000', 'María', '5%'],
+              ['2003', '03/08/2023', '1002', 'Lucía', 'Educación', '4001', 'Carlos', '4%'],
+              ['2004', '10/08/2023', '1000', 'Sandra', 'Restaurantes', '4000', 'María', '5%'],
+              ['2005', '18/08/2023', '1001', 'Jorge', 'Hotelería', '4001', 'Carlos', '4%'],
+            ],
+          },
+          {
+            nombre: 'PRODUCTO',
+            columnas: ['ID_Producto (PK)', 'Nombre_Producto', 'Precio_Producto'],
+            filas: [
+              ['3000', 'Aguacate', '$5.000'],
+              ['3001', 'Tomate', '$3.000'],
+              ['3002', 'Cebolla', '$2.500'],
+            ],
+          },
+          {
+            nombre: 'PEDIDO_PRODUCTO',
+            columnas: ['ID_Pedido (PK, FK)', 'ID_Producto (PK, FK)', 'Cantidad_Solicitada'],
+            filas: [
+              ['2000', '3000', '100'],
+              ['2000', '3001', '50'],
+              ['2000', '3002', '30'],
+              ['2001', '3000', '80'],
+              ['2002', '3000', '200'],
+              ['2002', '3002', '150'],
+              ['2003', '3001', '120'],
+              ['2003', '3002', '60'],
+              ['2004', '3000', '90'],
+              ['2005', '3001', '75'],
+            ],
+          },
+        ],
+      },
+      {
+        titulo: '3FN',
+        tablas: [
+          {
+            nombre: 'CLIENTE',
+            columnas: ['ID_Cliente (PK)', 'Nombre_Cliente', 'Sector_Cliente'],
+            filas: [
+              ['1000', 'Sandra', 'Restaurantes'],
+              ['1001', 'Jorge', 'Hotelería'],
+              ['1002', 'Lucía', 'Educación'],
+            ],
+          },
+          {
+            nombre: 'VENDEDOR',
+            columnas: ['ID_Vendedor (PK)', 'Nombre_Vendedor', 'Comisión_Vendedor'],
+            filas: [
+              ['4000', 'María', '5%'],
+              ['4001', 'Carlos', '4%'],
+            ],
+          },
+          {
+            nombre: 'PRODUCTO',
+            columnas: ['ID_Producto (PK)', 'Nombre_Producto', 'Precio_Producto'],
+            filas: [
+              ['3000', 'Aguacate', '$5.000'],
+              ['3001', 'Tomate', '$3.000'],
+              ['3002', 'Cebolla', '$2.500'],
+            ],
+          },
+          {
+            nombre: 'PEDIDO',
+            columnas: ['ID_Pedido (PK)', 'Fecha_Pedido', 'ID_Cliente (FK)', 'ID_Vendedor (FK)'],
+            filas: [
+              ['2000', '02/07/2023', '1000', '4000'],
+              ['2001', '15/07/2023', '1000', '4001'],
+              ['2002', '20/07/2023', '1001', '4000'],
+              ['2003', '03/08/2023', '1002', '4001'],
+              ['2004', '10/08/2023', '1000', '4000'],
+              ['2005', '18/08/2023', '1001', '4001'],
+            ],
+          },
+          {
+            nombre: 'PEDIDO_PRODUCTO',
+            columnas: ['ID_Pedido (FK)', 'ID_Producto (FK)', 'Cantidad_Solicitada'],
+            filas: [
+              ['2000', '3000', '100'],
+              ['2000', '3001', '50'],
+              ['2000', '3002', '30'],
+              ['2001', '3000', '80'],
+              ['2002', '3000', '200'],
+              ['2002', '3002', '150'],
+              ['2003', '3001', '120'],
+              ['2003', '3002', '60'],
+              ['2004', '3000', '90'],
+              ['2005', '3001', '75'],
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    numero: 'Taller · Punto 3',
+    titulo: 'Punto 3 — Taller',
+    resumen: 'Atributos multivaluados independientes: competencias técnicas e idiomas de un empleado.',
+    enunciado:
+      'EMPLEADO (ID_Empleado, Nombre_Empleado, Competencias_Técnicas, Idiomas)\n\nUn empleado tiene VARIAS competencias (Python, Java, SQL) Y VARIOS idiomas (Español, Inglés, Francés) INDEPENDIENTES.',
+    pasos: [
+      {
+        titulo: '0FN',
+        tablas: [
+          {
+            columnas: ['ID_Empleado', 'Nombre_Empleado', 'Competencias_Tecnicas', 'Idiomas'],
+            filas: [
+              ['1', 'Daniel', 'Python,Java,SQL', 'Español,Ingles,Francés'],
+              ['2', 'Andres', 'Python,Java,SQL', 'Español,Ingles,Francés'],
+              ['3', 'Angelica', 'Python,Java,SQL', 'Español,Ingles,Francés'],
+            ],
+          },
+        ],
+      },
+      {
+        titulo: '1FN',
+        tablas: [
+          {
+            columnas: ['ID_Empleado', 'Nombre_Empleado', 'Competencias_Tecnicas', 'Idiomas'],
+            filas: [
+              ['1', 'Daniel', 'Python', 'Español'],
+              ['1', 'Daniel', 'Java', 'Ingles'],
+              ['1', 'Daniel', 'SQL', 'Francés'],
+              ['2', 'Andres', 'Python', 'Español'],
+              ['2', 'Andres', 'Java', 'Ingles'],
+              ['2', 'Andres', 'SQL', 'Francés'],
+              ['3', 'Angelica', 'Python', 'Español'],
+              ['3', 'Angelica', 'Java', 'Ingles'],
+              ['3', 'Angelica', 'SQL', 'Francés'],
+            ],
+          },
+          {
+            nombre: 'EMPLEADO',
+            columnas: ['ID_Empleado', 'Nombre_Empleado'],
+            filas: [
+              ['1', 'Daniel'],
+              ['2', 'Andres'],
+              ['3', 'Angelica'],
+            ],
+          },
+          {
+            nombre: 'EMPLEADO_IDIOMA',
+            columnas: ['ID_Empleado (FK)', 'Idiomas'],
+            filas: [
+              ['1', 'Español'],
+              ['1', 'Ingles'],
+              ['1', 'Francés'],
+              ['2', 'Español'],
+              ['2', 'Ingles'],
+              ['2', 'Francés'],
+              ['3', 'Español'],
+              ['3', 'Ingles'],
+              ['3', 'Francés'],
+            ],
+          },
+          {
+            nombre: 'EMPLEADO_COMPETENCIA',
+            columnas: ['ID_Empleado (FK)', 'Competencias_Tecnicas'],
+            filas: [
+              ['1', 'Python'],
+              ['1', 'Java'],
+              ['1', 'SQL'],
+              ['2', 'Python'],
+              ['2', 'Java'],
+              ['2', 'SQL'],
+              ['3', 'Python'],
+              ['3', 'Java'],
+              ['3', 'SQL'],
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+// Clases completas (Tailwind no detecta clases armadas dinámicamente)
+const temas = [
+  {
+    card: 'border-violet-500/20 shadow-violet-950/20 hover:border-violet-500/60',
+    badge: 'border-violet-400/30 text-violet-300',
+    eyebrow: 'text-violet-400',
+    box: 'border-violet-500/20',
+    ver: 'border-violet-500/30 bg-violet-500/10 text-violet-300 hover:bg-violet-500',
+    portada: 'from-violet-900/40 via-slate-900 to-slate-950 text-violet-300/80',
+  },
+  {
+    card: 'border-blue-500/20 shadow-blue-950/20 hover:border-blue-500/60',
+    badge: 'border-blue-400/30 text-blue-300',
+    eyebrow: 'text-blue-400',
+    box: 'border-blue-500/20',
+    ver: 'border-blue-500/30 bg-blue-500/10 text-blue-300 hover:bg-blue-500',
+    portada: 'from-blue-900/40 via-slate-900 to-slate-950 text-blue-300/80',
+  },
+];
 ---
 
-<BaseLayout title="Normalización — Evidencias">
-
+<BaseLayout title="Evidencias - Normalización (Taller)">
   <Container class="py-16 sm:py-24">
 
-    <h1 class="text-4xl font-semibold text-fg">
-      Normalización
-    </h1>
+    <!-- ENCABEZADO PRINCIPAL -->
+    <div class="mb-12 max-w-4xl">
+      <div class="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm text-violet-300">
+        <span class="h-2 w-2 rounded-full bg-violet-400"></span>
+        Evidencias académicas
+      </div>
 
-    <p class="mt-4 text-fg-2">
-      Aquí se agregarán las evidencias de normalización.
-    </p>
+      <h1 class="mt-6 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+        Normalización
+      </h1>
+
+      <p class="mt-4 text-lg leading-8 text-slate-400">
+        Evidencias del taller de normalización: paso a paso desde la relación sin normalizar hasta la tercera forma normal, con las tablas resultantes de cada etapa.
+      </p>
+    </div>
+
+    <!-- GALERÍA -->
+    <div id="ejemplos">
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {ejercicios.map((e, i) => {
+          const t = temas[i % 2];
+          return (
+            <article class={`group flex flex-col justify-between overflow-hidden rounded-2xl border bg-slate-950 shadow-xl transition-all duration-300 hover:-translate-y-2 ${t.card}`}>
+              <div>
+                <div class={`relative flex aspect-video items-center justify-center overflow-hidden bg-gradient-to-br ${t.portada}`}>
+                  <div class="text-center">
+                    <p class="text-5xl font-bold tracking-tight">{e.pasos.map((p) => p.titulo).includes('3FN') ? '3FN' : '1FN'}</p>
+                    <p class="mt-2 text-xs font-semibold uppercase tracking-widest">{e.pasos.length} etapas</p>
+                  </div>
+                  <div class={`absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border bg-black/60 text-sm font-bold backdrop-blur-md ${t.badge}`}>
+                    {String(e.id).padStart(2, '0')}
+                  </div>
+                </div>
+                <div class="p-6">
+                  <p class={`text-xs font-semibold uppercase tracking-widest ${t.eyebrow}`}>{e.numero}</p>
+                  <h2 class="mt-2 text-xl font-semibold text-white">{e.titulo}</h2>
+                  <div class={`mt-4 overflow-hidden rounded-xl border bg-slate-900 p-4 ${t.box}`}>
+                    <p class="text-sm leading-6 text-slate-300">{e.resumen}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 p-6 pt-0">
+                <button
+                  type="button"
+                  data-ejercicio={e.id}
+                  class={`inline-flex w-full items-center justify-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:text-white ${t.ver}`}
+                >
+                  Ver detalle <span class="text-lg">→</span>
+                </button>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+
+    <!-- VISTAS DE DETALLE (una por ejercicio) -->
+    {ejercicios.map((e) => (
+      <section id={`detalle-${e.id}`} data-detalle class="mt-12 hidden">
+        <button type="button" data-volver class="mb-8 inline-flex items-center gap-2 rounded-xl border border-violet-500/30 bg-violet-500/10 px-5 py-2.5 text-sm font-medium text-violet-300 transition-all duration-300 hover:bg-violet-500 hover:text-white">
+          ← Volver a evidencias
+        </button>
+
+        <div class="max-w-4xl">
+          <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">{e.numero}</p>
+          <h2 class="mt-3 text-4xl font-semibold tracking-tight text-white sm:text-5xl">{e.titulo}</h2>
+
+          <div class="mt-6 rounded-2xl border border-violet-500/20 bg-slate-950 p-6">
+            <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">Enunciado</p>
+            <p class="mt-4 whitespace-pre-line text-lg leading-8 text-slate-400">{e.enunciado}</p>
+          </div>
+        </div>
+
+        {e.pasos.map((paso) => (
+          <div class="mt-10">
+            <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-violet-400">{paso.titulo}</p>
+            <div class="rounded-2xl border border-violet-500/20 bg-slate-950 p-5 shadow-2xl sm:p-6">
+              <div class="flex flex-wrap items-start gap-8">
+                {paso.tablas.map((tabla) => (
+                  <div class={tabla.completo ? 'w-full' : 'max-w-full'}>
+                    {tabla.nombre && (
+                      <p class="mb-2 text-sm font-semibold tracking-wide text-violet-300">{tabla.nombre}</p>
+                    )}
+                    <div class="max-w-full overflow-x-auto rounded-xl border border-violet-500/20">
+                      <table class="w-full border-collapse text-left text-sm">
+                        <thead>
+                          <tr class="bg-violet-500/10">
+                            {tabla.columnas.map((c) => (
+                              <th class="whitespace-nowrap border-b border-violet-500/20 px-4 py-2.5 font-semibold text-violet-200">{c}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {tabla.filas.map((fila) => (
+                            <tr class="border-b border-slate-800 bg-slate-900 last:border-b-0 hover:bg-slate-800/70">
+                              {fila.map((celda) => (
+                                <td class={`px-4 py-2 text-slate-300 ${tabla.completo ? '' : 'whitespace-nowrap'}`}>{celda}</td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+    ))}
 
   </Container>
 
+  <script>
+    const ejemplos = document.querySelector('#ejemplos');
+    const detalles = document.querySelectorAll('[data-detalle]');
+
+    document.querySelectorAll('[data-ejercicio]').forEach((boton) => {
+      boton.addEventListener('click', () => {
+        const seccion = document.querySelector('#detalle-' + boton.getAttribute('data-ejercicio'));
+        if (!seccion) return;
+        detalles.forEach((d) => d.classList.add('hidden'));
+        ejemplos.classList.add('hidden');
+        seccion.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    document.querySelectorAll('[data-volver]').forEach((boton) => {
+      boton.addEventListener('click', () => {
+        detalles.forEach((d) => d.classList.add('hidden'));
+        ejemplos.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
 </BaseLayout>
