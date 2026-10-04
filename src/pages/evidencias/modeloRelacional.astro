@@ -78,8 +78,56 @@ f. Justifique en dos líneas por qué la regla 11 exige una agregación y no una
     imagen: img('PUNTO_1_PARCIAL.png'),
     link: DRIVE_2,
   },
-  ...['A', 'B', 'C', 'D', 'E', 'F'].map((letra, i) => ({
-    id: i + 4,
+  {
+    id: 4,
+    numero: 'Punto 2 · Parcial',
+    titulo: 'Punto 2 (A)',
+    resumen: 'Transformación de los atributos de SEDE y CLIENTE a tablas relacionales.',
+    descripcion: `Punto 2 (A)
+
+Transforme los atributos de SEDE y de CLIENTE. Escriba las tablas resultantes con su clave primaria y sus claves foráneas, y explique en una línea por qué el atributo derivado no genera columna.`,
+    enunciado: undefined as string | undefined,
+    imagen: img('PUNTO2(A).png'),
+    link: DRIVE_2,
+  },
+  {
+    id: 5,
+    numero: 'Punto 2 · Parcial',
+    titulo: 'Punto 2 (B)',
+    resumen: 'Transformación de las entidades débiles SALA, SILLA y FUNCIÓN.',
+    descripcion: `Punto 2 (B)
+
+Transforme las entidades débiles SALA, SILLA y FUNCION. Escriba las tres tablas indicando con precisión la clave primaria de cada una. Explique en dos líneas cómo se construye la clave primaria de SILLA, dado que su entidad propietaria es a su vez débil.`,
+    enunciado: undefined as string | undefined,
+    imagen: img('PUNTO2(B).png'),
+    link: DRIVE_2,
+  },
+  {
+    id: 6,
+    numero: 'Punto 2 · Parcial',
+    titulo: 'Punto 2 (C)',
+    resumen: 'Transformación de la relación COMPRA con su clave primaria y foráneas.',
+    descripcion: `Punto 2 (C)
+
+Transforme la relación COMPRA. Escriba la tabla resultante, señale su clave primaria y sus claves foráneas, e indique dónde quedan los atributos cantidad_boletas y canal.`,
+    enunciado: undefined as string | undefined,
+    imagen: img('PUNTO2(C).png'),
+    link: DRIVE_2,
+  },
+  {
+    id: 7,
+    numero: 'Punto 2 · Parcial',
+    titulo: 'Punto 2 (D)',
+    resumen: 'Transformación de la relación ternaria ENTREGA (M:N:N).',
+    descripcion: `Punto 2 (D)
+
+Transforme la relación ternaria ENTREGA. Escriba la tabla resultante y justifique por qué, siendo la cardinalidad M:N:N, la clave primaria debe incluir los identificadores de las tres entidades. Indique qué cambiaría en esa clave si la cadena exigiera que para una sede y un producto dados hubiera un único proveedor.`,
+    enunciado: undefined as string | undefined,
+    imagen: img('PUNTO2(D).png'),
+    link: DRIVE_2,
+  },
+  ...['E', 'F'].map((letra, i) => ({
+    id: i + 8,
     numero: 'Punto 2 · Parcial',
     titulo: `Punto 2 (${letra})`,
     resumen: `Reducción a tablas correspondiente al punto 2, literal ${letra} del parcial.`,
