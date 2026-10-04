@@ -2,7 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../../components/Container.astro';
 
+const LINK_XLSX = 'https://unbosqueeduco-my.sharepoint.com/:x:/g/personal/acpedrazar_unbosque_edu_co/IQCj30H5siZpRrnt_DDKlCmHAZfhWZ1zKXZThhM_NTbY4ro?e=tLN9ZH';
+const LINK_PRACTICA = 'https://unbosqueeduco-my.sharepoint.com/:x:/g/personal/amagomezc_unbosque_edu_co/IQAs5_FuN6YiQL2fOMxjam4pAR148uBpfoskRVVJhkJKJNY?e=y3lmip';
+
 // Cada ejercicio tiene "pasos" (Ninguna FN, 1FN, 2FN, 3FN) y cada paso tiene una o varias tablas.
+// Un paso puede tener "nota" (texto explicativo) y no tener tablas.
 const ejercicios = [
   {
     id: 1,
@@ -11,6 +15,7 @@ const ejercicios = [
     resumen: 'Normalización de la relación de pacientes, médicos y hospitalización hasta 3FN.',
     enunciado:
       '(ID_Paciente, Nombre_Paciente, Especialidad_Tratamiento, Cama_Asignada, Ala_Hospital, Médico_Tratante, Teléfono_Médico, Email_Médico, Fecha_Ingreso, Fecha_Alta)',
+    link: LINK_XLSX,
     pasos: [
       {
         titulo: 'Ninguna FN',
@@ -137,6 +142,7 @@ const ejercicios = [
     resumen: 'Normalización de pedidos, clientes, productos y vendedores hasta 3FN, con análisis de dependencias.',
     enunciado:
       '(ID_Pedido, Fecha_Pedido, ID_Cliente, Nombre_Cliente, Sector_Cliente, ID_Producto, Nombre_Producto, Precio_Producto, Cantidad_Solicitada, ID_Vendedor, Nombre_Vendedor, Comisión_Vendedor)',
+    link: LINK_XLSX,
     pasos: [
       {
         titulo: 'Ninguna FN',
@@ -296,6 +302,7 @@ const ejercicios = [
     resumen: 'Atributos multivaluados independientes: competencias técnicas e idiomas de un empleado.',
     enunciado:
       'EMPLEADO (ID_Empleado, Nombre_Empleado, Competencias_Técnicas, Idiomas)\n\nUn empleado tiene VARIAS competencias (Python, Java, SQL) Y VARIOS idiomas (Español, Inglés, Francés) INDEPENDIENTES.',
+    link: LINK_XLSX,
     pasos: [
       {
         titulo: '0FN',
@@ -370,6 +377,120 @@ const ejercicios = [
       },
     ],
   },
+  {
+    id: 4,
+    numero: 'Comp · Práctica',
+    titulo: 'Comp Práctica',
+    resumen: 'Proyectos y empleados: identificación de la 1FN y transformación a 2FN y 3FN.',
+    enunciado:
+      '(cod_proyecto, nom_proyecto, cod_empleado, nom_empleado, profesion, vlr_hora, hrs_asignadas)',
+    link: LINK_PRACTICA,
+    pasos: [
+      {
+        titulo: 'Resultado',
+        tablas: [
+          {
+            columnas: ['cod_proyecto', 'nom_proyecto', 'cod_empleado', 'nom_empleado', 'profesion', 'vlr_hora', 'hrs_asignadas'],
+            filas: [
+              ['1010', 'ERP', '2010', 'Sandra', 'Ingeniero', '100000', '20'],
+              ['1010', 'ERP', '2020', 'Claudia', 'Analista', '50000', '10'],
+              ['1010', 'ERP', '2030', 'Yamile', 'Programador', '20000', '10'],
+              ['1020', 'CRM', '2010', 'Sandra', 'Ingeniero', '100000', '10'],
+              ['1020', 'CRM', '2020', 'Claudia', 'Analista', '50000', '15'],
+              ['1020', 'CRM', '2030', 'Yamile', 'Programador', '20000', '20'],
+              ['1030', 'BI', '2010', 'Sandra', 'Ingeniero', '100000', '10'],
+              ['1030', 'BI', '2020', 'Claudia', 'Analista', '50000', '15'],
+              ['1030', 'BI', '2030', 'Yamile', 'Programador', '20000', '10'],
+              ['1010', 'ERP', '2040', 'Andrea', 'Ingeniero', '100000', '40'],
+            ],
+          },
+        ],
+      },
+      {
+        titulo: 'a. Forma normal de la tabla',
+        nota: 'La tabla se encuentra en 1FN, porque todos los atributos son atómicos. No hay ninguno que sea una lista o separable.',
+        tablas: [],
+      },
+      {
+        titulo: 'b.1 Transformación a 2FN',
+        tablas: [
+          {
+            nombre: 'PROYECTO',
+            columnas: ['cod_proyecto', 'nom_proyecto'],
+            filas: [
+              ['1010', 'ERP'],
+              ['1020', 'CRM'],
+              ['1030', 'BI'],
+            ],
+          },
+          {
+            nombre: 'EMPLEADO',
+            columnas: ['cod_empleado', 'nom_empleado', 'profesion', 'vlr_hora'],
+            filas: [
+              ['2010', 'Sandra', 'Ingeniero', '100000'],
+              ['2020', 'Claudia', 'Analista', '50000'],
+              ['2030', 'Yamile', 'Programador', '20000'],
+              ['2040', 'Andrea', 'Ingeniero', '100000'],
+            ],
+          },
+          {
+            nombre: 'PROYECTO_EMPLEADO',
+            columnas: ['cod_proyecto', 'cod_empleado', 'hrs_asignadas'],
+            filas: [
+              ['1010', '2010', '20'],
+              ['1020', '2020', '10'],
+              ['1030', '2030', '15'],
+              ['1010', '2040', '40'],
+            ],
+          },
+        ],
+      },
+      {
+        titulo: 'b.2 Transformación a 3FN',
+        tablas: [
+          {
+            nombre: 'PROYECTO',
+            columnas: ['cod_proyecto', 'nom_proyecto'],
+            filas: [
+              ['1010', 'ERP'],
+              ['1020', 'CRM'],
+              ['1030', 'BI'],
+            ],
+          },
+          {
+            nombre: 'EMPLEADO',
+            columnas: ['cod_empleado', 'nom_empleado'],
+            filas: [
+              ['2010', 'Sandra'],
+              ['2020', 'Claudia'],
+              ['2030', 'Yamile'],
+              ['2040', 'Andrea'],
+            ],
+          },
+          {
+            nombre: 'PROYECTO_EMPLEADO',
+            columnas: ['cod_proyecto', 'cod_empleado', 'hrs_asignadas'],
+            filas: [
+              ['1010', '2010', '20'],
+              ['1020', '2020', '10'],
+              ['1030', '2030', '15'],
+              ['1010', '2040', '40'],
+            ],
+          },
+          {
+            nombre: 'PAGO',
+            columnas: ['cod_empleado', 'profesion', 'vlr_hora'],
+            filas: [
+              ['2010', 'Ingeniero', '100000'],
+              ['2020', 'Analista', '50000'],
+              ['2030', 'Programador', '20000'],
+              ['2040', 'Ingeniero', '100000'],
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 // Clases completas (Tailwind no detecta clases armadas dinámicamente)
@@ -380,6 +501,7 @@ const temas = [
     eyebrow: 'text-violet-400',
     box: 'border-violet-500/20',
     ver: 'border-violet-500/30 bg-violet-500/10 text-violet-300 hover:bg-violet-500',
+    drive: 'bg-violet-600/80 hover:bg-violet-500',
     portada: 'from-violet-900/40 via-slate-900 to-slate-950 text-violet-300/80',
   },
   {
@@ -388,6 +510,7 @@ const temas = [
     eyebrow: 'text-blue-400',
     box: 'border-blue-500/20',
     ver: 'border-blue-500/30 bg-blue-500/10 text-blue-300 hover:bg-blue-500',
+    drive: 'bg-blue-600/80 hover:bg-blue-500',
     portada: 'from-blue-900/40 via-slate-900 to-slate-950 text-blue-300/80',
   },
 ];
@@ -408,7 +531,7 @@ const temas = [
       </h1>
 
       <p class="mt-4 text-lg leading-8 text-slate-400">
-        Evidencias del taller de normalización: paso a paso desde la relación sin normalizar hasta la tercera forma normal, con las tablas resultantes de cada etapa.
+        Evidencias del taller y la práctica de normalización: paso a paso desde la relación sin normalizar hasta la tercera forma normal, con las tablas resultantes de cada etapa.
       </p>
     </div>
 
@@ -422,7 +545,7 @@ const temas = [
               <div>
                 <div class={`relative flex aspect-video items-center justify-center overflow-hidden bg-gradient-to-br ${t.portada}`}>
                   <div class="text-center">
-                    <p class="text-5xl font-bold tracking-tight">{e.pasos.map((p) => p.titulo).includes('3FN') ? '3FN' : '1FN'}</p>
+                    <p class="text-5xl font-bold tracking-tight">{e.pasos.some((p) => p.titulo.includes('3FN')) ? '3FN' : '1FN'}</p>
                     <p class="mt-2 text-xs font-semibold uppercase tracking-widest">{e.pasos.length} etapas</p>
                   </div>
                   <div class={`absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border bg-black/60 text-sm font-bold backdrop-blur-md ${t.badge}`}>
@@ -437,7 +560,7 @@ const temas = [
                   </div>
                 </div>
               </div>
-              <div class="flex flex-col gap-3 p-6 pt-0">
+              <div class="flex flex-col gap-3 p-6 pt-0 sm:flex-row">
                 <button
                   type="button"
                   data-ejercicio={e.id}
@@ -445,6 +568,14 @@ const temas = [
                 >
                   Ver detalle <span class="text-lg">→</span>
                 </button>
+                <a
+                  href={e.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 ${t.drive}`}
+                >
+                  Abrir Excel
+                </a>
               </div>
             </article>
           );
@@ -473,38 +604,52 @@ const temas = [
           <div class="mt-10">
             <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-violet-400">{paso.titulo}</p>
             <div class="rounded-2xl border border-violet-500/20 bg-slate-950 p-5 shadow-2xl sm:p-6">
-              <div class="flex flex-wrap items-start gap-8">
-                {paso.tablas.map((tabla) => (
-                  <div class={tabla.completo ? 'w-full' : 'max-w-full'}>
-                    {tabla.nombre && (
-                      <p class="mb-2 text-sm font-semibold tracking-wide text-violet-300">{tabla.nombre}</p>
-                    )}
-                    <div class="max-w-full overflow-x-auto rounded-xl border border-violet-500/20">
-                      <table class="w-full border-collapse text-left text-sm">
-                        <thead>
-                          <tr class="bg-violet-500/10">
-                            {tabla.columnas.map((c) => (
-                              <th class="whitespace-nowrap border-b border-violet-500/20 px-4 py-2.5 font-semibold text-violet-200">{c}</th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {tabla.filas.map((fila) => (
-                            <tr class="border-b border-slate-800 bg-slate-900 last:border-b-0 hover:bg-slate-800/70">
-                              {fila.map((celda) => (
-                                <td class={`px-4 py-2 text-slate-300 ${tabla.completo ? '' : 'whitespace-nowrap'}`}>{celda}</td>
+              {paso.nota && (
+                <p class={`text-base leading-7 text-slate-300 ${paso.tablas.length ? 'mb-6' : ''}`}>{paso.nota}</p>
+              )}
+              {paso.tablas.length > 0 && (
+                <div class="flex flex-wrap items-start gap-8">
+                  {paso.tablas.map((tabla) => (
+                    <div class={tabla.completo ? 'w-full' : 'max-w-full'}>
+                      {tabla.nombre && (
+                        <p class="mb-2 text-sm font-semibold tracking-wide text-violet-300">{tabla.nombre}</p>
+                      )}
+                      <div class="max-w-full overflow-x-auto rounded-xl border border-violet-500/20">
+                        <table class="w-full border-collapse text-left text-sm">
+                          <thead>
+                            <tr class="bg-violet-500/10">
+                              {tabla.columnas.map((c) => (
+                                <th class="whitespace-nowrap border-b border-violet-500/20 px-4 py-2.5 font-semibold text-violet-200">{c}</th>
                               ))}
                             </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                          </thead>
+                          <tbody>
+                            {tabla.filas.map((fila) => (
+                              <tr class="border-b border-slate-800 bg-slate-900 last:border-b-0 hover:bg-slate-800/70">
+                                {fila.map((celda) => (
+                                  <td class={`px-4 py-2 text-slate-300 ${tabla.completo ? '' : 'whitespace-nowrap'}`}>{celda}</td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         ))}
+
+        <!-- ENLACE AL ARCHIVO ORIGINAL -->
+        <div class="mt-8 rounded-2xl border border-violet-500/20 bg-slate-950 p-6 sm:p-8">
+          <h3 class="text-xl font-semibold text-white">Enlace o soporte del ejercicio</h3>
+          <p class="mt-2 text-sm leading-6 text-slate-400">Puedes consultar el archivo original de Excel mediante el siguiente enlace.</p>
+          <a href={e.link} target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-2 rounded-xl bg-violet-500 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-violet-400">
+            Abrir recurso en Excel <span class="text-lg">→</span>
+          </a>
+        </div>
       </section>
     ))}
 
