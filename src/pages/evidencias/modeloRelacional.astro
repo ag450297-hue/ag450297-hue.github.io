@@ -111,7 +111,7 @@ Transforme las entidades débiles SALA, SILLA y FUNCION. Escriba las tres tablas
 
 Transforme la relación COMPRA. Escriba la tabla resultante, señale su clave primaria y sus claves foráneas, e indique dónde quedan los atributos cantidad_boletas y canal.`,
     enunciado: undefined as string | undefined,
-    imagen: img('PUNTO2(C).png'),
+    imagen: img('PUNTO2(C).drawio.png'),
     link: DRIVE_2,
   },
   {
@@ -123,19 +123,9 @@ Transforme la relación COMPRA. Escriba la tabla resultante, señale su clave pr
 
 Transforme la relación ternaria ENTREGA. Escriba la tabla resultante y justifique por qué, siendo la cardinalidad M:N:N, la clave primaria debe incluir los identificadores de las tres entidades. Indique qué cambiaría en esa clave si la cadena exigiera que para una sede y un producto dados hubiera un único proveedor.`,
     enunciado: undefined as string | undefined,
-    imagen: img('PUNTO2(D).png'),
+    imagen: img('PUNTO2(D).drawio.png'),
     link: DRIVE_2,
   },
-  ...['E', 'F'].map((letra, i) => ({
-    id: i + 8,
-    numero: 'Punto 2 · Parcial',
-    titulo: `Punto 2 (${letra})`,
-    resumen: `Reducción a tablas correspondiente al punto 2, literal ${letra} del parcial.`,
-    descripcion: `Reducción a tablas correspondiente al punto 2, literal ${letra} del parcial.`,
-    enunciado: undefined as string | undefined,
-    imagen: img(`punto2${letra}.jpg`),
-    link: DRIVE_2,
-  })),
 ];
 
 // Clases completas (Tailwind no detecta clases armadas dinámicamente)
