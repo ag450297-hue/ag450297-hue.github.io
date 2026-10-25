@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../../components/Container.astro';
+
+const temas = [
+  {
+    titulo: 'Normalización (1FN, 2FN y 3FN)',
+    resumen:
+      'Proceso para organizar las tablas de una base de datos y reducir la redundancia y las anomalías al insertar, actualizar o borrar datos.',
+    puntos: [
+      '1FN: cada campo guarda un solo valor (sin listas ni grupos repetidos) y cada fila se identifica con una llave.',
+      '2FN: cumple 1FN y todo atributo depende de la llave primaria completa, no solo de una parte de ella.',
+      '3FN: cumple 2FN y ningún atributo depende de otro atributo que no sea la llave (se eliminan dependencias transitivas).',
+    ],
+    ejemplo: `Antes (con redundancia):
+PEDIDO(id_pedido, cliente, telefono_cliente, producto, precio)
+
+Después (3FN):
+CLIENTE(id_cliente, nombre, telefono)
+PRODUCTO(id_producto, nombre, precio)
+PEDIDO(id_pedido, id_cliente, id_producto)`,
+    fuentes: 'Elmasri & Navathe, Fundamentos de Sistemas de Bases de Datos.',
+  },
+  {
+    titulo: 'Cardinalidad y entidades débiles',
+    resumen:
+      'La cardinalidad indica cuántas instancias de una entidad se relacionan con otra (1:1, 1:N, N:M). Una entidad débil no puede identificarse sola y depende de una entidad fuerte.',
+    puntos: [
+      '1:N: un docente dicta muchos cursos, pero cada curso tiene un solo docente titular.',
+      'N:M: se resuelve en el modelo relacional con una tabla intermedia que lleva las dos llaves foráneas.',
+      'Entidad débil: por ejemplo SALA depende de SEDE; su llave primaria es compuesta (id_sede + número de sala).',
+    ],
+    ejemplo: `SEDE(id_sede, nombre)
+SALA(id_sede, numero_sala, capacidad)
+  PK: (id_sede, numero_sala)
+  FK: id_sede -> SEDE`,
+    fuentes: 'Silberschatz, Korth & Sudarshan, Fundamentos de Bases de Datos.',
+  },
+  {
+    titulo: 'Llaves primarias y foráneas',
+    resumen:
+      'La llave primaria identifica de forma única cada fila. La llave foránea referencia la llave primaria de otra tabla y mantiene la integridad referencial.',
+    puntos: [
+      'Una llave primaria no puede ser nula ni repetirse.',
+      'Una llave foránea solo puede tomar valores que existan en la tabla referenciada (o nulo, si se permite).',
+      'Las llaves foráneas son la forma de representar las relaciones del MER en el modelo relacional.',
+    ],
+    ejemplo: `CREATE TABLE cliente (
+  id_cliente INT PRIMARY KEY,
+  nombre VARCHAR(80)
+);
+
+CREATE TABLE compra (
+  id_compra INT PRIMARY KEY,
+  id_cliente INT,
+  FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
+);`,
+    fuentes: 'Elmasri & Navathe, Fundamentos de Sistemas de Bases de Datos.',
+  },
+  {
+    titulo: 'Del MER al modelo relacional',
+    resumen:
+      'El MER es un modelo conceptual que describe la realidad; el modelo relacional lo convierte en tablas, llaves y restricciones listas para implementar.',
+    puntos: [
+      'Cada entidad fuerte se convierte en una tabla con su llave primaria.',
+      'Las relaciones 1:N se resuelven con una llave foránea en el lado "N".',
+      'Las relaciones N:M y las ternarias se convierten en una tabla propia con las llaves de todas las entidades participantes.',
+      'Las especializaciones pueden resolverse con una tabla por entidad o con una sola tabla, según disyunción y totalidad.',
+    ],
+    ejemplo: `ESTUDIANTE (N) --- inscribe --- (M) CURSO
+
+INSCRIPCION(id_estudiante, id_curso, fecha)
+  PK: (id_estudiante, id_curso)
+  FK: id_estudiante -> ESTUDIANTE
+  FK: id_curso -> CURSO`,
+    fuentes: 'Elmasri & Navathe, Fundamentos de Sistemas de Bases de Datos.',
+  },
+  {
+    titulo: 'Tipos de JOIN en SQL',
+    resumen:
+      'Los JOIN combinan filas de dos o más tablas a partir de una condición, normalmente la igualdad entre una llave foránea y una primaria.',
+    puntos: [
+      'INNER JOIN: solo las filas que coinciden en ambas tablas.',
+      'LEFT JOIN: todas las filas de la tabla izquierda y las coincidentes de la derecha (NULL si no hay).',
+      'RIGHT JOIN: el caso contrario al LEFT JOIN.',
+      'FULL JOIN: todas las filas de ambas tablas, coincidan o no.',
+    ],
+    ejemplo: `SELECT c.nombre, p.id_compra
+FROM cliente c
+LEFT JOIN compra p ON p.id_cliente = c.id_cliente;
+-- Muestra también clientes que no han comprado`,
+    fuentes: 'Documentación oficial del motor de base de datos que usaste en clase.',
+  },
+];
+---
+
+<BaseLayout
+  title="Investigaciones — Angelica Gomez"
+  description="Pequeños temas de investigación de Bases de Datos 1."
+>
+  <Container class="py-16 sm:py-24">
+
+    <section class="mx-auto max-w-3xl text-center">
+      <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">
+        Bases de Datos 1
+      </p>
+      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-fg sm:text-5xl">
+        Investigaciones
+      </h1>
+      <p class="mt-5 leading-relaxed text-fg-2">
+        Temas complementarios a los contenidos vistos en clase, explicados con mis propias palabras y con ejemplos.
+      </p>
+    </section>
+
+    <section class="mx-auto mt-12 max-w-3xl space-y-4">
+      {temas.map((t, i) => (
+        <details class="group rounded-2xl border border-line bg-panel p-6" open={i === 0}>
+          <summary class="cursor-pointer list-none text-xl font-semibold text-fg">
+            <span class="mr-2 font-mono text-sm text-fg-3">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            {t.titulo}
+          </summary>
+
+          <p class="mt-4 leading-relaxed text-fg-2">{t.resumen}</p>
+
+          <ul class="mt-4 list-disc space-y-2 pl-5 text-fg-2">
+            {t.puntos.map((p) => <li>{p}</li>)}
+          </ul>
+
+          <p class="mt-6 text-sm font-medium uppercase tracking-widest text-fg-3">
+            Ejemplo
+          </p>
+          <pre class="mt-2 overflow-x-auto rounded-lg border border-line p-4 text-sm text-fg-2"><code>{t.ejemplo}</code></pre>
+
+          <p class="mt-4 text-sm text-fg-3">Fuente: {t.fuentes}</p>
+        </details>
+      ))}
+    </section>
+
+    <div class="mt-12 text-center">
+      <a href="/evidencias/" class="text-sm font-semibold text-fg-2 hover:text-fg">
+        ← Volver a evidencias
+      </a>
+    </div>
+
+  </Container>
+</BaseLayout>
