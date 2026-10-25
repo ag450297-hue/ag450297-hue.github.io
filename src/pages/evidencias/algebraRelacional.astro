@@ -1,20 +1,580 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../../components/Container.astro';
+
+// Si tienes un enlace a Drive/Excel del ejercicio, ponlo en "link".
+// Si lo dejas vacío (''), el botón no aparece.
+
+// Resumen de operadores
+const operadores = [
+  { simbolo: 'σ', nombre: 'Selección', que: 'Filtra las filas que cumplen una condición. Conserva todas las columnas.' },
+  { simbolo: 'π', nombre: 'Proyección', que: 'Elige columnas y elimina las filas repetidas que resulten.' },
+  { simbolo: '×', nombre: 'Producto cartesiano', que: 'Combina cada fila de una tabla con todas las filas de la otra.' },
+  { simbolo: 'ρ', nombre: 'Renombramiento', que: 'Cambia el nombre de una tabla o de sus columnas.' },
+];
+
+// Tablas base que usan todos los ejercicios
+const base = [
+  {
+    nombre: 'ESTUDIANTE',
+    columnas: ['id_estudiante', 'nombre', 'semestre', 'carrera'],
+    filas: [
+      ['1', 'Ana', '5', 'Sistemas'],
+      ['2', 'Luis', '3', 'Sistemas'],
+      ['3', 'Marta', '5', 'Industrial'],
+      ['4', 'Pedro', '7', 'Sistemas'],
+      ['5', 'Sofía', '3', 'Industrial'],
+    ],
+  },
+  {
+    nombre: 'CURSO',
+    columnas: ['id_curso', 'nombre_curso', 'creditos'],
+    filas: [
+      ['C1', 'Bases de Datos', '3'],
+      ['C2', 'Cálculo', '4'],
+      ['C3', 'Programación', '3'],
+    ],
+  },
+  {
+    nombre: 'INSCRIPCION',
+    columnas: ['id_estudiante', 'id_curso', 'nota'],
+    filas: [
+      ['1', 'C1', '4.5'],
+      ['1', 'C3', '4.0'],
+      ['2', 'C2', '3.5'],
+      ['3', 'C2', '4.2'],
+      ['4', 'C1', '3.8'],
+      ['5', 'C3', '4.8'],
+    ],
+  },
+];
+
+const ejercicios = [
+  {
+    id: 1,
+    numero: 'Operador · Selección',
+    titulo: 'Selección (σ)',
+    simbolo: 'σ',
+    resumen: 'Filtrar filas de ESTUDIANTE con una y con varias condiciones.',
+    resumen_ejercicio:
+      'Usé la selección para quedarme solo con las filas que cumplen una condición. Primero con una condición simple y luego combinando dos con un conectivo lógico. En la selección el resultado siempre conserva todas las columnas de la tabla original.',
+    enunciado:
+      'a) Estudiantes que están en quinto semestre.\nb) Estudiantes de Sistemas que estén en quinto semestre o más.',
+    link: '',
+    pasos: [
+      {
+        titulo: 'a) Una condición',
+        explicacion:
+          'Apliqué σ sobre ESTUDIANTE con la condición semestre = 5. Se revisa fila por fila y solo pasan Ana y Marta. Las columnas no cambian.',
+        expresion: 'σ semestre = 5 (ESTUDIANTE)',
+        tablas: [
+          {
+            nombre: 'Resultado',
+            columnas: ['id_estudiante', 'nombre', 'semestre', 'carrera'],
+            filas: [
+              ['1', 'Ana', '5', 'Sistemas'],
+              ['3', 'Marta', '5', 'Industrial'],
+            ],
+          },
+        ],
+      },
+      {
+        titulo: 'b) Dos condiciones',
+        explicacion:
+          'Combiné dos condiciones con el conectivo ∧ (y): deben cumplirse las dos a la vez. Ana (semestre 5, Sistemas) y Pedro (semestre 7, Sistemas) cumplen; Marta no, porque es de Industrial; Luis no, porque está en tercer semestre.',
+        expresion: `σ carrera = 'Sistemas' ∧ semestre ≥ 5 (ESTUDIANTE)`,
+        tablas: [
+          {
+            nombre: 'Resultado',
+            columnas: ['id_estudiante', 'nombre', 'semestre', 'carrera'],
+            filas: [
+              ['1', 'Ana', '5', 'Sistemas'],
+              ['4', 'Pedro', '7', 'Sistemas'],
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    numero: 'Operador · Proyección',
+    titulo: 'Proyección (π)',
+    simbolo: 'π',
+    resumen: 'Elegir columnas de ESTUDIANTE y combinar proyección con selección.',
+    resumen_ejercicio:
+      'Usé la proyección para quedarme solo con las columnas que necesito. Vi que elimina los duplicados del resultado, y después la combiné con una selección: primero se filtran las filas y luego se eligen las columnas.',
+    enunciado:
+      'a) Nombre y carrera de todos los estudiantes.\nb) Las carreras que existen (sin repetir).\nc) Nombres de los estudiantes de Sistemas.',
+    link: '',
+    pasos: [
+      {
+        titulo: 'a) Varias columnas',
+        explicacion:
+          'Proyecté solo nombre y carrera. Se descartan id_estudiante y semestre; las filas se mantienen porque no hay pares repetidos.',
+        expresion: 'π nombre, carrera (ESTUDIANTE)',
+        tablas: [
+          {
+            nombre: 'Resultado',
+            columnas: ['nombre', 'carrera'],
+            filas: [
+              ['Ana', 'Sistemas'],
+              ['Luis', 'Sistemas'],
+              ['Marta', 'Industrial'],
+              ['Pedro', 'Sistemas'],
+              ['Sofía', 'Industrial'],
+            ],
+          },
+        ],
+      },
+      {
+        titulo: 'b) Eliminación de duplicados',
+        explicacion:
+          'Al proyectar solo carrera, hay cinco estudiantes pero solo dos valores distintos. La proyección elimina los repetidos y deja una fila por cada valor.',
+        expresion: 'π carrera (ESTUDIANTE)',
+        tablas: [
+          {
+            nombre: 'Resultado',
+            columnas: ['carrera'],
+            filas: [['Sistemas'], ['Industrial']],
+          },
+        ],
+      },
+      {
+        titulo: 'c) Proyección sobre una selección',
+        explicacion:
+          'Las expresiones se leen de adentro hacia afuera: primero selecciono las filas con carrera = Sistemas y sobre ese resultado proyecto el nombre.',
+        expresion: `π nombre (σ carrera = 'Sistemas' (ESTUDIANTE))`,
+        tablas: [
+          {
+            nombre: 'Resultado',
+            columnas: ['nombre'],
+            filas: [['Ana'], ['Luis'], ['Pedro']],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    numero: 'Operador · Producto cartesiano',
+    titulo: 'Producto cartesiano (×)',
+    simbolo: '×',
+    resumen: 'Combinar todas las filas de dos tablas pequeñas y ver cuántas resultan.',
+    resumen_ejercicio:
+      'Usé el producto cartesiano para combinar cada fila de una tabla con cada fila de otra. Para que el resultado sea fácil de leer, primero reduje las dos tablas con selección y proyección. La idea principal: si una tabla tiene m filas y la otra n, el resultado tiene m × n filas, y casi todas son combinaciones sin sentido.',
+    enunciado:
+      'Combinar los estudiantes de quinto semestre con los cursos de 3 créditos, usando solo el id y el nombre de cada uno.',
+    link: '',
+    pasos: [
+      {
+        titulo: '1. Reducir la primera tabla',
+        explicacion:
+          'Seleccioné los estudiantes de quinto semestre y proyecté su id y su nombre. Quedan 2 filas.',
+        expresion: 'A = π id_estudiante, nombre (σ semestre = 5 (ESTUDIANTE))',
+        tablas: [
+          {
+            nombre: 'A',
+            columnas: ['id_estudiante', 'nombre'],
+            filas: [
+              ['1', 'Ana'],
+              ['3', 'Marta'],
+            ],
+          },
+        ],
+      },
+      {
+        titulo: '2. Reducir la segunda tabla',
+        explicacion:
+          'Seleccioné los cursos de 3 créditos y proyecté su id y su nombre. Quedan 2 filas.',
+        expresion: 'B = π id_curso, nombre_curso (σ creditos = 3 (CURSO))',
+        tablas: [
+          {
+            nombre: 'B',
+            columnas: ['id_curso', 'nombre_curso'],
+            filas: [
+              ['C1', 'Bases de Datos'],
+              ['C3', 'Programación'],
+            ],
+          },
+        ],
+      },
+      {
+        titulo: '3. Producto cartesiano',
+        explicacion:
+          'A × B combina cada fila de A con cada fila de B: 2 × 2 = 4 filas. Las columnas son las de A seguidas de las de B. Aparecen combinaciones como "Marta con Bases de Datos" aunque Marta nunca se haya inscrito en ese curso; por eso casi siempre el producto va acompañado de una selección que deja solo las combinaciones útiles.',
+        expresion: 'A × B',
+        tablas: [
+          {
+            nombre: 'Resultado',
+            columnas: ['id_estudiante', 'nombre', 'id_curso', 'nombre_curso'],
+            filas: [
+              ['1', 'Ana', 'C1', 'Bases de Datos'],
+              ['1', 'Ana', 'C3', 'Programación'],
+              ['3', 'Marta', 'C1', 'Bases de Datos'],
+              ['3', 'Marta', 'C3', 'Programación'],
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 4,
+    numero: 'Operador · Renombramiento',
+    titulo: 'Renombramiento (ρ)',
+    simbolo: 'ρ',
+    resumen: 'Dar un nombre distinto a una tabla para compararla consigo misma.',
+    resumen_ejercicio:
+      'Usé el renombramiento para darle nombres distintos a dos copias de la misma tabla. Es necesario cuando una tabla se combina consigo misma, porque si no, no se podría saber a cuál copia pertenece cada columna. Lo combiné con producto cartesiano y selección.',
+    enunciado:
+      'Obtener las parejas de estudiantes distintos que están en el mismo semestre.',
+    link: '',
+    pasos: [
+      {
+        titulo: '1. Renombrar',
+        explicacion:
+          'Creé dos copias de ESTUDIANTE con nombres distintos, E1 y E2. Los datos son los mismos, solo cambia el nombre con el que me refiero a cada copia.',
+        expresion: 'ρ E1 (ESTUDIANTE)\nρ E2 (ESTUDIANTE)',
+        tablas: [],
+      },
+      {
+        titulo: '2. Producto cartesiano de las copias',
+        explicacion:
+          'Combiné E1 × E2 para obtener todas las parejas posibles. Son 5 × 5 = 25 filas (incluidas las de un estudiante con él mismo), así que no las listo todas aquí.',
+        expresion: 'ρ E1 (ESTUDIANTE) × ρ E2 (ESTUDIANTE)',
+        tablas: [],
+      },
+      {
+        titulo: '3. Seleccionar las parejas válidas',
+        explicacion:
+          'Dejé solo las filas donde el semestre es igual, y agregué la condición E1.id_estudiante < E2.id_estudiante para quitar las parejas de un estudiante consigo mismo y no repetir la misma pareja en el otro orden. Al final proyecté los dos nombres y el semestre.',
+        expresion: `π E1.nombre, E2.nombre, E1.semestre
+  (σ E1.semestre = E2.semestre ∧ E1.id_estudiante < E2.id_estudiante
+    (ρ E1 (ESTUDIANTE) × ρ E2 (ESTUDIANTE)))`,
+        tablas: [
+          {
+            nombre: 'Resultado',
+            columnas: ['E1.nombre', 'E2.nombre', 'semestre'],
+            filas: [
+              ['Ana', 'Marta', '5'],
+              ['Luis', 'Sofía', '3'],
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 5,
+    numero: 'Consulta combinada',
+    titulo: 'Consulta con varias tablas',
+    simbolo: '⋈',
+    resumen: 'Estudiantes inscritos en Bases de Datos, combinando los cuatro operadores.',
+    resumen_ejercicio:
+      'Esta consulta junta todo lo anterior: se necesitan datos de tres tablas, así que uso un producto cartesiano, selecciono las filas que realmente se corresponden (lo que en la práctica es un join) y al final proyecto solo la columna que me piden.',
+    enunciado:
+      'Nombres de los estudiantes inscritos en el curso "Bases de Datos".',
+    link: '',
+    pasos: [
+      {
+        titulo: '1. Producto cartesiano',
+        explicacion:
+          'Combiné las tres tablas con ESTUDIANTE × INSCRIPCION × CURSO. Eso da 5 × 6 × 3 = 90 filas, la mayoría sin sentido, por lo que no se muestran.',
+        expresion: 'ESTUDIANTE × INSCRIPCION × CURSO',
+        tablas: [],
+      },
+      {
+        titulo: '2. Selección de las filas que corresponden',
+        explicacion:
+          'Dejé solo las filas donde las llaves coinciden (el estudiante de la inscripción es el mismo estudiante, y el curso de la inscripción es el mismo curso) y donde el curso se llama Bases de Datos. Como id_estudiante e id_curso existen en varias tablas, los escribo con el nombre de su tabla para evitar ambigüedad.',
+        expresion: `σ ESTUDIANTE.id_estudiante = INSCRIPCION.id_estudiante
+  ∧ INSCRIPCION.id_curso = CURSO.id_curso
+  ∧ nombre_curso = 'Bases de Datos'
+  (ESTUDIANTE × INSCRIPCION × CURSO)`,
+        tablas: [
+          {
+            nombre: 'Filas que sobreviven (antes de proyectar)',
+            columnas: ['id_estudiante', 'nombre', 'id_curso', 'nombre_curso', 'nota'],
+            filas: [
+              ['1', 'Ana', 'C1', 'Bases de Datos', '4.5'],
+              ['4', 'Pedro', 'C1', 'Bases de Datos', '3.8'],
+            ],
+          },
+        ],
+      },
+      {
+        titulo: '3. Proyección',
+        explicacion:
+          'De esas filas solo necesito el nombre del estudiante, así que proyecto esa columna. Con esto la consulta queda resuelta en una sola expresión.',
+        expresion: `π nombre
+  (σ ESTUDIANTE.id_estudiante = INSCRIPCION.id_estudiante
+    ∧ INSCRIPCION.id_curso = CURSO.id_curso
+    ∧ nombre_curso = 'Bases de Datos'
+    (ESTUDIANTE × INSCRIPCION × CURSO))`,
+        tablas: [
+          {
+            nombre: 'Resultado final',
+            columnas: ['nombre'],
+            filas: [['Ana'], ['Pedro']],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+// Clases completas (Tailwind no detecta clases armadas dinámicamente)
+const temas = [
+  {
+    card: 'border-violet-500/20 shadow-violet-950/20 hover:border-violet-500/60',
+    badge: 'border-violet-400/30 text-violet-300',
+    eyebrow: 'text-violet-400',
+    box: 'border-violet-500/20',
+    ver: 'border-violet-500/30 bg-violet-500/10 text-violet-300 hover:bg-violet-500',
+    drive: 'bg-violet-600/80 hover:bg-violet-500',
+    portada: 'from-violet-900/40 via-slate-900 to-slate-950 text-violet-300/80',
+  },
+  {
+    card: 'border-blue-500/20 shadow-blue-950/20 hover:border-blue-500/60',
+    badge: 'border-blue-400/30 text-blue-300',
+    eyebrow: 'text-blue-400',
+    box: 'border-blue-500/20',
+    ver: 'border-blue-500/30 bg-blue-500/10 text-blue-300 hover:bg-blue-500',
+    drive: 'bg-blue-600/80 hover:bg-blue-500',
+    portada: 'from-blue-900/40 via-slate-900 to-slate-950 text-blue-300/80',
+  },
+];
 ---
 
-<BaseLayout title="ALGEBRA — Evidencias">
-
+<BaseLayout title="Evidencias - Álgebra Relacional">
   <Container class="py-16 sm:py-24">
 
-    <h1 class="text-4xl font-semibold text-fg">
-      ALGEBRA
-    </h1>
+    <!-- ENCABEZADO PRINCIPAL -->
+    <div class="mb-12 max-w-4xl">
+      <div class="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm text-violet-300">
+        <span class="h-2 w-2 rounded-full bg-violet-400"></span>
+        Evidencias académicas
+      </div>
 
-    <p class="mt-4 text-fg-2">
-      Aquí se agregarán las evidencias del proyecto final.
-    </p>
+      <h1 class="mt-6 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+        Álgebra Relacional
+      </h1>
+
+      <p class="mt-4 text-lg leading-8 text-slate-400">
+        Evidencias de álgebra relacional: selección, proyección, producto cartesiano y renombramiento, resueltos paso a paso con sus expresiones y las tablas resultantes.
+      </p>
+    </div>
+
+    <!-- OPERADORES + TABLAS BASE -->
+    <div id="resumen" class="mb-12 space-y-8">
+
+      <div class="rounded-2xl border border-violet-500/20 bg-slate-950 p-6 sm:p-8">
+        <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">Operadores utilizados</p>
+        <div class="mt-5 grid gap-4 sm:grid-cols-2">
+          {operadores.map((o) => (
+            <div class="rounded-xl border border-violet-500/20 bg-slate-900 p-4">
+              <p class="text-lg font-semibold text-white">
+                <span class="mr-2 text-2xl text-violet-300">{o.simbolo}</span>{o.nombre}
+              </p>
+              <p class="mt-2 text-sm leading-6 text-slate-300">{o.que}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-violet-500/20 bg-slate-950 p-6 sm:p-8">
+        <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">Tablas base de los ejercicios</p>
+        <div class="mt-5 flex flex-wrap items-start gap-8">
+          {base.map((tabla) => (
+            <div class="max-w-full">
+              <p class="mb-2 text-sm font-semibold tracking-wide text-violet-300">{tabla.nombre}</p>
+              <div class="max-w-full overflow-x-auto rounded-xl border border-violet-500/20">
+                <table class="w-full border-collapse text-left text-sm">
+                  <thead>
+                    <tr class="bg-violet-500/10">
+                      {tabla.columnas.map((c) => (
+                        <th class="whitespace-nowrap border-b border-violet-500/20 px-4 py-2.5 font-semibold text-violet-200">{c}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {tabla.filas.map((fila) => (
+                      <tr class="border-b border-slate-800 bg-slate-900 last:border-b-0">
+                        {fila.map((celda) => (
+                          <td class="whitespace-nowrap px-4 py-2 text-slate-300">{celda}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+
+    <!-- GALERÍA -->
+    <div id="ejemplos">
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {ejercicios.map((e, i) => {
+          const t = temas[i % 2];
+          return (
+            <article class={`group flex flex-col justify-between overflow-hidden rounded-2xl border bg-slate-950 shadow-xl transition-all duration-300 hover:-translate-y-2 ${t.card}`}>
+              <div>
+                <div class={`relative flex aspect-video items-center justify-center overflow-hidden bg-gradient-to-br ${t.portada}`}>
+                  <div class="text-center">
+                    <p class="text-6xl font-bold tracking-tight">{e.simbolo}</p>
+                    <p class="mt-2 text-xs font-semibold uppercase tracking-widest">{e.pasos.length} pasos</p>
+                  </div>
+                  <div class={`absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl border bg-black/60 text-sm font-bold backdrop-blur-md ${t.badge}`}>
+                    {String(e.id).padStart(2, '0')}
+                  </div>
+                </div>
+                <div class="p-6">
+                  <p class={`text-xs font-semibold uppercase tracking-widest ${t.eyebrow}`}>{e.numero}</p>
+                  <h2 class="mt-2 text-xl font-semibold text-white">{e.titulo}</h2>
+                  <div class={`mt-4 overflow-hidden rounded-xl border bg-slate-900 p-4 ${t.box}`}>
+                    <p class="text-sm leading-6 text-slate-300">{e.resumen}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3 p-6 pt-0 sm:flex-row">
+                <button
+                  type="button"
+                  data-ejercicio={e.id}
+                  class={`inline-flex w-full items-center justify-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:text-white ${t.ver}`}
+                >
+                  Ver detalle <span class="text-lg">→</span>
+                </button>
+                {e.link && (
+                  <a
+                    href={e.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class={`inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 ${t.drive}`}
+                  >
+                    Abrir archivo
+                  </a>
+                )}
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+
+    <!-- VISTAS DE DETALLE (una por ejercicio) -->
+    {ejercicios.map((e) => (
+      <section id={`detalle-${e.id}`} data-detalle class="mt-12 hidden">
+        <button type="button" data-volver class="mb-8 inline-flex items-center gap-2 rounded-xl border border-violet-500/30 bg-violet-500/10 px-5 py-2.5 text-sm font-medium text-violet-300 transition-all duration-300 hover:bg-violet-500 hover:text-white">
+          ← Volver a evidencias
+        </button>
+
+        <div class="max-w-4xl">
+          <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">{e.numero}</p>
+          <h2 class="mt-3 text-4xl font-semibold tracking-tight text-white sm:text-5xl">{e.titulo}</h2>
+
+          <div class="mt-6 rounded-2xl border border-violet-500/20 bg-slate-950 p-6">
+            <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">Enunciado</p>
+            <p class="mt-4 whitespace-pre-line text-lg leading-8 text-slate-400">{e.enunciado}</p>
+          </div>
+
+          <div class="mt-6 rounded-2xl border border-violet-500/20 bg-slate-950 p-6">
+            <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">Resumen del ejercicio</p>
+            <p class="mt-4 text-base leading-7 text-slate-300">{e.resumen_ejercicio}</p>
+          </div>
+        </div>
+
+        {e.pasos.map((paso) => (
+          <div class="mt-10">
+            <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-violet-400">{paso.titulo}</p>
+            <div class="rounded-2xl border border-violet-500/20 bg-slate-950 p-5 shadow-2xl sm:p-6">
+
+              <div class="rounded-xl border border-violet-500/20 bg-slate-900 p-4">
+                <p class="text-base leading-7 text-slate-300">
+                  <span class="font-semibold text-violet-300">Qué hice: </span>{paso.explicacion}
+                </p>
+              </div>
+
+              <p class="mb-2 mt-6 text-xs font-semibold uppercase tracking-widest text-violet-400">Expresión</p>
+              <pre class="overflow-x-auto rounded-xl border border-violet-500/20 bg-slate-900 p-4 text-sm leading-7 text-violet-100"><code>{paso.expresion}</code></pre>
+
+              {paso.tablas.length > 0 && (
+                <div class="mt-6 flex flex-wrap items-start gap-8">
+                  {paso.tablas.map((tabla) => (
+                    <div class="max-w-full">
+                      {tabla.nombre && (
+                        <p class="mb-2 text-sm font-semibold tracking-wide text-violet-300">{tabla.nombre}</p>
+                      )}
+                      <div class="max-w-full overflow-x-auto rounded-xl border border-violet-500/20">
+                        <table class="w-full border-collapse text-left text-sm">
+                          <thead>
+                            <tr class="bg-violet-500/10">
+                              {tabla.columnas.map((c) => (
+                                <th class="whitespace-nowrap border-b border-violet-500/20 px-4 py-2.5 font-semibold text-violet-200">{c}</th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {tabla.filas.map((fila) => (
+                              <tr class="border-b border-slate-800 bg-slate-900 last:border-b-0 hover:bg-slate-800/70">
+                                {fila.map((celda) => (
+                                  <td class="whitespace-nowrap px-4 py-2 text-slate-300">{celda}</td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+
+        {e.link && (
+          <div class="mt-8 rounded-2xl border border-violet-500/20 bg-slate-950 p-6 sm:p-8">
+            <h3 class="text-xl font-semibold text-white">Enlace o soporte del ejercicio</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-400">Puedes consultar el archivo original mediante el siguiente enlace.</p>
+            <a href={e.link} target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-2 rounded-xl bg-violet-500 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-violet-400">
+              Abrir recurso <span class="text-lg">→</span>
+            </a>
+          </div>
+        )}
+      </section>
+    ))}
 
   </Container>
 
+  <script>
+    const ejemplos = document.querySelector('#ejemplos');
+    const resumen = document.querySelector('#resumen');
+    const detalles = document.querySelectorAll('[data-detalle]');
+
+    document.querySelectorAll('[data-ejercicio]').forEach((boton) => {
+      boton.addEventListener('click', () => {
+        const seccion = document.querySelector('#detalle-' + boton.getAttribute('data-ejercicio'));
+        if (!seccion) return;
+        detalles.forEach((d) => d.classList.add('hidden'));
+        ejemplos.classList.add('hidden');
+        resumen.classList.add('hidden');
+        seccion.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    document.querySelectorAll('[data-volver]').forEach((boton) => {
+      boton.addEventListener('click', () => {
+        detalles.forEach((d) => d.classList.add('hidden'));
+        ejemplos.classList.remove('hidden');
+        resumen.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
 </BaseLayout>
