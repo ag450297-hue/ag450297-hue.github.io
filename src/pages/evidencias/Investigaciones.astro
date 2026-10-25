@@ -4,99 +4,345 @@ import Container from '../../components/Container.astro';
 
 const temas = [
   {
-    titulo: 'Normalización (1FN, 2FN y 3FN)',
-    resumen:
-      'Proceso para organizar las tablas de una base de datos y reducir la redundancia y las anomalías al insertar, actualizar o borrar datos.',
-    puntos: [
-      '1FN: cada campo guarda un solo valor (sin listas ni grupos repetidos) y cada fila se identifica con una llave.',
-      '2FN: cumple 1FN y todo atributo depende de la llave primaria completa, no solo de una parte de ella.',
-      '3FN: cumple 2FN y ningún atributo depende de otro atributo que no sea la llave (se eliminan dependencias transitivas).',
+    id: 'mer',
+    titulo: 'MER y MER-E: entidades, atributos, relaciones y cardinalidad',
+    intro:
+      'El Modelo Entidad-Relación (MER) es un diseño conceptual: describe qué información maneja un sistema y cómo se conecta, sin pensar todavía en tablas. El MER Extendido (MER-E) agrega herramientas para casos más complejos, como la especialización y la agregación.',
+    bloques: [
+      {
+        subtitulo: 'Entidades',
+        texto:
+          'Una entidad es un objeto o concepto del mundo real del que se quiere guardar información, por ejemplo ESTUDIANTE, CURSO o SEDE.',
+        items: [
+          'Entidad fuerte: existe por sí sola y se identifica con su propio atributo clave (ESTUDIANTE).',
+          'Entidad débil: no se puede identificar sola, depende de una entidad fuerte (SALA depende de SEDE). Se dibuja con doble rectángulo.',
+        ],
+      },
+      {
+        subtitulo: 'Atributos',
+        texto: 'Son las propiedades que describen a una entidad o a una relación.',
+        items: [
+          'Simple: no se divide (edad, código).',
+          'Compuesto: se puede dividir en partes (dirección: calle, número, ciudad).',
+          'Multivalorado: puede tener varios valores a la vez (teléfonos de un cliente). Se dibuja con doble óvalo.',
+          'Derivado: se calcula a partir de otro (edad se calcula desde la fecha de nacimiento). Se dibuja con línea punteada.',
+        ],
+      },
+      {
+        subtitulo: 'Atributos clave',
+        texto:
+          'El atributo clave identifica de forma única a cada instancia de la entidad y se subraya en el diagrama.',
+        items: [
+          'Clave simple: un solo atributo (id_estudiante).',
+          'Clave compuesta: dos o más atributos juntos.',
+          'En una entidad débil, el atributo que la distingue dentro de su entidad fuerte se llama discriminante y se subraya con línea punteada.',
+        ],
+      },
+      {
+        subtitulo: 'Relaciones',
+        texto:
+          'Una relación muestra cómo se asocian dos o más entidades. Se nombra con un verbo (el ESTUDIANTE se inscribe en un CURSO).',
+        items: [
+          'Unaria o recursiva: la entidad se relaciona consigo misma (un empleado es jefe de otros empleados).',
+          'Binaria: relaciona dos entidades. Es la más común.',
+          'Ternaria: relaciona tres entidades a la vez (médico, paciente y consultorio).',
+          'Una relación también puede tener atributos propios, como la fecha de inscripción.',
+        ],
+      },
+      {
+        subtitulo: 'Cardinalidad y participación',
+        texto:
+          'La cardinalidad dice cuántas instancias de una entidad pueden asociarse con la otra.',
+        items: [
+          '1:1: un docente dirige un solo programa y cada programa tiene un solo director.',
+          '1:N: un docente dicta muchos cursos, pero cada curso tiene un docente titular.',
+          'N:M: un estudiante cursa muchas materias y cada materia tiene muchos estudiantes.',
+          'Participación total: toda instancia debe participar en la relación (línea doble). Parcial: puede no participar.',
+        ],
+      },
+      {
+        subtitulo: 'Qué agrega el MER-E',
+        items: [
+          'Especialización / generalización: una entidad general se divide en subtipos (USUARIO se especializa en ESTUDIANTE y DOCENTE). Se indica si es disyunta (solo un subtipo) o solapada (puede ser varios), y total o parcial.',
+          'Agregación: una relación completa se trata como si fuera una entidad para poder relacionarla con otra (equipos asignados a proyectos).',
+        ],
+      },
     ],
-    ejemplo: `Antes (con redundancia):
-PEDIDO(id_pedido, cliente, telefono_cliente, producto, precio)
+    ejemplo: `ESTUDIANTE (id_estudiante, nombre, [telefonos], fecha_nacimiento, /edad/)
+  - id_estudiante: atributo clave
+  - [telefonos]: multivalorado
+  - /edad/: derivado
 
-Después (3FN):
-CLIENTE(id_cliente, nombre, telefono)
-PRODUCTO(id_producto, nombre, precio)
-PEDIDO(id_pedido, id_cliente, id_producto)`,
-    fuentes: 'Elmasri & Navathe, Fundamentos de Sistemas de Bases de Datos.',
+ESTUDIANTE (N) ---- se inscribe ---- (M) CURSO
+  atributo de la relación: fecha_inscripcion`,
+    video: {
+      id: 'J-zum0Z96g4',
+      start: 0,
+      url: 'https://www.youtube.com/watch?v=J-zum0Z96g4',
+      descripcion:
+        'Elegí este video para repasar el modelo entidad-relación en otra voz distinta a la de la clase. Me sirvió para reforzar cómo se reconocen entidades, atributos y relaciones, y para comparar sus ejemplos con los que hicimos en los talleres.',
+    },
   },
   {
-    titulo: 'Cardinalidad y entidades débiles',
-    resumen:
-      'La cardinalidad indica cuántas instancias de una entidad se relacionan con otra (1:1, 1:N, N:M). Una entidad débil no puede identificarse sola y depende de una entidad fuerte.',
-    puntos: [
-      '1:N: un docente dicta muchos cursos, pero cada curso tiene un solo docente titular.',
-      'N:M: se resuelve en el modelo relacional con una tabla intermedia que lleva las dos llaves foráneas.',
-      'Entidad débil: por ejemplo SALA depende de SEDE; su llave primaria es compuesta (id_sede + número de sala).',
+    id: 'transformacion',
+    titulo: 'Transformación de MER-E a tablas: reglas paso a paso',
+    intro:
+      'Pasar del modelo conceptual al relacional es aplicar un conjunto de reglas en orden. Cada elemento del diagrama se convierte en una tabla, una columna o una llave foránea.',
+    bloques: [
+      {
+        subtitulo: 'Reglas de transformación',
+        pasos: [
+          'Entidades fuertes: cada una se convierte en una tabla. Los atributos simples pasan a ser columnas y el atributo clave pasa a ser la llave primaria (PK).',
+          'Atributos compuestos: se descomponen y solo se guardan sus partes como columnas (la dirección pasa a calle, número y ciudad).',
+          'Atributos derivados: no se almacenan, porque se pueden calcular.',
+          'Atributos multivalorados: se crea una tabla aparte con la llave primaria de la entidad como llave foránea (FK) más el valor. La PK de esa tabla suele ser la combinación de ambos.',
+          'Entidades débiles: se crea una tabla cuya PK es compuesta: la PK de la entidad fuerte (que también es FK) más el discriminante.',
+          'Relación 1:N: la PK del lado "1" se agrega como FK en la tabla del lado "N".',
+          'Relación 1:1: la FK se pone en cualquiera de las dos tablas (conviene en la de participación total) y se declara UNIQUE.',
+          'Relación N:M: se crea una tabla intermedia con las PK de las dos entidades como FK. La PK de esa tabla es la combinación de ambas, y aquí se guardan los atributos de la relación.',
+          'Relaciones ternarias: se crea una tabla con las PK de las tres entidades como FK. La PK se define según la cardinalidad (en M:N:N incluye las tres o las que correspondan).',
+          'Relaciones recursivas: 1:N se resuelve con una FK que apunta a la misma tabla; N:M, con una tabla intermedia que referencia dos veces a la entidad.',
+          'Especialización: tres opciones comunes. (a) Una tabla para la entidad general y una por subtipo, con la misma PK. (b) Solo tablas para los subtipos, con todos los atributos. (c) Una sola tabla con un campo que indica el tipo. Se elige según sea disyunta o solapada, total o parcial.',
+          'Agregación: la relación agregada ya tiene su propia tabla; la relación que la usa toma la PK de esa tabla como FK.',
+        ],
+      },
     ],
-    ejemplo: `SEDE(id_sede, nombre)
-SALA(id_sede, numero_sala, capacidad)
-  PK: (id_sede, numero_sala)
-  FK: id_sede -> SEDE`,
-    fuentes: 'Silberschatz, Korth & Sudarshan, Fundamentos de Bases de Datos.',
-  },
-  {
-    titulo: 'Llaves primarias y foráneas',
-    resumen:
-      'La llave primaria identifica de forma única cada fila. La llave foránea referencia la llave primaria de otra tabla y mantiene la integridad referencial.',
-    puntos: [
-      'Una llave primaria no puede ser nula ni repetirse.',
-      'Una llave foránea solo puede tomar valores que existan en la tabla referenciada (o nulo, si se permite).',
-      'Las llaves foráneas son la forma de representar las relaciones del MER en el modelo relacional.',
-    ],
-    ejemplo: `CREATE TABLE cliente (
-  id_cliente INT PRIMARY KEY,
-  nombre VARCHAR(80)
-);
+    ejemplo: `Relación N:M con atributo:
+ESTUDIANTE (N) --- inscribe(fecha) --- (M) CURSO
 
-CREATE TABLE compra (
-  id_compra INT PRIMARY KEY,
-  id_cliente INT,
-  FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
-);`,
-    fuentes: 'Elmasri & Navathe, Fundamentos de Sistemas de Bases de Datos.',
-  },
-  {
-    titulo: 'Del MER al modelo relacional',
-    resumen:
-      'El MER es un modelo conceptual que describe la realidad; el modelo relacional lo convierte en tablas, llaves y restricciones listas para implementar.',
-    puntos: [
-      'Cada entidad fuerte se convierte en una tabla con su llave primaria.',
-      'Las relaciones 1:N se resuelven con una llave foránea en el lado "N".',
-      'Las relaciones N:M y las ternarias se convierten en una tabla propia con las llaves de todas las entidades participantes.',
-      'Las especializaciones pueden resolverse con una tabla por entidad o con una sola tabla, según disyunción y totalidad.',
-    ],
-    ejemplo: `ESTUDIANTE (N) --- inscribe --- (M) CURSO
+Resultado:
+ESTUDIANTE(id_estudiante PK, nombre)
+CURSO(id_curso PK, nombre)
+INSCRIPCION(id_estudiante PK/FK, id_curso PK/FK, fecha)
 
-INSCRIPCION(id_estudiante, id_curso, fecha)
-  PK: (id_estudiante, id_curso)
-  FK: id_estudiante -> ESTUDIANTE
-  FK: id_curso -> CURSO`,
-    fuentes: 'Elmasri & Navathe, Fundamentos de Sistemas de Bases de Datos.',
+Entidad débil:
+SEDE(id_sede PK, nombre)
+SALA(id_sede PK/FK, numero_sala PK, capacidad)`,
+    video: {
+      id: 'joYCYDK_Ndg',
+      start: 0,
+      url: 'https://www.youtube.com/watch?v=joYCYDK_Ndg&list=PLfKXnJPGTzkw2ax5KarYmhUYSWXh4TF8O',
+      descripcion:
+        'Este video lo usé como apoyo para el paso de diagrama a tablas, que fue donde más tuve que practicar. Me ayudó a ordenar las reglas y a revisar si mis reducciones de los ejercicios y del parcial iban por buen camino.',
+    },
   },
   {
-    titulo: 'Tipos de JOIN en SQL',
-    resumen:
-      'Los JOIN combinan filas de dos o más tablas a partir de una condición, normalmente la igualdad entre una llave foránea y una primaria.',
-    puntos: [
-      'INNER JOIN: solo las filas que coinciden en ambas tablas.',
-      'LEFT JOIN: todas las filas de la tabla izquierda y las coincidentes de la derecha (NULL si no hay).',
-      'RIGHT JOIN: el caso contrario al LEFT JOIN.',
-      'FULL JOIN: todas las filas de ambas tablas, coincidan o no.',
+    id: 'relacional',
+    titulo: 'Modelo relacional: cambio de nombres y manejo de llaves',
+    intro:
+      'Al pasar del MER al modelo relacional cambia el vocabulario, porque se deja de hablar de dibujos y se empieza a hablar de tablas reales. Los conceptos son los mismos, pero con otro nombre.',
+    bloques: [
+      {
+        subtitulo: 'Equivalencia de términos',
+        items: [
+          'Entidad → tabla (o relación).',
+          'Instancia de la entidad → fila (o tupla).',
+          'Atributo → columna. En el modelo relacional ya no se habla de atributos sino de columnas.',
+          'Atributo clave → llave primaria (PK).',
+          'Relación del MER → llave foránea (FK), o una tabla propia si es N:M.',
+          'Tipo de dato permitido de un atributo → dominio de la columna.',
+        ],
+      },
+      {
+        subtitulo: 'Cómo se manejan las llaves',
+        items: [
+          'Llave primaria (PK): identifica cada fila, no puede ser nula ni repetirse. Es la versión relacional del atributo clave.',
+          'Llave foránea (FK): columna que referencia la PK de otra tabla. Es la que materializa las relaciones y garantiza la integridad referencial.',
+          'Una columna puede ser PK y FK a la vez, como en las tablas de entidades débiles o en las tablas intermedias.',
+          'Una llave compuesta se forma con varias columnas.',
+        ],
+      },
+      {
+        subtitulo: 'Cómo se escribe',
+        texto:
+          'Se acostumbra escribir la tabla con su nombre y, entre paréntesis, las columnas. Se marca cuáles son PK y cuáles FK, indicando a qué tabla apuntan.',
+      },
     ],
-    ejemplo: `SELECT c.nombre, p.id_compra
-FROM cliente c
-LEFT JOIN compra p ON p.id_cliente = c.id_cliente;
--- Muestra también clientes que no han comprado`,
-    fuentes: 'Documentación oficial del motor de base de datos que usaste en clase.',
+    ejemplo: `CLIENTE(id_cliente PK, nombre, correo)
+
+COMPRA(id_compra PK, fecha, id_cliente FK -> CLIENTE)
+
+Lectura:
+- CLIENTE y COMPRA son tablas (antes eran entidades).
+- id_cliente, nombre, fecha... son columnas (antes eran atributos).
+- id_cliente en COMPRA es FK: ahí quedó la relación "realiza".`,
+    video: {
+      id: '_bI5CUOtWEg',
+      start: 4,
+      url: 'https://www.youtube.com/watch?v=_bI5CUOtWEg&t=4s',
+      descripcion:
+        'Este video me ayudó a entender la diferencia entre el lenguaje del modelo entidad-relación y el del modelo relacional, sobre todo por qué ahora se habla de columnas y de llaves primarias y foráneas en lugar de atributos clave.',
+    },
+  },
+  {
+    id: 'normalizacion',
+    titulo: 'Normalización: de la 1FN hasta la BCNF',
+    intro:
+      'Normalizar es organizar las tablas para evitar datos repetidos y errores al insertar, modificar o borrar información. Se basa en las dependencias funcionales: A determina a B (A → B) cuando cada valor de A se asocia con un único valor de B.',
+    bloques: [
+      {
+        subtitulo: 'Primera forma normal (1FN)',
+        items: [
+          'Todos los campos guardan valores atómicos (un solo dato por celda).',
+          'No hay grupos repetidos ni listas dentro de una celda.',
+          'Cada fila se identifica con una llave primaria.',
+        ],
+      },
+      {
+        subtitulo: 'Segunda forma normal (2FN)',
+        items: [
+          'Cumple la 1FN.',
+          'Ningún atributo que no sea llave depende solo de una parte de la llave compuesta (no hay dependencias parciales).',
+          'Solo importa cuando la llave primaria es compuesta.',
+        ],
+      },
+      {
+        subtitulo: 'Tercera forma normal (3FN)',
+        items: [
+          'Cumple la 2FN.',
+          'Ningún atributo que no sea llave depende de otro atributo que tampoco lo es (no hay dependencias transitivas).',
+          'Si A → B y B → C, entonces C debe ir en otra tabla.',
+        ],
+      },
+      {
+        subtitulo: 'Forma normal de Boyce-Codd (BCNF)',
+        items: [
+          'Cumple la 3FN.',
+          'Para toda dependencia funcional no trivial X → Y, X debe ser una superllave.',
+          'Es una versión más estricta de la 3FN. Se necesita cuando una tabla tiene varias llaves candidatas que se traslapan.',
+        ],
+      },
+    ],
+    ejemplo: `Caso BCNF
+CLASE(estudiante, materia, profesor)
+  Dependencias: (estudiante, materia) -> profesor
+                profesor -> materia
+  Llaves candidatas: (estudiante, materia) y (estudiante, profesor)
+
+Cumple 3FN, pero profesor -> materia viola BCNF
+(profesor no es superllave).
+
+Descomposición:
+PROFESOR_MATERIA(profesor PK, materia)
+ESTUDIANTE_PROFESOR(estudiante PK/FK, profesor PK/FK)`,
+    video: {
+      id: 'kvt2wE-q-yY',
+      start: 84,
+      url: 'https://www.youtube.com/watch?v=kvt2wE-q-yY&t=84s',
+      descripcion: '',
+    },
+  },
+  {
+    id: 'algebra',
+    titulo: 'Álgebra relacional: selección, proyección, producto cartesiano y renombramiento',
+    intro:
+      'El álgebra relacional es un lenguaje formal de operadores que toman una o más tablas y devuelven otra tabla. Es la base teórica de SQL.',
+    bloques: [
+      {
+        subtitulo: 'Selección (σ)',
+        texto:
+          'Filtra filas: devuelve solo las que cumplen una condición. Mantiene todas las columnas.',
+      },
+      {
+        subtitulo: 'Proyección (π)',
+        texto:
+          'Elige columnas: devuelve solo las columnas indicadas y elimina las filas repetidas que resulten.',
+      },
+      {
+        subtitulo: 'Producto cartesiano (×)',
+        texto:
+          'Combina cada fila de la primera tabla con todas las filas de la segunda. Si una tiene 3 filas y la otra 4, el resultado tiene 12. Por sí solo mezcla datos sin sentido, y por eso casi siempre se acompaña de una selección que lo filtra (así nace el join).',
+      },
+      {
+        subtitulo: 'Renombramiento (ρ)',
+        texto:
+          'Cambia el nombre de una tabla o de sus columnas. Es útil para evitar ambigüedades, por ejemplo al combinar una tabla consigo misma.',
+      },
+    ],
+    ejemplo: `ESTUDIANTE(id, nombre, semestre, carrera)
+
+Selección:   σ semestre = 5 (ESTUDIANTE)
+Proyección:  π nombre, carrera (ESTUDIANTE)
+Ambas:       π nombre (σ carrera = 'Sistemas' (ESTUDIANTE))
+
+Producto:    ESTUDIANTE × CURSO
+Join:        σ ESTUDIANTE.id = INSCRIPCION.id_estudiante
+                (ESTUDIANTE × INSCRIPCION)
+
+Renombrar:   ρ E (ESTUDIANTE)`,
+    video: {
+      id: 'vh0KMMsTGQ0',
+      start: 0,
+      url: 'https://www.youtube.com/watch?v=vh0KMMsTGQ0&list=PLhnOQ_ypZS5UJETTsL4nfjip9UiiUl0SP',
+      descripcion:
+        'Usé este video para ver los operadores del álgebra relacional resueltos con ejemplos. Me sirvió para practicar cómo se lee una expresión de adentro hacia afuera y para relacionarla después con una consulta en SQL.',
+    },
+  },
+  {
+    id: 'sql',
+    titulo: 'Consultas SQL paso a paso hasta los JOIN',
+    intro:
+      'SQL es el lenguaje para consultar bases de datos relacionales. Se aprende mejor por capas: primero consultas sobre una tabla y después consultas que combinan varias.',
+    bloques: [
+      {
+        subtitulo: 'Paso a paso',
+        pasos: [
+          'SELECT básico: elegir qué columnas ver y de qué tabla (SELECT nombre, carrera FROM estudiante).',
+          'WHERE: filtrar filas con condiciones (=, <>, >, <, AND, OR, LIKE, IN, BETWEEN).',
+          'ORDER BY: ordenar el resultado, ascendente (ASC) o descendente (DESC).',
+          'Funciones de agregación: COUNT, SUM, AVG, MIN y MAX para resumir datos.',
+          'GROUP BY: agrupar filas para aplicar agregaciones por grupo.',
+          'HAVING: filtrar los grupos ya calculados (WHERE filtra filas, HAVING filtra grupos).',
+          'INNER JOIN: unir tablas devolviendo solo las filas que coinciden en ambas.',
+          'LEFT JOIN: todas las filas de la tabla izquierda, con NULL cuando no hay coincidencia.',
+          'RIGHT JOIN: lo mismo, pero conservando la tabla derecha.',
+          'FULL JOIN: todas las filas de ambas tablas. Algunos motores, como MySQL, no lo traen y se simula con UNION.',
+        ],
+      },
+    ],
+    ejemplo: `-- 1 y 2: SELECT + WHERE
+SELECT nombre, carrera
+FROM estudiante
+WHERE semestre >= 5;
+
+-- 3: ORDER BY
+SELECT nombre FROM estudiante ORDER BY nombre ASC;
+
+-- 4 y 5: agregación + GROUP BY
+SELECT carrera, COUNT(*) AS total
+FROM estudiante
+GROUP BY carrera;
+
+-- 6: HAVING
+SELECT carrera, COUNT(*) AS total
+FROM estudiante
+GROUP BY carrera
+HAVING COUNT(*) > 10;
+
+-- 7: INNER JOIN
+SELECT e.nombre, c.nombre AS curso
+FROM estudiante e
+INNER JOIN inscripcion i ON i.id_estudiante = e.id_estudiante
+INNER JOIN curso c ON c.id_curso = i.id_curso;
+
+-- 8: LEFT JOIN (incluye estudiantes sin cursos)
+SELECT e.nombre, i.id_curso
+FROM estudiante e
+LEFT JOIN inscripcion i ON i.id_estudiante = e.id_estudiante;`,
+    video: {
+      id: 'WimSXuCam5g',
+      start: 0,
+      url: 'https://www.youtube.com/watch?v=WimSXuCam5g',
+      descripcion:
+        'Este video lo vi para reforzar las consultas SQL desde lo más básico hasta los JOIN. Me sirvió para practicar escribiendo las consultas yo misma y comparar el resultado con el que mostraban.',
+    },
   },
 ];
 ---
 
 <BaseLayout
   title="Investigaciones — Angelica Gomez"
-  description="Pequeños temas de investigación de Bases de Datos 1."
+  description="Temas de investigación de Bases de Datos 1: MER, modelo relacional, normalización, álgebra relacional y SQL."
 >
   <Container class="py-16 sm:py-24">
 
@@ -108,13 +354,25 @@ LEFT JOIN compra p ON p.id_cliente = c.id_cliente;
         Investigaciones
       </h1>
       <p class="mt-5 leading-relaxed text-fg-2">
-        Temas complementarios a los contenidos vistos en clase, explicados con mis propias palabras y con ejemplos.
+        Temas complementarios a los contenidos vistos en clase, explicados
+        con mis propias palabras, con ejemplos y con un video de apoyo.
       </p>
     </section>
 
-    <section class="mx-auto mt-12 max-w-3xl space-y-4">
+    <nav class="mx-auto mt-10 max-w-3xl rounded-2xl border border-line bg-panel p-6">
+      <p class="text-sm font-medium uppercase tracking-widest text-fg-3">Contenido</p>
+      <ol class="mt-3 list-decimal space-y-1 pl-5 text-fg-2">
+        {temas.map((t) => (
+          <li>
+            <a href={`#${t.id}`} class="hover:text-fg">{t.titulo}</a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <section class="mx-auto mt-10 max-w-3xl space-y-4">
       {temas.map((t, i) => (
-        <details class="group rounded-2xl border border-line bg-panel p-6" open={i === 0}>
+        <details id={t.id} class="group rounded-2xl border border-line bg-panel p-6" open={i === 0}>
           <summary class="cursor-pointer list-none text-xl font-semibold text-fg">
             <span class="mr-2 font-mono text-sm text-fg-3">
               {String(i + 1).padStart(2, '0')}
@@ -122,18 +380,62 @@ LEFT JOIN compra p ON p.id_cliente = c.id_cliente;
             {t.titulo}
           </summary>
 
-          <p class="mt-4 leading-relaxed text-fg-2">{t.resumen}</p>
+          <p class="mt-4 leading-relaxed text-fg-2">{t.intro}</p>
 
-          <ul class="mt-4 list-disc space-y-2 pl-5 text-fg-2">
-            {t.puntos.map((p) => <li>{p}</li>)}
-          </ul>
+          {t.bloques.map((b) => (
+            <div class="mt-6">
+              <h3 class="text-lg font-semibold text-fg">{b.subtitulo}</h3>
 
-          <p class="mt-6 text-sm font-medium uppercase tracking-widest text-fg-3">
+              {b.texto && <p class="mt-2 leading-relaxed text-fg-2">{b.texto}</p>}
+
+              {b.items && (
+                <ul class="mt-3 list-disc space-y-2 pl-5 text-fg-2">
+                  {b.items.map((it) => <li>{it}</li>)}
+                </ul>
+              )}
+
+              {b.pasos && (
+                <ol class="mt-3 list-decimal space-y-2 pl-5 text-fg-2">
+                  {b.pasos.map((p) => <li>{p}</li>)}
+                </ol>
+              )}
+            </div>
+          ))}
+
+          <p class="mt-8 text-sm font-medium uppercase tracking-widest text-fg-3">
             Ejemplo
           </p>
           <pre class="mt-2 overflow-x-auto rounded-lg border border-line p-4 text-sm text-fg-2"><code>{t.ejemplo}</code></pre>
 
-          <p class="mt-4 text-sm text-fg-3">Fuente: {t.fuentes}</p>
+          <p class="mt-8 text-sm font-medium uppercase tracking-widest text-fg-3">
+            Video de apoyo
+          </p>
+
+          {t.video.descripcion && (
+            <p class="mt-2 leading-relaxed text-fg-2">{t.video.descripcion}</p>
+          )}
+
+          <div class="mt-4 aspect-video overflow-hidden rounded-xl border border-line">
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${t.video.id}${t.video.start ? `?start=${t.video.start}` : ''}`}
+              title={`Video de apoyo: ${t.titulo}`}
+              class="h-full w-full"
+              allow="accelerometer; encrypted-media; picture-in-picture; fullscreen"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+
+          <p class="mt-3 text-sm">
+            <a
+              href={t.video.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-medium text-fg-2 underline hover:text-fg"
+            >
+              Ver en YouTube →
+            </a>
+          </p>
         </details>
       ))}
     </section>
