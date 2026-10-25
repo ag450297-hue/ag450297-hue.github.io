@@ -1,202 +1,24 @@
 ---
----
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../../components/Container.astro';
 ---
----
 
 <BaseLayout
-  title="Angelica Gomez — Portafolio"
-  description="Portafolio académico de Angelica Gomez, estudiante de Ingeniería de Sistemas."
+  title="Investigaciones — Angelica Gomez"
+  description="Pequeños temas de investigación de Bases de Datos 1."
 >
-
   <Container class="py-16 sm:py-24">
-
-    <!-- PRESENTACIÓN -->
-    <section class="mx-auto max-w-4xl text-center">
-
-      <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">
-        Portafolio académico
+    <div class="mx-auto max-w-xl text-center">
+      <h1 class="text-3xl font-semibold text-fg">Investigaciones</h1>
+      <p class="mt-4 leading-relaxed text-fg-2">
+        Mis temas de investigación están en su propia sección.
       </p>
-
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-fg sm:text-6xl">
-        Hola, soy
-        <span class="text-gradient">Angelica Gomez</span>
-      </h1>
-
-      <p class="mt-5 text-lg leading-relaxed text-fg-2">
-        Estudiante de Ingeniería de Sistemas en la Universidad El Bosque.
-      </p>
-
-      <!-- FOTO -->
-      <div class="mt-10">
-        <img
-          src="/images/perfil.jpg"
-          alt="Foto de Angelica Gomez"
-          class="mx-auto h-48 w-48 rounded-full object-cover shadow-lg"
-        />
-      </div>
-
-      <!-- SOBRE MÍ -->
-      <div class="mx-auto mt-10 max-w-2xl">
-        <h2 class="text-2xl font-semibold text-fg">
-          Sobre mí
-        </h2>
-
-        <p class="mt-4 leading-relaxed text-fg-2">
-          Estudiante de Ingeniería de Sistemas, caracterizada por la responsabilidad,
-          el compromiso y la honestidad. Me adapto fácilmente al trabajo en equipo
-          y mantengo un buen nivel de eficiencia en el cumplimiento de mis funciones.
-        </p>
-      </div>
-
-    </section>
-
-
-    <!-- INFORMACIÓN ACADÉMICA -->
-    <section class="mx-auto mt-16 max-w-4xl">
-
-      <div class="rounded-2xl border border-line bg-panel p-8 text-center">
-
-        <p class="text-sm uppercase tracking-widest text-fg-3">
-          Formación académica
-        </p>
-
-        <h2 class="mt-3 text-2xl font-semibold text-fg">
-          Ingeniería de Sistemas
-        </h2>
-
-        <p class="mt-2 text-fg-2">
-          Universidad El Bosque
-        </p>
-
-        <p class="mt-1 text-sm text-fg-3">
-          Asignatura: Bases de Datos 1
-        </p>
-
-        <img
-          src="/images/perfil2.jpg"
-          alt="Foto de Angelica Gomez"
-          class="mx-auto mt-6 h-40 w-40 rounded-2xl object-cover shadow-lg"
-        />
-
-      </div>
-
-    </section>
-
-
-    <!-- HABILIDADES -->
-    <section class="mx-auto mt-16 max-w-4xl text-center">
-
-      <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">
-        Habilidades
-      </p>
-
-      <h2 class="mt-3 text-3xl font-semibold tracking-tight text-fg">
-        Mis habilidades
-      </h2>
-
-      <p class="mx-auto mt-4 max-w-2xl leading-relaxed text-fg-2">
-        Como estudiante de Ingeniería de Sistemas, me enfoco en construir una sólida
-        base en los fundamentos y la lógica de programación. Actualmente, me dedico
-        a la escritura de código limpio y a la solución de problemas. Mi objetivo es
-        evolucionar mediante el aprendizaje continuo, la adaptabilidad a nuevos
-        entornos tecnológicos y el compromiso con cada proyecto que desarrollo.
-      </p>
-
-    </section>
-
-
-    <!-- VIDEO -->
-    <section class="mx-auto mt-16 max-w-4xl">
-
-      <div class="text-center">
-
-        <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">
-          Presentación
-        </p>
-
-        <h2 class="mt-3 text-3xl font-semibold tracking-tight text-fg">
-          Video de presentación
-        </h2>
-
-        <p class="mx-auto mt-3 max-w-xl leading-relaxed text-fg-2">
-          En este video comparto una breve presentación personal,
-          mis intereses y mi perspectiva sobre Bases de Datos 1.
-        </p>
-
-      </div>
-
-      <!-- CAMBIA EL src POR EL LINK DE TU VIDEO -->
-      <!-- YouTube: https://www.youtube.com/embed/ID_DEL_VIDEO -->
-      <!-- Drive:   https://drive.google.com/file/d/ID_DEL_ARCHIVO/preview -->
-      <div class="mt-8 aspect-video overflow-hidden rounded-2xl border border-line bg-panel">
-        <iframe
-          src="PEGA_AQUI_EL_LINK_DE_TU_VIDEO"
-          title="Video de presentación de Angelica Gomez"
-          class="h-full w-full"
-          allow="autoplay; encrypted-media; fullscreen"
-          allowfullscreen
-          loading="lazy"
-        ></iframe>
-      </div>
-
-    </section>
-
-
-    <!-- INVESTIGACIONES -->
-    <section class="mx-auto mt-16 max-w-4xl">
-
-      <div class="rounded-2xl border border-line bg-panel p-8 text-center">
-
-        <p class="font-mono text-[13px] uppercase tracking-widest text-fg-3">
-          Aprendizaje complementario
-        </p>
-
-        <h2 class="mt-3 text-2xl font-semibold text-fg">
-          Investigaciones
-        </h2>
-
-        <p class="mx-auto mt-3 max-w-xl leading-relaxed text-fg-2">
-          Pequeños temas de investigación relacionados con los contenidos
-          vistos en clase: normalización, llaves, cardinalidad, JOIN y más.
-        </p>
-
-        <a
-          href="/investigaciones/"
-          class="mt-6 inline-flex items-center rounded-lg border border-line px-6 py-3 text-sm font-semibold text-fg transition-colors hover:bg-bg"
-        >
-          Leer investigaciones →
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- ACCESO A EVIDENCIAS -->
-    <section class="mx-auto mt-16 max-w-4xl text-center">
-
-      <div class="flex flex-wrap items-center justify-center gap-4">
-
-        <a
-          href="/evidencias/"
-          class="inline-flex items-center rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-        >
-          Ver mis evidencias →
-        </a>
-
-        <a
-          href="/investigaciones/"
-          class="inline-flex items-center rounded-lg border border-line px-6 py-3 text-sm font-semibold text-fg transition-colors hover:bg-panel"
-        >
-          Ver investigaciones →
-        </a>
-
-      </div>
-
-    </section>
-
+      <a
+        href="/evidencias/Investigaciones/"
+        class="mt-6 inline-flex items-center rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-white"
+      >
+        Ir a investigaciones →
+      </a>
+    </div>
   </Container>
-
 </BaseLayout>
