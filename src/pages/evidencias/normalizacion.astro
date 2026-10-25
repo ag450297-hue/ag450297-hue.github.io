@@ -5,20 +5,24 @@ import Container from '../../components/Container.astro';
 const LINK_XLSX = 'https://unbosqueeduco-my.sharepoint.com/:x:/g/personal/acpedrazar_unbosque_edu_co/IQCj30H5siZpRrnt_DDKlCmHAZfhWZ1zKXZThhM_NTbY4ro?e=tLN9ZH';
 const LINK_PRACTICA = 'https://unbosqueeduco-my.sharepoint.com/:x:/g/personal/amagomezc_unbosque_edu_co/IQAs5_FuN6YiQL2fOMxjam4pAR148uBpfoskRVVJhkJKJNY?e=y3lmip';
 
-// Cada ejercicio tiene "pasos" (Ninguna FN, 1FN, 2FN, 3FN) y cada paso tiene una o varias tablas.
-// Un paso puede tener "nota" (texto explicativo) y no tener tablas.
+// Cada ejercicio tiene "resumen_ejercicio" y "pasos".
+// Cada paso tiene "explicacion" (qué se hizo), una "nota" opcional y una o varias tablas.
 const ejercicios = [
   {
     id: 1,
     numero: 'Taller · Punto 1',
     titulo: 'Punto 1 — Taller',
     resumen: 'Normalización de la relación de pacientes, médicos y hospitalización hasta 3FN.',
+    resumen_ejercicio:
+      'Partí de una sola relación en la que estaban mezclados los datos de pacientes, médicos y hospitalizaciones. La fui descomponiendo etapa por etapa hasta dejar cada dato en la tabla que le corresponde, eliminando la información repetida.',
     enunciado:
       '(ID_Paciente, Nombre_Paciente, Especialidad_Tratamiento, Cama_Asignada, Ala_Hospital, Médico_Tratante, Teléfono_Médico, Email_Médico, Fecha_Ingreso, Fecha_Alta)',
     link: LINK_XLSX,
     pasos: [
       {
         titulo: 'Ninguna FN',
+        explicacion:
+          'Es la relación original tal como llega. Hay celdas con más de un valor: el paciente 1010 tiene dos médicos, y sus nombres, teléfonos y correos están juntos en la misma celda. Por eso todavía no cumple ni la primera forma normal.',
         tablas: [
           {
             columnas: ['Id_Paciente', 'Nombre_Paciente', 'Especialidad_Tratamiento', 'Cama_Asignada', 'Ala_Hospital', 'Medico_Tratante', 'Telefono_Medico', 'Email_Medico', 'Fecha_Ingreso', 'Fecha_Alta'],
@@ -32,6 +36,8 @@ const ejercicios = [
       },
       {
         titulo: '1FN',
+        explicacion:
+          'Separé las celdas con varios valores para que cada una guarde un solo dato. Donde había dos médicos para la misma hospitalización quedaron dos filas. Ahora todos los atributos son atómicos, pero hay mucha información repetida (el nombre del paciente y los datos del médico se repiten en varias filas).',
         tablas: [
           {
             columnas: ['Id_Paciente', 'Nombre_Paciente', 'Especialidad_Tratamiento', 'Cama_Asignada', 'Ala_Hospital', 'Medico_Tratante', 'Telefono_Medico', 'Email_Medico', 'Fecha_Ingreso', 'Fecha_Alta'],
@@ -46,6 +52,8 @@ const ejercicios = [
       },
       {
         titulo: '2FN',
+        explicacion:
+          'Identifiqué de qué depende cada dato: el nombre depende solo del paciente, los datos del médico dependen solo del correo del médico y los datos de la hospitalización dependen de la combinación paciente + fecha de ingreso. Por eso lo separé en cuatro tablas: PACIENTE, MEDICO, PAC_MED (qué médico atendió a qué paciente) y HOSPITALIZACION. Así se eliminan las dependencias parciales.',
         tablas: [
           {
             nombre: 'PACIENTE',
@@ -87,6 +95,8 @@ const ejercicios = [
       },
       {
         titulo: '3FN',
+        explicacion:
+          'En HOSPITALIZACION el ala del hospital no depende de la hospitalización en sí, sino de la especialidad (Quimioterapia está en el ala A y Fracturas en la D). Era una dependencia transitiva, así que la saqué a una tabla nueva, ESPECIALIDAD. Las demás tablas se mantienen igual.',
         tablas: [
           {
             nombre: 'PACIENTE',
@@ -140,12 +150,16 @@ const ejercicios = [
     numero: 'Taller · Punto 2',
     titulo: 'Punto 2 — Taller',
     resumen: 'Normalización de pedidos, clientes, productos y vendedores hasta 3FN, con análisis de dependencias.',
+    resumen_ejercicio:
+      'En este ejercicio los pedidos traían mezclados los datos del cliente, de los productos y del vendedor, con varios productos dentro de la misma celda. Antes de dividir las tablas analicé las dependencias funcionales para decidir qué dato depende de qué, y con eso llevé la relación hasta 3FN.',
     enunciado:
       '(ID_Pedido, Fecha_Pedido, ID_Cliente, Nombre_Cliente, Sector_Cliente, ID_Producto, Nombre_Producto, Precio_Producto, Cantidad_Solicitada, ID_Vendedor, Nombre_Vendedor, Comisión_Vendedor)',
     link: LINK_XLSX,
     pasos: [
       {
         titulo: 'Ninguna FN',
+        explicacion:
+          'Es la relación original. Cada pedido trae varios productos en la misma celda (códigos, nombres, precios y cantidades separados por comas), por eso no cumple la primera forma normal.',
         tablas: [
           {
             columnas: ['ID_Pedido', 'Fecha_Pedido', 'ID_Cliente', 'Nombre_Cliente', 'Sector_Cliente', 'ID_Producto', 'Nombre_Producto', 'Precio_Producto', 'Cantidad_Solicitada', 'ID_Vendedor', 'Nombre_Vendedor', 'Comisión_Vendedor'],
@@ -162,6 +176,8 @@ const ejercicios = [
       },
       {
         titulo: '1FN',
+        explicacion:
+          'Pasé cada producto de un pedido a su propia fila para que cada celda tenga un solo valor. Después hice la tabla de dependencias: la clave es (ID_Pedido, ID_Producto) y ahí se ven las dependencias parciales (fecha, cliente y vendedor dependen solo del pedido; nombre y precio solo del producto) y las transitivas (el cliente y el vendedor determinan sus propios datos). Esa tabla es la que guía la 2FN y la 3FN.',
         tablas: [
           {
             columnas: ['ID_Pedido', 'Fecha_Pedido', 'ID_Cliente', 'Nombre_Cliente', 'Sector_Cliente', 'ID_Producto', 'Nombre_Producto', 'Precio_Producto', 'Cantidad_Solicitada', 'ID_Vendedor', 'Nombre_Vendedor', 'Comisión_Vendedor'],
@@ -194,6 +210,8 @@ const ejercicios = [
       },
       {
         titulo: '2FN',
+        explicacion:
+          'Eliminé las dependencias parciales dividiendo la tabla en tres: PEDIDO (lo que depende solo del pedido), PRODUCTO (lo que depende solo del producto) y PEDIDO_PRODUCTO (la cantidad, que sí necesita el pedido y el producto juntos). En esta etapa PEDIDO todavía lleva los datos del cliente y del vendedor, que se resuelven en la 3FN.',
         tablas: [
           {
             nombre: 'PEDIDO',
@@ -236,6 +254,8 @@ const ejercicios = [
       },
       {
         titulo: '3FN',
+        explicacion:
+          'Eliminé las dependencias transitivas. Los datos del cliente y del vendedor no dependen del pedido sino de su propio código, así que los pasé a las tablas CLIENTE y VENDEDOR. PEDIDO quedó solo con su fecha y con llaves foráneas que apuntan al cliente y al vendedor. PRODUCTO y PEDIDO_PRODUCTO se mantienen.',
         tablas: [
           {
             nombre: 'CLIENTE',
@@ -300,12 +320,16 @@ const ejercicios = [
     numero: 'Taller · Punto 3',
     titulo: 'Punto 3 — Taller',
     resumen: 'Atributos multivaluados independientes: competencias técnicas e idiomas de un empleado.',
+    resumen_ejercicio:
+      'Aquí un empleado tiene varias competencias técnicas y varios idiomas que no tienen relación entre sí. El ejercicio muestra qué problema aparece cuando dos atributos multivaluados independientes viven en la misma tabla y cómo se resuelve separándolos.',
     enunciado:
       'EMPLEADO (ID_Empleado, Nombre_Empleado, Competencias_Técnicas, Idiomas)\n\nUn empleado tiene VARIAS competencias (Python, Java, SQL) Y VARIOS idiomas (Español, Inglés, Francés) INDEPENDIENTES.',
     link: LINK_XLSX,
     pasos: [
       {
         titulo: '0FN',
+        explicacion:
+          'Es la relación original, con listas dentro de las celdas: las competencias y los idiomas de cada empleado están separados por comas en una sola celda. Por eso no cumple la primera forma normal.',
         tablas: [
           {
             columnas: ['ID_Empleado', 'Nombre_Empleado', 'Competencias_Tecnicas', 'Idiomas'],
@@ -319,6 +343,8 @@ const ejercicios = [
       },
       {
         titulo: '1FN',
+        explicacion:
+          'Dejé cada valor en su propia celda. Como las competencias y los idiomas son independientes (saber Python no tiene nada que ver con hablar francés), no conviene mantenerlos en la misma tabla: para no inventar una relación entre ellos habría que repetir todas las combinaciones, 3 competencias × 3 idiomas = 9 filas por empleado. Por eso los separé: EMPLEADO queda solo con sus datos propios, y las competencias y los idiomas van cada uno en su tabla, ligados al empleado por una llave foránea. Este problema de atributos multivaluados independientes es el que se resuelve con la 4FN.',
         tablas: [
           {
             columnas: ['ID_Empleado', 'Nombre_Empleado', 'Competencias_Tecnicas', 'Idiomas'],
@@ -382,12 +408,16 @@ const ejercicios = [
     numero: 'Comp · Práctica',
     titulo: 'Comp Práctica',
     resumen: 'Proyectos y empleados: identificación de la 1FN y transformación a 2FN y 3FN.',
+    resumen_ejercicio:
+      'En esta práctica primero identifiqué en qué forma normal estaba la tabla de proyectos y empleados, y luego la transformé a 2FN y a 3FN explicando qué dependencias se corrigen en cada paso.',
     enunciado:
       '(cod_proyecto, nom_proyecto, cod_empleado, nom_empleado, profesion, vlr_hora, hrs_asignadas)',
     link: LINK_PRACTICA,
     pasos: [
       {
         titulo: 'Resultado',
+        explicacion:
+          'Es la tabla de partida: muestra qué empleados trabajan en cada proyecto, con su profesión, el valor por hora y las horas asignadas.',
         tablas: [
           {
             columnas: ['cod_proyecto', 'nom_proyecto', 'cod_empleado', 'nom_empleado', 'profesion', 'vlr_hora', 'hrs_asignadas'],
@@ -408,11 +438,15 @@ const ejercicios = [
       },
       {
         titulo: 'a. Forma normal de la tabla',
+        explicacion:
+          'Revisé cada atributo para ver si cumplía las condiciones de las formas normales, empezando por la primera.',
         nota: 'La tabla se encuentra en 1FN, porque todos los atributos son atómicos. No hay ninguno que sea una lista o separable.',
         tablas: [],
       },
       {
         titulo: 'b.1 Transformación a 2FN',
+        explicacion:
+          'La clave de la tabla es (cod_proyecto, cod_empleado). El nombre del proyecto depende solo del proyecto, y el nombre, la profesión y el valor por hora dependen solo del empleado: son dependencias parciales. Las separé en las tablas PROYECTO y EMPLEADO, y dejé en PROYECTO_EMPLEADO las horas asignadas, que sí necesitan los dos códigos.',
         tablas: [
           {
             nombre: 'PROYECTO',
@@ -447,6 +481,8 @@ const ejercicios = [
       },
       {
         titulo: 'b.2 Transformación a 3FN',
+        explicacion:
+          'En EMPLEADO, el valor por hora depende de la profesión y no directamente del empleado, lo que es una dependencia transitiva. Para corregirlo separé los datos de pago (profesión y valor por hora) en la tabla PAGO y dejé EMPLEADO solo con el código y el nombre. PROYECTO y PROYECTO_EMPLEADO se mantienen.',
         tablas: [
           {
             nombre: 'PROYECTO',
@@ -531,7 +567,7 @@ const temas = [
       </h1>
 
       <p class="mt-4 text-lg leading-8 text-slate-400">
-        Evidencias del taller y la práctica de normalización: paso a paso desde la relación sin normalizar hasta la tercera forma normal, con las tablas resultantes de cada etapa.
+        Evidencias del taller y la práctica de normalización: paso a paso desde la relación sin normalizar hasta la tercera forma normal, con las tablas resultantes de cada etapa y una explicación de lo que se hizo en cada una.
       </p>
     </div>
 
@@ -598,15 +634,30 @@ const temas = [
             <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">Enunciado</p>
             <p class="mt-4 whitespace-pre-line text-lg leading-8 text-slate-400">{e.enunciado}</p>
           </div>
+
+          <div class="mt-6 rounded-2xl border border-violet-500/20 bg-slate-950 p-6">
+            <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">Resumen del ejercicio</p>
+            <p class="mt-4 text-base leading-7 text-slate-300">{e.resumen_ejercicio}</p>
+          </div>
         </div>
 
         {e.pasos.map((paso) => (
           <div class="mt-10">
             <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-violet-400">{paso.titulo}</p>
             <div class="rounded-2xl border border-violet-500/20 bg-slate-950 p-5 shadow-2xl sm:p-6">
+
+              {paso.explicacion && (
+                <div class={`rounded-xl border border-violet-500/20 bg-slate-900 p-4 ${(paso.nota || paso.tablas.length) ? 'mb-6' : ''}`}>
+                  <p class="text-base leading-7 text-slate-300">
+                    <span class="font-semibold text-violet-300">Qué hice: </span>{paso.explicacion}
+                  </p>
+                </div>
+              )}
+
               {paso.nota && (
                 <p class={`text-base leading-7 text-slate-300 ${paso.tablas.length ? 'mb-6' : ''}`}>{paso.nota}</p>
               )}
+
               {paso.tablas.length > 0 && (
                 <div class="flex flex-wrap items-start gap-8">
                   {paso.tablas.map((tabla) => (
