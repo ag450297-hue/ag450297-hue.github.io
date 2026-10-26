@@ -1,20 +1,219 @@
+
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../../components/Container.astro';
+
+const evidencias = [
+  { id: 1, titulo: 'Consulta SQL 01', descripcion: 'Primera evidencia de consultas SQL.' },
+  { id: 2, titulo: 'Consulta SQL 02', descripcion: 'Segunda evidencia de consultas SQL.' },
+  { id: 3, titulo: 'Consulta SQL 03', descripcion: 'Tercera evidencia de consultas SQL.' },
+  { id: 4, titulo: 'Consulta SQL 04', descripcion: 'Cuarta evidencia de consultas SQL.' },
+  { id: 5, titulo: 'Consulta SQL 05', descripcion: 'Quinta evidencia de consultas SQL.' },
+  { id: 6, titulo: 'Consulta SQL 06', descripcion: 'Sexta evidencia de consultas SQL.' },
+  { id: 7, titulo: 'Consulta SQL 07', descripcion: 'Séptima evidencia de consultas SQL.' },
+  { id: 8, titulo: 'Consulta SQL 08', descripcion: 'Octava evidencia de consultas SQL.' },
+  { id: 9, titulo: 'Consulta SQL 09', descripcion: 'Novena evidencia de consultas SQL.' },
+  { id: 10, titulo: 'Consulta SQL 10', descripcion: 'Décima evidencia de consultas SQL.' },
+  { id: 11, titulo: 'Consulta SQL 11', descripcion: 'Undécima evidencia de consultas SQL.' },
+  { id: 12, titulo: 'Consulta SQL 12', descripcion: 'Duodécima evidencia de consultas SQL.' },
+  { id: 13, titulo: 'Consulta SQL 13', descripcion: 'Decimotercera evidencia de consultas SQL.' },
+];
 ---
 
-<BaseLayout title="SQL — Evidencias">
-
+<BaseLayout title="Evidencias - Consultas SQL">
   <Container class="py-16 sm:py-24">
 
-    <h1 class="text-4xl font-semibold text-fg">
-      SQL
-    </h1>
+    <!-- ENCABEZADO -->
+    <div class="mb-12 max-w-4xl">
+      <div class="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm text-violet-300">
+        <span class="h-2 w-2 rounded-full bg-violet-400"></span>
+        Evidencias académicas
+      </div>
 
-    <p class="mt-4 text-fg-2">
-      Aquí se agregarán las evidencias de SQL.
-    </p>
+      <h1 class="mt-6 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+        Consultas SQL
+      </h1>
+
+      <p class="mt-4 text-lg leading-8 text-slate-400">
+        En esta sección presento las evidencias de los ejercicios prácticos
+        de SQL realizados durante mi proceso de aprendizaje en bases de datos.
+        Cada imagen muestra el desarrollo de una consulta y sus resultados.
+      </p>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+        <span class="rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm text-violet-300">
+          13 evidencias
+        </span>
+        <span class="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300">
+          Práctica de bases de datos
+        </span>
+      </div>
+    </div>
+
+    <!-- GALERÍA -->
+    <div id="galeria" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {evidencias.map((e) => (
+        <article class="group flex flex-col overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-violet-500/60">
+
+          <button
+            type="button"
+            data-abrir={e.id}
+            class="relative block w-full overflow-hidden bg-slate-900 text-left"
+            aria-label={`Ampliar ${e.titulo}`}
+          >
+            <div class="absolute left-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-xl border border-violet-400/30 bg-slate-950/90 text-sm font-bold text-violet-300">
+              {String(e.id).padStart(2, '0')}
+            </div>
+
+            <img
+              src={`/images/SQL/${e.id}.png`}
+              alt={`Captura de la evidencia ${e.id} de consultas SQL`}
+              loading={e.id <= 3 ? 'eager' : 'lazy'}
+              class="aspect-video w-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+            />
+
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 to-transparent p-4 pt-10">
+              <p class="text-xs font-semibold uppercase tracking-widest text-violet-300">
+                Evidencia académica
+              </p>
+            </div>
+          </button>
+
+          <div class="flex flex-1 flex-col p-5">
+            <h2 class="text-lg font-semibold text-white">{e.titulo}</h2>
+            <p class="mt-2 flex-1 text-sm leading-6 text-slate-400">
+              {e.descripcion}
+            </p>
+
+            <button
+              type="button"
+              data-abrir={e.id}
+              class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-violet-500/30 bg-violet-500/10 px-4 py-3 text-sm font-medium text-violet-300 transition-all hover:bg-violet-500 hover:text-white"
+            >
+              Ver evidencia <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- VISTA AMPLIADA -->
+    <section id="visor" class="mt-12 hidden" aria-label="Evidencia ampliada">
+      <button
+        id="volver"
+        type="button"
+        class="mb-6 inline-flex items-center gap-2 rounded-xl border border-violet-500/30 bg-violet-500/10 px-5 py-3 text-sm font-medium text-violet-300 transition hover:bg-violet-500 hover:text-white"
+      >
+        ← Volver a evidencias
+      </button>
+
+      <div class="overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 p-5 sm:p-8">
+        <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">
+          Evidencia académica
+        </p>
+
+        <h2 id="titulo-visor" class="mt-3 text-2xl font-semibold text-white sm:text-3xl">
+          Consulta SQL
+        </h2>
+
+        <p class="mt-3 text-sm text-slate-400">
+          Captura ampliada de la consulta realizada.
+        </p>
+
+        <div class="mt-6 overflow-hidden rounded-xl border border-violet-500/20 bg-slate-900 p-2 sm:p-4">
+          <img
+            id="imagen-visor"
+            src="/images/SQL/1.png"
+            alt="Evidencia SQL ampliada"
+            class="mx-auto h-auto max-h-[75vh] w-full object-contain"
+          />
+        </div>
+
+        <div class="mt-5 flex flex-wrap gap-3">
+          <button
+            id="anterior"
+            type="button"
+            class="rounded-xl border border-blue-500/30 bg-blue-500/10 px-5 py-3 text-sm font-medium text-blue-300 transition hover:bg-blue-500 hover:text-white"
+          >
+            ← Anterior
+          </button>
+
+          <button
+            id="siguiente"
+            type="button"
+            class="rounded-xl border border-violet-500/30 bg-violet-500/10 px-5 py-3 text-sm font-medium text-violet-300 transition hover:bg-violet-500 hover:text-white"
+          >
+            Siguiente →
+          </button>
+        </div>
+
+        <p id="contador" class="mt-4 text-sm text-slate-400">
+          Evidencia 01 de 13
+        </p>
+      </div>
+    </section>
 
   </Container>
 
+  <script>
+    const galeria = document.querySelector('#galeria');
+    const visor = document.querySelector('#visor');
+    const tituloVisor = document.querySelector('#titulo-visor');
+    const imagenVisor = document.querySelector('#imagen-visor');
+    const contador = document.querySelector('#contador');
+
+    let actual = 1;
+    const total = 13;
+
+    function mostrarEvidencia(numero) {
+      actual = Math.max(1, Math.min(total, numero));
+
+      tituloVisor.textContent =
+        `Consulta SQL ${String(actual).padStart(2, '0')}`;
+
+      imagenVisor.src = `/images/SQL/${actual}.png`;
+      imagenVisor.alt = `Captura ampliada de la evidencia SQL ${actual}`;
+
+      contador.textContent =
+        `Evidencia ${String(actual).padStart(2, '0')} de ${total}`;
+
+      const anterior = document.querySelector('#anterior');
+      const siguiente = document.querySelector('#siguiente');
+
+      anterior.disabled = actual === 1;
+      siguiente.disabled = actual === total;
+
+      anterior.classList.toggle('opacity-40', actual === 1);
+      siguiente.classList.toggle('opacity-40', actual === total);
+    }
+
+    function abrirVisor(numero) {
+      mostrarEvidencia(numero);
+      galeria.classList.add('hidden');
+      visor.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function volverGaleria() {
+      visor.classList.add('hidden');
+      galeria.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('[data-abrir]').forEach((boton) => {
+      boton.addEventListener('click', () => {
+        abrirVisor(Number(boton.getAttribute('data-abrir')));
+      });
+    });
+
+    document.querySelector('#volver').addEventListener('click', volverGaleria);
+
+    document.querySelector('#anterior').addEventListener('click', () => {
+      if (actual > 1) mostrarEvidencia(actual - 1);
+    });
+
+    document.querySelector('#siguiente').addEventListener('click', () => {
+      if (actual < total) mostrarEvidencia(actual + 1);
+    });
+  </script>
 </BaseLayout>
