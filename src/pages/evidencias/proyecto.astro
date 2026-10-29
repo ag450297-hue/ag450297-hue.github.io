@@ -1,117 +1,228 @@
 
-<!-- RECURSOS DEL PROYECTO -->
-<section class="mb-14">
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../../components/Container.astro';
 
-  <div class="mb-8">
-    <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">
-      Proyecto académico
-    </p>
+const recursos = [
+  {
+    numero: '01',
+    categoria: 'Código fuente',
+    titulo: 'Repositorio GitHub',
+    descripcion: 'Consulta el código fuente, los archivos y la estructura del proyecto de Bases de Datos I.',
+    detalle: 'ProyectoBasesDatosI',
+    boton: 'Revisar código del proyecto',
+    url: 'https://github.com/Ande2323/ProyectoBasesDatosI',
+    icono: 'github',
+    estilo: 'violeta',
+  },
+  {
+    numero: '02',
+    categoria: 'Modelo conceptual',
+    titulo: 'Modelo Entidad-Relación Extendido',
+    descripcion: 'Accede al documento del modelo entidad-relación extendido elaborado para el proyecto.',
+    detalle: 'Documento compartido en Google Drive',
+    boton: 'Consultar modelo E-R',
+    url: 'https://drive.google.com/file/d/1GEW9fGDPhko-w6LuAv06Mhlj7vBKSKRA/view?usp=sharing',
+    icono: 'database',
+    estilo: 'azul',
+  },
+  {
+    numero: '03',
+    categoria: 'Documentación académica',
+    titulo: 'Álgebra Relacional - Magic Cards',
+    descripcion: 'Consulta el documento PDF con los ejercicios de álgebra relacional relacionados con el trabajo académico.',
+    detalle: 'Algebra_Relacional_Magic_Cards.pdf',
+    boton: 'Ver documento PDF',
+    url: '/images/DOCUMENTOS/Algebra_Relacional_Magic_Cards.pdf',
+    icono: 'file',
+    estilo: 'violeta',
+  },
+];
+---
 
-    <h2 class="mt-3 text-2xl font-semibold text-white sm:text-3xl">
-      Proyecto de Bases de Datos I
-    </h2>
+<BaseLayout title="Proyecto - Bases de Datos I">
+  <Container class="py-16 sm:py-24">
 
-    <p class="mt-3 text-sm leading-7 text-slate-400">
-      En esta sección se encuentran disponibles el repositorio
-      del proyecto, el Modelo Entidad-Relación Extendido y
-      el documento de ejercicios de Álgebra Relacional.
-    </p>
-  </div>
+    <!-- ENCABEZADO -->
+    <div class="mb-12 max-w-4xl">
 
-  <div class="grid gap-6">
+      <div class="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm text-violet-300">
+        <span class="h-2 w-2 rounded-full bg-violet-400"></span>
+        Proyecto académico
+      </div>
 
-    <!-- 1. REPOSITORIO GITHUB -->
-    <article class="rounded-2xl border border-violet-500/30 bg-slate-950 p-6 shadow-xl sm:p-8">
+      <h1 class="mt-6 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+        Proyecto de Bases de Datos I
+      </h1>
 
-      <span class="text-xs font-semibold uppercase tracking-widest text-violet-400">
-        01 · Código fuente
-      </span>
-
-      <h3 class="mt-3 text-xl font-semibold text-white">
-        Repositorio GitHub
-      </h3>
-
-      <p class="mt-3 text-sm leading-7 text-slate-400">
-        Accede al repositorio del proyecto para consultar
-        el código fuente, los archivos y su estructura.
-      </p>
-
-      <a
-        href="https://github.com/Ande2323/ProyectoBasesDatosI"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-violet-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-violet-500"
-      >
-        Ver código en GitHub ↗
-      </a>
-
-    </article>
-
-    <!-- 2. MODELO ENTIDAD RELACIÓN EXTENDIDO -->
-    <article class="rounded-2xl border border-blue-500/30 bg-slate-950 p-6 shadow-xl sm:p-8">
-
-      <span class="text-xs font-semibold uppercase tracking-widest text-blue-400">
-        02 · Diseño de base de datos
-      </span>
-
-      <h3 class="mt-3 text-xl font-semibold text-white">
-        Modelo Entidad-Relación Extendido
-      </h3>
-
-      <p class="mt-3 text-sm leading-7 text-slate-400">
-        Visualiza el modelo conceptual extendido desarrollado
-        para el proyecto de Bases de Datos I.
-      </p>
-
-      <a
-        href="https://drive.google.com/file/d/1GEW9fGDPhko-w6LuAv06Mhlj7vBKSKRA/view?usp=sharing"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-blue-500"
-      >
-        Ver modelo en Drive ↗
-      </a>
-
-    </article>
-
-    <!-- 3. DOCUMENTO ÁLGEBRA RELACIONAL -->
-    <article class="rounded-2xl border border-violet-500/30 bg-slate-950 p-6 shadow-xl sm:p-8">
-
-      <span class="text-xs font-semibold uppercase tracking-widest text-violet-400">
-        03 · Documento académico
-      </span>
-
-      <h3 class="mt-3 text-xl font-semibold text-white">
-        Álgebra Relacional - Magic Cards
-      </h3>
-
-      <p class="mt-3 text-sm leading-7 text-slate-400">
-        Documento PDF que contiene los ejercicios de
-        Álgebra Relacional desarrollados para el proyecto.
+      <p class="mt-4 text-lg leading-8 text-slate-400">
+        En esta sección presento los recursos y documentos principales
+        del proyecto académico de Bases de Datos I. Aquí se puede
+        consultar el código fuente, revisar el modelo conceptual
+        y acceder a la documentación complementaria.
       </p>
 
       <div class="mt-6 flex flex-wrap gap-3">
+        <span class="rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm text-violet-300">
+          Código fuente
+        </span>
 
-        <a
-          href="/images/DOCUMENTOS/Algebra_Relacional_Magic_Cards.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-2 rounded-xl bg-violet-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-violet-500"
-        >
-          Ver documento PDF ↗
-        </a>
+        <span class="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300">
+          Modelo E-R extendido
+        </span>
 
-        <a
-          href="/images/DOCUMENTOS/Algebra_Relacional_Magic_Cards.pdf"
-          download="Algebra_Relacional_Magic_Cards.pdf"
-          class="inline-flex items-center justify-center gap-2 rounded-xl border border-blue-500/30 bg-blue-500/10 px-6 py-3 text-sm font-medium text-blue-300 transition hover:bg-blue-500 hover:text-white"
-        >
-          Descargar PDF ↓
-        </a>
-
+        <span class="rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm text-violet-300">
+          Documentación PDF
+        </span>
       </div>
+    </div>
 
-    </article>
+    <!-- RECURSOS DEL PROYECTO -->
+    <div class="mb-8">
+      <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">
+        Recursos del proyecto
+      </p>
 
-  </div>
-</section>
+      <h2 class="mt-3 text-2xl font-semibold text-white sm:text-3xl">
+        Documentación y código
+      </h2>
+
+      <p class="mt-3 text-sm leading-7 text-slate-400">
+        Selecciona el recurso que deseas consultar.
+      </p>
+    </div>
+
+    <div class="grid gap-8">
+
+      {recursos.map((recurso) => (
+        <article
+          class:list={[
+            'group relative flex flex-col overflow-hidden rounded-2xl border bg-slate-950 shadow-xl transition-all duration-300 hover:-translate-y-1 sm:flex-row',
+            recurso.estilo === 'azul'
+              ? 'border-blue-500/30 hover:border-blue-500/70'
+              : 'border-violet-500/30 hover:border-violet-500/70',
+          ]}
+        >
+
+          <!-- NÚMERO DEL RECURSO -->
+          <div class:list={[
+            'flex min-h-44 items-center justify-center p-8 sm:w-48 sm:shrink-0',
+            recurso.estilo === 'azul'
+              ? 'bg-gradient-to-br from-blue-950 via-slate-950 to-slate-900'
+              : 'bg-gradient-to-br from-violet-950 via-slate-950 to-slate-900',
+          ]}>
+            <div class:list={[
+              'flex h-24 w-24 items-center justify-center rounded-2xl border text-4xl font-bold transition-transform duration-300 group-hover:scale-105',
+              recurso.estilo === 'azul'
+                ? 'border-blue-400/30 bg-blue-500/10 text-blue-300'
+                : 'border-violet-400/30 bg-violet-500/10 text-violet-300',
+            ]}>
+              {recurso.numero}
+            </div>
+          </div>
+
+          <!-- INFORMACIÓN -->
+          <div class="flex flex-1 flex-col justify-center p-6 sm:p-8">
+
+            <div class="flex flex-wrap items-center gap-3">
+              <span class:list={[
+                'rounded-full border px-3 py-1 text-xs font-medium',
+                recurso.estilo === 'azul'
+                  ? 'border-blue-500/30 bg-blue-500/10 text-blue-300'
+                  : 'border-violet-500/30 bg-violet-500/10 text-violet-300',
+              ]}>
+                {recurso.categoria}
+              </span>
+
+              <span class="text-xs text-slate-500">
+                Recurso académico
+              </span>
+            </div>
+
+            <h3 class="mt-4 text-xl font-semibold text-white sm:text-2xl">
+              {recurso.titulo}
+            </h3>
+
+            <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-400">
+              {recurso.descripcion}
+            </p>
+
+            <div class="mt-5 flex items-center gap-2 text-xs text-slate-500">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6"/>
+                <path d="M8 13h8M8 17h8"/>
+              </svg>
+
+              <span>{recurso.detalle}</span>
+            </div>
+
+            <!-- BOTÓN -->
+            <div class="mt-6">
+              <a
+                href={recurso.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class:list={[
+                  'inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-medium text-white transition-all duration-300',
+                  recurso.estilo === 'azul'
+                    ? 'bg-blue-600 hover:bg-blue-500'
+                    : 'bg-violet-600 hover:bg-violet-500',
+                ]}
+              >
+                {recurso.boton}
+
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M7 17 17 7"/>
+                  <path d="M7 7h10v10"/>
+                </svg>
+              </a>
+            </div>
+
+          </div>
+        </article>
+      ))}
+
+    </div>
+
+    <!-- CIERRE -->
+    <div class="mt-12 rounded-2xl border border-violet-500/20 bg-violet-500/5 p-6 sm:p-8">
+      <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">
+        Evidencias académicas
+      </p>
+
+      <h2 class="mt-3 text-xl font-semibold text-white">
+        Desarrollo y documentación
+      </h2>
+
+      <p class="mt-3 text-sm leading-7 text-slate-400">
+        Estos recursos permiten revisar el desarrollo del proyecto
+        y consultar los documentos utilizados durante el proceso
+        de aprendizaje en bases de datos.
+      </p>
+    </div>
+
+  </Container>
+</BaseLayout>
