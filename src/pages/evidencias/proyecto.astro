@@ -1,20 +1,117 @@
----
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Container from '../../components/Container.astro';
----
 
-<BaseLayout title="Proyecto — Evidencias">
+<!-- RECURSOS DEL PROYECTO -->
+<section class="mb-14">
 
-  <Container class="py-16 sm:py-24">
-
-    <h1 class="text-4xl font-semibold text-fg">
-      Proyecto
-    </h1>
-
-    <p class="mt-4 text-fg-2">
-      Aquí se agregarán las evidencias del proyecto final.
+  <div class="mb-8">
+    <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">
+      Proyecto académico
     </p>
 
-  </Container>
+    <h2 class="mt-3 text-2xl font-semibold text-white sm:text-3xl">
+      Proyecto de Bases de Datos I
+    </h2>
 
-</BaseLayout>
+    <p class="mt-3 text-sm leading-7 text-slate-400">
+      En esta sección se encuentran disponibles el repositorio
+      del proyecto, el Modelo Entidad-Relación Extendido y
+      el documento de ejercicios de Álgebra Relacional.
+    </p>
+  </div>
+
+  <div class="grid gap-6">
+
+    <!-- 1. REPOSITORIO GITHUB -->
+    <article class="rounded-2xl border border-violet-500/30 bg-slate-950 p-6 shadow-xl sm:p-8">
+
+      <span class="text-xs font-semibold uppercase tracking-widest text-violet-400">
+        01 · Código fuente
+      </span>
+
+      <h3 class="mt-3 text-xl font-semibold text-white">
+        Repositorio GitHub
+      </h3>
+
+      <p class="mt-3 text-sm leading-7 text-slate-400">
+        Accede al repositorio del proyecto para consultar
+        el código fuente, los archivos y su estructura.
+      </p>
+
+      <a
+        href="https://github.com/Ande2323/ProyectoBasesDatosI"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-violet-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-violet-500"
+      >
+        Ver código en GitHub ↗
+      </a>
+
+    </article>
+
+    <!-- 2. MODELO ENTIDAD RELACIÓN EXTENDIDO -->
+    <article class="rounded-2xl border border-blue-500/30 bg-slate-950 p-6 shadow-xl sm:p-8">
+
+      <span class="text-xs font-semibold uppercase tracking-widest text-blue-400">
+        02 · Diseño de base de datos
+      </span>
+
+      <h3 class="mt-3 text-xl font-semibold text-white">
+        Modelo Entidad-Relación Extendido
+      </h3>
+
+      <p class="mt-3 text-sm leading-7 text-slate-400">
+        Visualiza el modelo conceptual extendido desarrollado
+        para el proyecto de Bases de Datos I.
+      </p>
+
+      <a
+        href="https://drive.google.com/file/d/1GEW9fGDPhko-w6LuAv06Mhlj7vBKSKRA/view?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-blue-500"
+      >
+        Ver modelo en Drive ↗
+      </a>
+
+    </article>
+
+    <!-- 3. DOCUMENTO ÁLGEBRA RELACIONAL -->
+    <article class="rounded-2xl border border-violet-500/30 bg-slate-950 p-6 shadow-xl sm:p-8">
+
+      <span class="text-xs font-semibold uppercase tracking-widest text-violet-400">
+        03 · Documento académico
+      </span>
+
+      <h3 class="mt-3 text-xl font-semibold text-white">
+        Álgebra Relacional - Magic Cards
+      </h3>
+
+      <p class="mt-3 text-sm leading-7 text-slate-400">
+        Documento PDF que contiene los ejercicios de
+        Álgebra Relacional desarrollados para el proyecto.
+      </p>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+
+        <a
+          href="/images/DOCUMENTOS/Algebra_Relacional_Magic_Cards.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 rounded-xl bg-violet-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-violet-500"
+        >
+          Ver documento PDF ↗
+        </a>
+
+        <a
+          href="/images/DOCUMENTOS/Algebra_Relacional_Magic_Cards.pdf"
+          download="Algebra_Relacional_Magic_Cards.pdf"
+          class="inline-flex items-center justify-center gap-2 rounded-xl border border-blue-500/30 bg-blue-500/10 px-6 py-3 text-sm font-medium text-blue-300 transition hover:bg-blue-500 hover:text-white"
+        >
+          Descargar PDF ↓
+        </a>
+
+      </div>
+
+    </article>
+
+  </div>
+</section>
