@@ -3,6 +3,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../../components/Container.astro';
 
+const scriptSQL = '/images/SQL/Practica2026-2.sql';
+
 const evidencias = [
   { id: 1, titulo: 'Consulta SQL 01', descripcion: 'Primera evidencia de consultas SQL.' },
   { id: 2, titulo: 'Consulta SQL 02', descripcion: 'Segunda evidencia de consultas SQL.' },
@@ -25,6 +27,7 @@ const evidencias = [
 
     <!-- ENCABEZADO -->
     <div class="mb-12 max-w-4xl">
+
       <div class="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm text-violet-300">
         <span class="h-2 w-2 rounded-full bg-violet-400"></span>
         Evidencias académicas
@@ -37,22 +40,130 @@ const evidencias = [
       <p class="mt-4 text-lg leading-8 text-slate-400">
         En esta sección presento las evidencias de los ejercicios prácticos
         de SQL realizados durante mi proceso de aprendizaje en bases de datos.
-        Cada imagen muestra el desarrollo de una consulta y sus resultados.
+        Se incluye el script original desarrollado en Oracle SQL Developer
+        y las capturas de las consultas realizadas.
       </p>
 
       <div class="mt-6 flex flex-wrap gap-3">
         <span class="rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm text-violet-300">
           13 evidencias
         </span>
+
         <span class="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300">
-          Práctica de bases de datos
+          Oracle SQL Developer
+        </span>
+
+        <span class="rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm text-violet-300">
+          Script SQL disponible
         </span>
       </div>
     </div>
 
-    <!-- GALERÍA -->
+    <!-- PRIMERA EVIDENCIA: SCRIPT SQL -->
+    <section class="mb-14">
+
+      <div class="mb-6">
+        <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">
+          Archivo principal
+        </p>
+
+        <h2 class="mt-3 text-2xl font-semibold text-white sm:text-3xl">
+          Script de Oracle SQL Developer
+        </h2>
+
+        <p class="mt-3 text-sm leading-7 text-slate-400">
+          Archivo fuente correspondiente a la práctica de consultas SQL
+          del periodo académico 2026-2.
+        </p>
+      </div>
+
+      <article class="overflow-hidden rounded-2xl border border-violet-500/30 bg-slate-950 shadow-xl transition-all duration-300 hover:border-violet-500/60">
+
+        <div class="flex flex-col gap-6 p-6 sm:p-8 md:flex-row md:items-center">
+
+          <!-- ICONO -->
+          <div class="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl border border-violet-400/30 bg-violet-500/10">
+            <span class="text-2xl font-bold text-violet-300">
+              SQL
+            </span>
+          </div>
+
+          <!-- INFORMACIÓN -->
+          <div class="flex-1">
+
+            <span class="inline-flex rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-300">
+              Archivo .SQL
+            </span>
+
+            <h3 class="mt-4 text-xl font-semibold text-white">
+              Práctica SQL 2026-2
+            </h3>
+
+            <p class="mt-2 text-sm leading-6 text-slate-400">
+              Consulta el código fuente de la práctica realizada
+              en Oracle SQL Developer. El archivo también se encuentra
+              disponible para su descarga.
+            </p>
+
+            <p class="mt-3 font-mono text-xs text-violet-300">
+              Practica2026-2.sql
+            </p>
+
+          </div>
+
+          <!-- BOTONES -->
+          <div class="flex shrink-0 flex-col gap-3">
+
+            <a
+              href="https://github.com/ag450297-hue/ag450297-hue.github.io/blob/main/public/images/SQL/Practica2026-2.sql"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 rounded-xl bg-violet-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-violet-500"
+            >
+              Ver código SQL ↗
+            </a>
+
+            <a
+              href={scriptSQL}
+              download="Practica2026-2.sql"
+              class="inline-flex items-center justify-center gap-2 rounded-xl border border-blue-500/30 bg-blue-500/10 px-6 py-3 text-sm font-medium text-blue-300 transition hover:bg-blue-500 hover:text-white"
+            >
+              Descargar script ↓
+            </a>
+
+          </div>
+        </div>
+
+        <!-- PIE DE TARJETA -->
+        <div class="border-t border-violet-500/20 bg-violet-500/5 px-6 py-4">
+          <p class="text-xs text-slate-400">
+            Evidencia académica · Bases de Datos · Periodo 2026-2
+          </p>
+        </div>
+
+      </article>
+    </section>
+
+    <!-- GALERÍA DE CONSULTAS -->
+    <div class="mb-8">
+      <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">
+        Evidencias prácticas
+      </p>
+
+      <h2 class="mt-3 text-2xl font-semibold text-white sm:text-3xl">
+        Galería de consultas SQL
+      </h2>
+
+      <p class="mt-3 text-sm leading-7 text-slate-400">
+        Capturas de las consultas realizadas y sus respectivos resultados.
+        Selecciona una evidencia para visualizarla en tamaño ampliado.
+      </p>
+    </div>
+
     <div id="galeria" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
       {evidencias.map((e) => (
+
         <article class="group flex flex-col overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-violet-500/60">
 
           <button
@@ -61,6 +172,7 @@ const evidencias = [
             class="relative block w-full overflow-hidden bg-slate-900 text-left"
             aria-label={`Ampliar ${e.titulo}`}
           >
+
             <div class="absolute left-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-xl border border-violet-400/30 bg-slate-950/90 text-sm font-bold text-violet-300">
               {String(e.id).padStart(2, '0')}
             </div>
@@ -77,10 +189,15 @@ const evidencias = [
                 Evidencia académica
               </p>
             </div>
+
           </button>
 
           <div class="flex flex-1 flex-col p-5">
-            <h2 class="text-lg font-semibold text-white">{e.titulo}</h2>
+
+            <h2 class="text-lg font-semibold text-white">
+              {e.titulo}
+            </h2>
+
             <p class="mt-2 flex-1 text-sm leading-6 text-slate-400">
               {e.descripcion}
             </p>
@@ -92,13 +209,16 @@ const evidencias = [
             >
               Ver evidencia <span aria-hidden="true">→</span>
             </button>
+
           </div>
         </article>
+
       ))}
     </div>
 
     <!-- VISTA AMPLIADA -->
     <section id="visor" class="mt-12 hidden" aria-label="Evidencia ampliada">
+
       <button
         id="volver"
         type="button"
@@ -108,6 +228,7 @@ const evidencias = [
       </button>
 
       <div class="overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 p-5 sm:p-8">
+
         <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">
           Evidencia académica
         </p>
@@ -121,15 +242,18 @@ const evidencias = [
         </p>
 
         <div class="mt-6 overflow-hidden rounded-xl border border-violet-500/20 bg-slate-900 p-2 sm:p-4">
+
           <img
             id="imagen-visor"
             src="/images/SQL/1.png"
             alt="Evidencia SQL ampliada"
             class="mx-auto h-auto max-h-[75vh] w-full object-contain"
           />
+
         </div>
 
         <div class="mt-5 flex flex-wrap gap-3">
+
           <button
             id="anterior"
             type="button"
@@ -145,11 +269,13 @@ const evidencias = [
           >
             Siguiente →
           </button>
+
         </div>
 
         <p id="contador" class="mt-4 text-sm text-slate-400">
           Evidencia 01 de 13
         </p>
+
       </div>
     </section>
 
