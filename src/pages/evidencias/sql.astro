@@ -1,4 +1,4 @@
-```astro
+
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Container from '../../components/Container.astro';
@@ -46,6 +46,7 @@ const evidencias = [
       </p>
 
       <div class="mt-6 flex flex-wrap gap-3">
+
         <span class="rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm text-violet-300">
           13 evidencias
         </span>
@@ -57,6 +58,7 @@ const evidencias = [
         <span class="rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm text-violet-300">
           2 scripts SQL disponibles
         </span>
+
       </div>
     </div>
 
@@ -64,6 +66,7 @@ const evidencias = [
     <section class="mb-14">
 
       <div class="mb-6">
+
         <p class="text-xs font-semibold uppercase tracking-widest text-violet-400">
           Archivos principales
         </p>
@@ -76,6 +79,7 @@ const evidencias = [
           Archivos fuente correspondientes a las prácticas de consultas SQL
           del periodo académico 2026-2.
         </p>
+
       </div>
 
       <div class="grid gap-6 lg:grid-cols-2">
@@ -90,6 +94,7 @@ const evidencias = [
             </div>
 
             <div>
+
               <span class="inline-flex rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-300">
                 Archivo .SQL
               </span>
@@ -106,6 +111,7 @@ const evidencias = [
               <p class="mt-3 font-mono text-xs text-violet-300">
                 Practica2026-2.sql
               </p>
+
             </div>
 
             <div class="flex shrink-0 flex-col gap-3">
@@ -149,6 +155,7 @@ const evidencias = [
             </div>
 
             <div>
+
               <span class="inline-flex rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-300">
                 Archivo .SQL
               </span>
@@ -165,6 +172,7 @@ const evidencias = [
               <p class="mt-3 font-mono text-xs text-blue-300">
                 Practica2026-2-2.sql
               </p>
+
             </div>
 
             <div class="flex shrink-0 flex-col gap-3">
@@ -221,57 +229,59 @@ const evidencias = [
 
     <div id="galeria" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
 
-      {evidencias.map((e) => (
-        <article class="group flex flex-col overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-violet-500/60">
-
-          <button
-            type="button"
-            data-abrir={e.id}
-            class="relative block w-full overflow-hidden bg-slate-900 text-left"
-            aria-label={`Ampliar ${e.titulo}`}
-          >
-
-            <div class="absolute left-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-xl border border-violet-400/30 bg-slate-950/90 text-sm font-bold text-violet-300">
-              {String(e.id).padStart(2, '0')}
-            </div>
-
-            <img
-              src={`/images/SQL/${e.id}.png`}
-              alt={`Captura de la evidencia ${e.id} de consultas SQL`}
-              loading={e.id <= 3 ? 'eager' : 'lazy'}
-              class="aspect-video w-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
-            />
-
-            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 to-transparent p-4 pt-10">
-              <p class="text-xs font-semibold uppercase tracking-widest text-violet-300">
-                Evidencia académica
-              </p>
-            </div>
-
-          </button>
-
-          <div class="flex flex-1 flex-col p-5">
-
-            <h2 class="text-lg font-semibold text-white">
-              {e.titulo}
-            </h2>
-
-            <p class="mt-2 flex-1 text-sm leading-6 text-slate-400">
-              {e.descripcion}
-            </p>
+      {evidencias.map((evidencia) => {
+        return (
+          <article class="group flex flex-col overflow-hidden rounded-2xl border border-violet-500/20 bg-slate-950 shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-violet-500/60">
 
             <button
               type="button"
-              data-abrir={e.id}
-              class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-violet-500/30 bg-violet-500/10 px-4 py-3 text-sm font-medium text-violet-300 transition-all hover:bg-violet-500 hover:text-white"
+              data-abrir={evidencia.id}
+              class="relative block w-full overflow-hidden bg-slate-900 text-left"
+              aria-label={`Ampliar ${evidencia.titulo}`}
             >
-              Ver evidencia <span aria-hidden="true">→</span>
+
+              <div class="absolute left-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-xl border border-violet-400/30 bg-slate-950/90 text-sm font-bold text-violet-300">
+                {String(evidencia.id).padStart(2, '0')}
+              </div>
+
+              <img
+                src={`/images/SQL/${evidencia.id}.png`}
+                alt={`Captura de la evidencia ${evidencia.id} de consultas SQL`}
+                loading={evidencia.id <= 3 ? 'eager' : 'lazy'}
+                class="aspect-video w-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+              />
+
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 to-transparent p-4 pt-10">
+                <p class="text-xs font-semibold uppercase tracking-widest text-violet-300">
+                  Evidencia académica
+                </p>
+              </div>
+
             </button>
 
-          </div>
+            <div class="flex flex-1 flex-col p-5">
 
-        </article>
-      ))}
+              <h2 class="text-lg font-semibold text-white">
+                {evidencia.titulo}
+              </h2>
+
+              <p class="mt-2 flex-1 text-sm leading-6 text-slate-400">
+                {evidencia.descripcion}
+              </p>
+
+              <button
+                type="button"
+                data-abrir={evidencia.id}
+                class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-violet-500/30 bg-violet-500/10 px-4 py-3 text-sm font-medium text-violet-300 transition-all hover:bg-violet-500 hover:text-white"
+              >
+                Ver evidencia <span aria-hidden="true">→</span>
+              </button>
+
+            </div>
+
+          </article>
+        );
+      })}
 
     </div>
 
@@ -340,18 +350,24 @@ const evidencias = [
 
   </Container>
 
+  <!-- FUNCIONALIDAD DEL VISOR -->
   <script>
     const galeria = document.querySelector('#galeria');
     const visor = document.querySelector('#visor');
     const tituloVisor = document.querySelector('#titulo-visor');
     const imagenVisor = document.querySelector('#imagen-visor');
     const contador = document.querySelector('#contador');
+    const botonVolver = document.querySelector('#volver');
+    const botonAnterior = document.querySelector('#anterior');
+    const botonSiguiente = document.querySelector('#siguiente');
 
     let actual = 1;
     const total = 13;
 
     function mostrarEvidencia(numero) {
       actual = Math.max(1, Math.min(total, numero));
+
+      if (!tituloVisor || !imagenVisor || !contador) return;
 
       tituloVisor.textContent =
         `Consulta SQL ${String(actual).padStart(2, '0')}`;
@@ -362,45 +378,56 @@ const evidencias = [
       contador.textContent =
         `Evidencia ${String(actual).padStart(2, '0')} de ${total}`;
 
-      const anterior = document.querySelector('#anterior');
-      const siguiente = document.querySelector('#siguiente');
+      if (botonAnterior) {
+        botonAnterior.disabled = actual === 1;
+        botonAnterior.classList.toggle('opacity-40', actual === 1);
+      }
 
-      anterior.disabled = actual === 1;
-      siguiente.disabled = actual === total;
-
-      anterior.classList.toggle('opacity-40', actual === 1);
-      siguiente.classList.toggle('opacity-40', actual === total);
+      if (botonSiguiente) {
+        botonSiguiente.disabled = actual === total;
+        botonSiguiente.classList.toggle('opacity-40', actual === total);
+      }
     }
 
     function abrirVisor(numero) {
+      if (!galeria || !visor) return;
+
       mostrarEvidencia(numero);
       galeria.classList.add('hidden');
       visor.classList.remove('hidden');
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function volverGaleria() {
+      if (!galeria || !visor) return;
+
       visor.classList.add('hidden');
       galeria.classList.remove('hidden');
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     document.querySelectorAll('[data-abrir]').forEach((boton) => {
       boton.addEventListener('click', () => {
-        abrirVisor(Number(boton.getAttribute('data-abrir')));
+        const numero = Number(boton.getAttribute('data-abrir'));
+        abrirVisor(numero);
       });
     });
 
-    document.querySelector('#volver').addEventListener('click', volverGaleria);
+    botonVolver?.addEventListener('click', volverGaleria);
 
-    document.querySelector('#anterior').addEventListener('click', () => {
-      if (actual > 1) mostrarEvidencia(actual - 1);
+    botonAnterior?.addEventListener('click', () => {
+      if (actual > 1) {
+        mostrarEvidencia(actual - 1);
+      }
     });
 
-    document.querySelector('#siguiente').addEventListener('click', () => {
-      if (actual < total) mostrarEvidencia(actual + 1);
+    botonSiguiente?.addEventListener('click', () => {
+      if (actual < total) {
+        mostrarEvidencia(actual + 1);
+      }
     });
   </script>
 
 </BaseLayout>
-```
